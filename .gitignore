@@ -1,0 +1,24 @@
+# Environment
+.env
+.venv/
+
+# Session data — transcripts and recordings are local only
+data/sessions/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Audio scratch files
+*.wav
+*.mp3

@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Thin entry point. All logic lives in src/session_audio_notetaker."""
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
+from session_audio_notetaker.__main__ import main
+
+main()
