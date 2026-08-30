@@ -298,6 +298,23 @@ code { font-family: Menlo, Consolas, monospace; font-size: 0.88em; color: var(--
   margin: 0;
   color: var(--ink);
 }
+.character-link {
+  color: inherit;
+  text-decoration-color: var(--gold-line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.character-link:hover, .character-link:focus-visible {
+  color: var(--rubric);
+  text-decoration-color: var(--gold-strong);
+}
+.external-mark {
+  display: inline-block;
+  margin-left: 0.22em;
+  color: var(--gold);
+  font-size: 0.68em;
+  vertical-align: 0.2em;
+}
 .card-sub {
   margin: 3px 0 0;
   font-size: 14px;
@@ -2243,6 +2260,16 @@ footer.colophon {
   var DATA = JSON.parse(document.getElementById("codex-data").textContent);
   var COMBAT = JSON.parse(document.getElementById("combat-data").textContent);
   var CHARS = DATA.characters;
+  var DDB_URLS = {
+    burtha_smith: "https://www.dndbeyond.com/characters/139642480",
+    eddwarn_celas: "https://www.dndbeyond.com/characters/138479018",
+    finn_barrellor: "https://www.dndbeyond.com/characters/138631960",
+    halden_lorithan: "https://www.dndbeyond.com/characters/139584701",
+    serethe_skarsdotr: "https://www.dndbeyond.com/characters/153611341",
+    talon_aldric: "https://www.dndbeyond.com/characters/144044496",
+    ulfaerr: "https://www.dndbeyond.com/characters/121672153",
+    wimble_scheppen: "https://www.dndbeyond.com/characters/139566268"
+  };
   var SKILL_LABELS = {
     acrobatics: "Acrobatics", animal_handling: "Animal Hdl.", arcana: "Arcana",
     athletics: "Athletics", deception: "Deception", history: "History",
@@ -2391,6 +2418,13 @@ footer.colophon {
   function fmtInt(v) { return String(Math.round(v)); }
   function fmtSigned(v) { return (v > 0 ? "+" : "") + Math.round(v); }
   function ceilStep(v, step) { return Math.max(step, Math.ceil(v / step) * step); }
+  function characterLink(c) {
+    var url = DDB_URLS[c.id];
+    if (!url) return esc(c.name);
+    return '<a class="character-link" href="' + url + '" target="_blank" rel="noopener noreferrer"' +
+      ' title="Open ' + esc(c.full_name || c.name) + ' on D&amp;D Beyond">' + esc(c.name) +
+      '<span class="external-mark" aria-hidden="true">&#8599;</span></a>';
+  }
 
   var seriesItems = CHARS.map(function (c) {
     return { id: c.id, name: c.name, label: c.name, short: c._code, cls: c._cls };
@@ -2446,7 +2480,7 @@ footer.colophon {
       card.innerHTML =
         '<div class="card-head">' +
         '<div class="card-initial">' + esc(c.name[0]) + '</div>' +
-        '<div><h3 class="card-name">' + esc(c.name) + '</h3>' +
+        '<div><h3 class="card-name">' + characterLink(c) + '</h3>' +
         '<p class="card-sub">' + esc(c.class_label) + " &middot; " + esc(cap(c.species)) +
         (c.alignment ? " &middot; " + esc(c.alignment) : "") + '</p></div>' +
         '</div>' +
@@ -2676,7 +2710,7 @@ footer.colophon {
     CHARS.forEach(function (c) {
       var tr = document.createElement("tr");
       tr.innerHTML =
-        "<td class='name'>" + esc(c.name) + "</td>" +
+        "<td class='name'>" + characterLink(c) + "</td>" +
         "<td>" + esc(c.class_label) + "</td>" +
         "<td class='num'>" + c.hp_max + "</td>" +
         "<td class='num'>" + c.ac + "</td>" +
