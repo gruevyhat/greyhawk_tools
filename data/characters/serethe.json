@@ -1,0 +1,448 @@
+{
+  "schema": {
+    "name": "dnd5e-2024-character",
+    "version": "1.0.0",
+    "conventions": {
+      "ids": "snake_case, stable across captures, used as join keys",
+      "derived_values": "Any computed number is an object with {value, formula, components}. Never store a computed number as a bare scalar — it hides the derivation and makes drift undetectable.",
+      "provenance": "Every rules element carries `source` {book, page}. Every character-specific value carries `origin` naming the choice that produced it.",
+      "unresolved": "Fields that could not be determined from the sheet are null with a sibling entry in validation.unresolved. Nulls are never silently filled.",
+      "units": "Distances in feet, weights in pounds, currency in gp."
+    }
+  },
+
+  "capture": {
+    "source_url": "https://www.dndbeyond.com/characters/153611341",
+    "captured_at": "2026-08-15",
+    "method": "browser DOM text extraction, tab-by-tab",
+    "completeness": "Actions, Spells, Inventory, Features & Traits, Background, Notes, Extras all read. Spell slot counts were not legible in extracted text and are computed instead — see validation."
+  },
+
+  "identity": {
+    "id": "serethe_skarsdotr",
+    "name": "Serethe \"Se\" Skarsdotr",
+    "short_name": "Serethe",
+    "house": "Vael-Korr",
+    "name_note": "Canonical is Serethe. The backstory prose on the D&D Beyond sheet still reads 'Sevrine' throughout — sheet text needs correcting at source.",
+    "species": {
+      "id": "goliath",
+      "creature_type": "Humanoid",
+      "size": "Medium",
+      "ancestry": "Cloud Giant",
+      "source": { "book": "PHB-2024", "page": 192 }
+    },
+    "background": {
+      "id": "noble",
+      "source": { "book": "PHB-2024", "page": 182 }
+    },
+    "alignment": "Neutral Good",
+    "campaign": "Greyhawk",
+    "demographics": {
+      "gender": null, "age": null, "height": null, "weight": null,
+      "eyes": null, "hair": null, "skin": null, "faith": null,
+      "note": "All blank on sheet. Backstory states pale blue eyes — narrative only, not entered."
+    }
+  },
+
+  "progression": {
+    "character_level": 5,
+    "classes": [
+      {
+        "id": "paladin",
+        "level": 4,
+        "subclass": { "id": "oath_of_vengeance", "source": { "book": "PHB-2024", "page": 111 } },
+        "spellcasting_ability": "charisma",
+        "caster_type": "half",
+        "source": { "book": "PHB-2024", "page": 109 }
+      },
+      {
+        "id": "sorcerer",
+        "level": 1,
+        "subclass": null,
+        "subclass_available_at_class_level": 3,
+        "spellcasting_ability": "charisma",
+        "caster_type": "full",
+        "source": { "book": "PHB-2024", "page": 139 }
+      }
+    ],
+    "proficiency_bonus": {
+      "value": 3,
+      "formula": "2 + floor((character_level - 1) / 4)",
+      "components": [{ "label": "character_level", "value": 5 }]
+    }
+  },
+
+  "abilities": {
+    "strength": {
+      "total": 18,
+      "modifier": { "value": 4, "formula": "floor((total - 10) / 2)" },
+      "base": null,
+      "increases": [
+        { "origin": "background_noble", "amount": null, "note": "Noble granted +2/+1 across Strength and Charisma; split not determinable from sheet" },
+        { "origin": "paladin_asi_level_4", "amount": 2 }
+      ]
+    },
+    "dexterity": { "total": 10, "modifier": { "value": 0, "formula": "floor((total - 10) / 2)" }, "base": 10, "increases": [] },
+    "constitution": { "total": 14, "modifier": { "value": 2, "formula": "floor((total - 10) / 2)" }, "base": 14, "increases": [] },
+    "intelligence": { "total": 12, "modifier": { "value": 1, "formula": "floor((total - 10) / 2)" }, "base": 12, "increases": [] },
+    "wisdom": { "total": 10, "modifier": { "value": 0, "formula": "floor((total - 10) / 2)" }, "base": 10, "increases": [] },
+    "charisma": {
+      "total": 14,
+      "modifier": { "value": 2, "formula": "floor((total - 10) / 2)" },
+      "base": null,
+      "increases": [
+        { "origin": "background_noble", "amount": null, "note": "See strength.increases — same unresolved split" }
+      ]
+    }
+  },
+
+  "defenses": {
+    "hit_points": { "max": 42, "current": 42, "temporary": 0 },
+    "armor_class": {
+      "value": 18,
+      "formula": "plate_base",
+      "components": [
+        { "label": "Smoldering Armor, Plate", "value": 18, "note": "Flat AC 18; no Dex contribution, no magical bonus observed" }
+      ]
+    },
+    "initiative": {
+      "value": 0,
+      "formula": "dexterity.modifier",
+      "components": [{ "label": "dexterity.modifier", "value": 0 }]
+    },
+    "speed": { "walking": 35, "origin": "species_goliath" },
+    "resistances": [],
+    "immunities": [],
+    "vulnerabilities": [],
+    "conditions_active": []
+  },
+
+  "saving_throws": {
+    "proficient": ["wisdom", "charisma"],
+    "proficiency_origin": "paladin_core",
+    "values": {
+      "strength":     { "value": 4, "proficient": false, "formula": "ability_mod" },
+      "dexterity":    { "value": 0, "proficient": false, "formula": "ability_mod" },
+      "constitution": { "value": 2, "proficient": false, "formula": "ability_mod" },
+      "intelligence": { "value": 1, "proficient": false, "formula": "ability_mod" },
+      "wisdom":       { "value": 3, "proficient": true,  "formula": "ability_mod + proficiency_bonus" },
+      "charisma":     { "value": 5, "proficient": true,  "formula": "ability_mod + proficiency_bonus" }
+    }
+  },
+
+  "skills": [
+    { "id": "acrobatics",      "ability": "dexterity",    "proficient": false, "bonus": 0, "origin": null },
+    { "id": "animal_handling", "ability": "wisdom",       "proficient": true,  "bonus": 3, "origin": null },
+    { "id": "arcana",          "ability": "intelligence", "proficient": false, "bonus": 1, "origin": null },
+    { "id": "athletics",       "ability": "strength",     "proficient": true,  "bonus": 7, "origin": "paladin_core" },
+    { "id": "deception",       "ability": "charisma",     "proficient": false, "bonus": 2, "origin": null },
+    { "id": "history",         "ability": "intelligence", "proficient": true,  "bonus": 4, "origin": "background_noble" },
+    { "id": "insight",         "ability": "wisdom",       "proficient": false, "bonus": 0, "origin": null },
+    { "id": "intimidation",    "ability": "charisma",     "proficient": false, "bonus": 2, "origin": null },
+    { "id": "investigation",   "ability": "intelligence", "proficient": true,  "bonus": 4, "origin": "feat_skilled" },
+    { "id": "medicine",        "ability": "wisdom",       "proficient": false, "bonus": 0, "origin": null },
+    { "id": "nature",          "ability": "intelligence", "proficient": false, "bonus": 1, "origin": null },
+    { "id": "perception",      "ability": "wisdom",       "proficient": true,  "bonus": 3, "origin": "feat_skilled" },
+    { "id": "performance",     "ability": "charisma",     "proficient": false, "bonus": 2, "origin": null },
+    { "id": "persuasion",      "ability": "charisma",     "proficient": true,  "bonus": 5, "origin": "paladin_core" },
+    { "id": "religion",        "ability": "intelligence", "proficient": false, "bonus": 1, "origin": null },
+    { "id": "sleight_of_hand", "ability": "dexterity",    "proficient": false, "bonus": 0, "origin": null },
+    { "id": "stealth",         "ability": "dexterity",    "proficient": false, "bonus": 0, "origin": null },
+    { "id": "survival",        "ability": "wisdom",       "proficient": true,  "bonus": 3, "origin": "feat_skilled" }
+  ],
+
+  "senses": {
+    "passive_perception":   { "value": 13, "formula": "10 + skills.perception.bonus" },
+    "passive_investigation":{ "value": 14, "formula": "10 + skills.investigation.bonus" },
+    "passive_insight":      { "value": 10, "formula": "10 + skills.insight.bonus" },
+    "special": []
+  },
+
+  "proficiencies": {
+    "armor": ["light", "medium", "heavy", "shields"],
+    "weapons": ["simple", "martial"],
+    "tools": ["dragonchess_set"],
+    "languages": ["common", "dwarvish", "giant"],
+    "weapon_masteries": [
+      { "weapon": "greatsword", "mastery": "graze" },
+      { "weapon": "dagger",     "mastery": "nick" }
+    ]
+  },
+
+  "features": [
+    {
+      "id": "lay_on_hands", "class": "paladin",
+      "source": { "book": "PHB-2024", "page": 109 },
+      "activation": "bonus_action",
+      "resource_ref": "lay_on_hands_pool"
+    },
+    {
+      "id": "weapon_mastery", "class": "paladin",
+      "source": { "book": "PHB-2024", "page": 110 },
+      "grants": ["graze_greatsword", "nick_dagger"]
+    },
+    {
+      "id": "fighting_style", "class": "paladin",
+      "source": { "book": "PHB-2024", "page": 110 },
+      "choice": "great_weapon_fighting",
+      "effect": "Treat any 1 or 2 on a damage die as 3, for two-handed or versatile melee weapons held in two hands."
+    },
+    {
+      "id": "paladins_smite", "class": "paladin",
+      "source": { "book": "PHB-2024", "page": 110 },
+      "effect": "Divine Smite always prepared; cast once per long rest without expending a slot.",
+      "resource_ref": "free_divine_smite",
+      "tactical_note": "The slot-free use is the only smite that can share a turn with another slot-expending spell."
+    },
+    {
+      "id": "channel_divinity", "class": "paladin",
+      "source": { "book": "PHB-2024", "page": 110 },
+      "save_dc_ref": "paladin_spell_save_dc",
+      "resource_ref": "channel_divinity",
+      "options": ["divine_sense", "vow_of_enmity"]
+    },
+    {
+      "id": "divine_sense", "class": "paladin", "activation": "bonus_action",
+      "effect": "10 min: know location and type of Celestials, Fiends, Undead within 60 ft; detect consecrated/desecrated places and objects."
+    },
+    {
+      "id": "vow_of_enmity", "subclass": "oath_of_vengeance",
+      "source": { "book": "PHB-2024", "page": 117 },
+      "activation": "action_rider_on_attack",
+      "effect": "Advantage on attacks against one creature within 30 ft for 1 minute. Transfers on target reaching 0 HP."
+    },
+    {
+      "id": "oath_of_vengeance_spells", "subclass": "oath_of_vengeance",
+      "source": { "book": "PHB-2024", "page": 116 },
+      "always_prepared": ["bane", "hunters_mark"]
+    },
+    {
+      "id": "innate_sorcery", "class": "sorcerer",
+      "source": { "book": "PHB-2024", "page": 140 },
+      "activation": "bonus_action",
+      "duration_minutes": 1,
+      "resource_ref": "innate_sorcery",
+      "configured": false
+    },
+    {
+      "id": "giant_ancestry", "species": "goliath",
+      "source": { "book": "PHB-2024", "page": 192 },
+      "choice": "clouds_jaunt",
+      "effect": "Bonus action: teleport up to 30 ft to a visible unoccupied space.",
+      "resource_ref": "clouds_jaunt"
+    },
+    {
+      "id": "large_form", "species": "goliath",
+      "source": { "book": "PHB-2024", "page": 192 },
+      "activation": "bonus_action",
+      "duration_minutes": 10,
+      "effect": "Become Large; advantage on Strength checks; speed +10 ft.",
+      "resource_ref": "large_form",
+      "configured": false
+    },
+    {
+      "id": "powerful_build", "species": "goliath",
+      "source": { "book": "PHB-2024", "page": 192 },
+      "effect": "Advantage on checks to end Grappled; count as one size larger for carrying capacity."
+    }
+  ],
+
+  "feats": [
+    {
+      "id": "asi_paladin_4", "name": "Ability Score Improvement",
+      "origin": "paladin", "source": { "book": "PHB-2024", "page": 202 },
+      "allocation": [{ "ability": "strength", "amount": 2 }]
+    },
+    {
+      "id": "great_weapon_fighting", "name": "Great Weapon Fighting",
+      "origin": "paladin", "source": { "book": "PHB-2024", "page": 209 }
+    },
+    {
+      "id": "skilled", "name": "Skilled",
+      "origin": "background_noble", "source": { "book": "PHB-2024", "page": 201 },
+      "allocation": ["survival", "investigation", "perception"]
+    }
+  ],
+
+  "resources": [
+    { "id": "lay_on_hands_pool", "max": 20, "current": 20, "unit": "hit_points", "recharge": "long_rest",
+      "formula": "5 * paladin_level" },
+    { "id": "channel_divinity", "max": 2, "current": null, "recharge": "long_rest",
+      "partial_recharge": "regain one expended use on short rest" },
+    { "id": "free_divine_smite", "max": 1, "current": null, "recharge": "long_rest" },
+    { "id": "innate_sorcery", "max": 2, "current": null, "recharge": "long_rest" },
+    { "id": "clouds_jaunt", "max": 3, "current": null, "recharge": "long_rest" },
+    { "id": "large_form", "max": 1, "current": null, "recharge": "long_rest" },
+    { "id": "heroic_inspiration", "max": 1, "current": null, "recharge": "dm_award" }
+  ],
+
+  "spellcasting": {
+    "ability": "charisma",
+    "spell_attack_bonus": {
+      "value": 5,
+      "formula": "charisma.modifier + proficiency_bonus",
+      "components": [{ "label": "charisma.modifier", "value": 2 }, { "label": "proficiency_bonus", "value": 3 }]
+    },
+    "spell_save_dc": {
+      "value": 13,
+      "formula": "8 + charisma.modifier + proficiency_bonus"
+    },
+    "effective_caster_level": {
+      "value": 3,
+      "formula": "floor(paladin_level / 2) + sorcerer_level",
+      "components": [
+        { "label": "paladin_4_half_caster", "value": 2 },
+        { "label": "sorcerer_1_full_caster", "value": 1 }
+      ]
+    },
+    "slots": {
+      "1": { "max": 4, "current": null, "derived": true },
+      "2": { "max": 2, "current": null, "derived": true },
+      "note": "Computed from effective_caster_level, not read directly off the sheet."
+    },
+    "rules_constraints": [
+      {
+        "id": "one_slot_per_turn",
+        "source": { "book": "PHB-2024" },
+        "statement": "On a turn you can expend only one spell slot to cast a spell.",
+        "implications": [
+          "hunters_mark and divine_smite cannot share a turn",
+          "shield_of_faith and any smite cannot share a turn",
+          "thunderous_smite and divine_smite cannot share a turn",
+          "the free_divine_smite resource is exempt and CAN share a turn with a slot spell",
+          "cantrips (booming_blade) are exempt and CAN share a turn with a smite"
+        ]
+      }
+    ],
+    "cantrips": [
+      { "id": "booming_blade",   "class": "sorcerer", "casting_time": "action", "range": "self", "damage": "1d8", "rider_damage": "2d8", "components": "S/M" },
+      { "id": "elementalism",    "class": "sorcerer", "casting_time": "action", "range": 30, "components": "V/S" },
+      { "id": "shocking_grasp",  "class": "sorcerer", "casting_time": "action", "range": "touch", "attack_bonus": 5, "damage": "2d8", "components": "V/S" },
+      { "id": "sorcerous_burst", "class": "sorcerer", "casting_time": "action", "range": 120, "attack_bonus": 5, "damage": "2d8", "components": "V/S" }
+    ],
+    "prepared": [
+      { "id": "bane",            "level": 1, "origin": "oath_of_vengeance", "casting_time": "action",       "range": 30,  "save": "charisma", "save_dc": 13, "concentration": true,  "components": "V/S/M" },
+      { "id": "command",         "level": 1, "origin": "paladin",           "casting_time": "action",       "range": 60,  "save": "wisdom",   "save_dc": 13, "concentration": false, "components": "V" },
+      { "id": "detect_magic",    "level": 1, "origin": "paladin",           "casting_time": "action",       "range": "self", "ritual": true,  "concentration": true,  "components": "V/S" },
+      { "id": "divine_smite",    "level": 1, "origin": "paladins_smite",    "casting_time": "bonus_action", "range": "self", "damage": "2d8", "concentration": false, "components": "V" },
+      { "id": "feather_fall",    "level": 1, "origin": "sorcerer",          "casting_time": "reaction",     "range": 60,  "concentration": false, "components": "V/M" },
+      { "id": "fog_cloud",       "level": 1, "origin": "sorcerer",          "casting_time": "action",       "range": 120, "concentration": true,  "components": "V/S" },
+      { "id": "hunters_mark",    "level": 1, "origin": "oath_of_vengeance", "casting_time": "bonus_action", "range": 90,  "damage": "1d6", "concentration": true,  "components": "V" },
+      { "id": "protection_from_evil_and_good", "level": 1, "origin": "paladin", "casting_time": "action", "range": "touch", "concentration": true, "components": "V/S/M" },
+      { "id": "shield_of_faith", "level": 1, "origin": "paladin",           "casting_time": "bonus_action", "range": 60,  "concentration": true,  "components": "V/S/M" },
+      { "id": "thunderous_smite","level": 1, "origin": "paladin",           "casting_time": "bonus_action", "range": "self", "save": "strength", "save_dc": 13, "damage": "2d6", "concentration": false, "components": "V" }
+    ],
+    "known_spells_by_level": { "1": 10, "2": 0 },
+    "upcast_only_note": "Second-level slots exist but no 2nd-level spells are accessible at Paladin 4 / Sorcerer 1. Those slots can only upcast 1st-level spells."
+  },
+
+  "actions": {
+    "attacks_per_action": 1,
+    "extra_attack": false,
+    "extra_attack_available_at": { "class": "paladin", "level": 5 },
+    "attacks": [
+      { "id": "greatsword",  "type": "melee_weapon", "reach": 5, "attack_bonus": 7, "damage": "2d6+4", "properties": ["martial", "heavy", "two_handed"], "mastery": "graze" },
+      { "id": "longsword",   "type": "melee_weapon", "reach": 5, "attack_bonus": 7, "damage": "1d8+4", "versatile_damage": "1d10+4", "properties": ["martial", "versatile"], "mastery": "sap" },
+      { "id": "dagger",      "type": "melee_weapon", "reach": 5, "range": [20, 60], "attack_bonus": 7, "damage": "1d4+4", "properties": ["simple", "finesse", "light", "thrown"], "mastery": "nick" },
+      { "id": "unarmed_strike", "type": "melee", "reach": 5, "attack_bonus": 7, "damage": "5", "options": ["damage", "grapple", "shove"] }
+    ],
+    "bonus_action_contention": [
+      "divine_smite", "thunderous_smite", "hunters_mark", "shield_of_faith",
+      "lay_on_hands", "innate_sorcery", "clouds_jaunt", "large_form", "two_weapon_fighting"
+    ],
+    "concentration_contention": ["hunters_mark", "bane", "shield_of_faith", "fog_cloud", "protection_from_evil_and_good", "detect_magic"]
+  },
+
+  "inventory": {
+    "weight_carried": 96.5,
+    "carrying_capacity": 200,
+    "encumbrance_status": "unencumbered",
+    "attunement": { "slots_total": 3, "slots_used": 0, "attuned_items": [] },
+    "containers": [
+      {
+        "id": "equipment", "weight": 79,
+        "items": [
+          { "id": "helm_of_awareness",  "type": "wondrous_item", "quantity": 1, "requires_attunement": true, "attuned": false },
+          { "id": "smoldering_armor_plate", "type": "heavy_armor", "weight": 65, "ac": 18, "strength_requirement": 15, "stealth_disadvantage": true },
+          { "id": "greatsword", "type": "weapon", "weight": 6,  "cost_gp": 50 },
+          { "id": "longsword",  "type": "weapon", "weight": 3,  "cost_gp": 15 },
+          { "id": "dagger",     "type": "weapon", "weight": 1,  "cost_gp": 2 },
+          { "id": "holy_symbol","type": "gear",   "quantity": 1 },
+          { "id": "travelers_clothes", "type": "gear", "weight": 4, "quantity": 1, "cost_gp": 2 }
+        ]
+      },
+      {
+        "id": "backpack", "weight": 15, "capacity": 30, "over_capacity": false,
+        "items": [
+          { "id": "dragonchess",    "quantity": 1, "cost_gp": 1 },
+          { "id": "hooded_lantern", "weight": 2, "quantity": 1, "cost_gp": 5 },
+          { "id": "oil",            "weight": 2, "quantity": 2, "cost_gp": 0.2 },
+          { "id": "tinderbox",      "weight": 1, "quantity": 1, "cost_gp": 0.5 },
+          { "id": "waterskin",      "weight": 5, "quantity": 1, "cost_gp": 0.2 }
+        ]
+      },
+      {
+        "id": "crossbow_bolt_case", "weight": 2.5,
+        "items": [{ "id": "bolts", "weight": 1.5, "quantity": 20, "cost_gp": 1 }],
+        "note": "No crossbow in inventory. Ammunition without a launcher."
+      },
+      {
+        "id": "saddlebags", "weight": 73, "capacity": 30, "over_capacity": true,
+        "items": [
+          { "id": "bedroll",       "weight": 7,  "quantity": 1, "cost_gp": 1 },
+          { "id": "exotic_saddle", "weight": 40, "quantity": 1, "cost_gp": 60 },
+          { "id": "fine_clothes",  "weight": 6,  "quantity": 1, "cost_gp": 15 },
+          { "id": "rations",       "weight": 10, "quantity": 5, "cost_gp": 2.5 },
+          { "id": "rope",          "weight": 5,  "quantity": 1, "cost_gp": 1 }
+        ]
+      }
+    ]
+  },
+
+  "extras": [
+    {
+      "id": "giant_reindeer", "category": "mount",
+      "creature_type": "Huge Celestial",
+      "armor_class": 14,
+      "hit_points": { "max": 42, "current": 42 },
+      "speed": 60
+    }
+  ],
+
+  "narrative": {
+    "backstory_summary": "Goliath noblewoman of House Vael-Korr, from the high mountains of the Flanaess. The house claims cloud giant descent, preserved in traditions, runic markings, and oral history — noble in responsibility rather than wealth. Her sorcery is inherited and instinctive rather than studied; she considers herself a knight first. Years ago, outsiders posing as traders and antiquarians gained access to the family hold, seeking cloud-giant records and relics, then attacked: household members killed or vanished, relics stolen, defenses clearly known in advance. She swore an Oath of Vengeance against the guilty specifically — not their race, nationality, associates, or organization. Since then she has followed the enabling network rather than individual killers, which has drawn her toward Stonehaven.",
+    "thematic_magic_direction": ["cloud", "wind", "lightning", "levitation", "flight"],
+    "character_flaw": "Certainty. Once she believes she has identified the responsible party, she is slow to reconsider.",
+    "party_relationship": "Does not expect to command. Respects the party for repeatedly risking themselves for people who cannot reward them.",
+    "campaign_hooks": [
+      "Scarlet Brotherhood",
+      "trafficking route toward the Wild Coast",
+      "Kadar al'Habib",
+      "unidentified cloaked operative who escaped the party",
+      "material recovered from the temple of Laduguer"
+    ],
+    "deliberately_unresolved": "Whether the Scarlet Brotherhood actually ordered the attack on her home.",
+    "sheet_fields_empty": ["personality_traits", "ideals", "bonds", "flaws", "appearance", "organizations", "allies", "enemies"],
+    "note": "flaw and party_relationship above are extracted from backstory prose, not from the sheet's structured Flaws field, which is empty."
+  },
+
+  "validation": {
+    "unresolved": [
+      { "field": "abilities.strength.base / abilities.charisma.base", "issue": "Noble grants +2/+1 across Strength and Charisma but the split is not shown. Both pre-background bases are therefore underdetermined." },
+      { "field": "skills.animal_handling.origin", "issue": "Proficient, but no visible grant. Paladin lists Persuasion and Athletics; Noble lists History; Skilled covers Survival, Investigation, Perception. Animal Handling is unaccounted for." },
+      { "field": "spellcasting.slots", "issue": "Computed from caster level, not read from the sheet." },
+      { "field": "resources[*].current", "issue": "Current-use counters were blank in extraction for all resources except lay_on_hands_pool." }
+    ],
+    "flags": [
+      { "id": "no_extra_attack", "severity": "high", "detail": "Character level 5 with attacks_per_action = 1. Paladin 5 would grant Extra Attack; the Sorcerer dip defers it." },
+      { "id": "unattuned_helm", "severity": "high", "detail": "Helm of Awareness held, requires attunement, 0 of 3 attunement slots used. Directly addresses initiative 0." },
+      { "id": "saddlebags_over_capacity", "severity": "low", "detail": "73 lb in a 30 lb container." },
+      { "id": "bolts_without_crossbow", "severity": "low", "detail": "20 bolts, no launcher in inventory." },
+      { "id": "unusable_nick_mastery", "severity": "medium", "detail": "Nick requires two-weapon fighting; the greatsword is two-handed. Two-Weapon Fighting is listed as available but cannot be executed with the current loadout." },
+      { "id": "longsword_redundant", "severity": "low", "detail": "No shield in inventory; longsword duplicates the greatsword role at lower output." },
+      { "id": "unconfigured_toggles", "severity": "low", "detail": "innate_sorcery and large_form both show 'No Choice Made' on the sheet." },
+      { "id": "empty_2nd_level_spells", "severity": "medium", "detail": "Two 2nd-level slots, zero 2nd-level spells accessible. Upcast-only." },
+      { "id": "stale_name_in_backstory", "severity": "medium", "detail": "The Backstory field on the D&D Beyond sheet refers to the character as 'Sevrine' in four places. Canonical name is Serethe. Source text not yet updated." }
+    ]
+  }
+}

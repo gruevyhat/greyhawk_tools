@@ -1,0 +1,976 @@
+{
+  "schema": {
+    "name": "dnd5e-2024-character",
+    "version": "1.0.0",
+    "conventions": {
+      "ids": "snake_case, stable across captures, used as join keys",
+      "derived_values": "Any computed number is an object with {value, formula, components}. Never store a computed number as a bare scalar — it hides the derivation and makes drift undetectable.",
+      "provenance": "Every rules element carries `source` {book, page}. Every character-specific value carries `origin` naming the choice that produced it.",
+      "unresolved": "Fields that could not be determined from the sheet are null with a sibling entry in validation.unresolved. Nulls are never silently filled.",
+      "units": "Distances in feet, weights in pounds, currency in gp."
+    }
+  },
+  "capture": {
+    "source_url": "https://www.dndbeyond.com/characters/138631960",
+    "captured_at": "2026-08-15",
+    "method": "browser DOM text extraction, tab-by-tab, via campaign roster VIEW access (not owned by the capturing player)",
+    "completeness": "Actions, Spells, Inventory, Features & Traits, Extras all read. No Background/Notes/backstory page is exposed on a view-only (non-owned) character sheet, so narrative fields are unresolved. Background appears to be a custom/homebrew 'Silent Ones Acolyte' (not a PHB-2024 background) — its origin feat 'Secret Keeper' had no description text in the DOM, so its exact grants are inferred rather than confirmed."
+  },
+  "identity": {
+    "id": "finn_barrellor",
+    "name": "Finn Barrellor",
+    "short_name": "Finn",
+    "house": null,
+    "name_note": null,
+    "roster_status": "active",
+    "species": {
+      "id": "human",
+      "creature_type": "Humanoid",
+      "size": "Medium",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      }
+    },
+    "background": {
+      "id": "silent_ones_acolyte",
+      "source": null,
+      "note": "Custom/homebrew background (not in PHB-2024). Its origin feat is 'Secret Keeper', shown on the sheet with no description text. Arcana, History proficiencies and Alchemist's Supplies tool proficiency are inferred to come from this background, since no other identified source accounts for them."
+    },
+    "alignment": null,
+    "campaign": "Greyhawk",
+    "player": "Duke_Mockingbird",
+    "demographics": {
+      "gender": "M",
+      "age": null,
+      "height": null,
+      "weight": null,
+      "eyes": null,
+      "hair": null,
+      "skin": null,
+      "faith": null,
+      "note": "Only a gender initial is shown in the sheet header; other fields not visible without builder access."
+    }
+  },
+  "progression": {
+    "character_level": 5,
+    "classes": [
+      {
+        "id": "wizard",
+        "level": 5,
+        "subclass": {
+          "id": "arcanist",
+          "source": {
+            "book": "PHB-2024",
+            "page": 167
+          }
+        },
+        "spellcasting_ability": "intelligence",
+        "caster_type": "full",
+        "source": {
+          "book": "PHB-2024",
+          "page": 165
+        }
+      }
+    ],
+    "proficiency_bonus": {
+      "value": 3,
+      "formula": "2 + floor((character_level - 1) / 4)",
+      "components": [
+        {
+          "label": "character_level",
+          "value": 5
+        }
+      ]
+    }
+  },
+  "abilities": {
+    "strength": {
+      "total": 8,
+      "modifier": {
+        "value": -1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "dexterity": {
+      "total": 12,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": [
+        {
+          "source": "species_human:ability_score_increases",
+          "ability": "dexterity",
+          "value": 1
+        },
+        {
+          "source": "wizard_4_asi_feat:mage_slayer",
+          "ability": "dexterity",
+          "value": 1
+        }
+      ]
+    },
+    "constitution": {
+      "total": 10,
+      "modifier": {
+        "value": 0,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "intelligence": {
+      "total": 16,
+      "modifier": {
+        "value": 3,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": [
+        {
+          "source": "species_human:ability_score_increases",
+          "ability": "intelligence",
+          "value": 1
+        }
+      ]
+    },
+    "wisdom": {
+      "total": 15,
+      "modifier": {
+        "value": 2,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": [
+        {
+          "source": "species_human:ability_score_increases",
+          "ability": "wisdom",
+          "value": 1
+        }
+      ]
+    },
+    "charisma": {
+      "total": 14,
+      "modifier": {
+        "value": 2,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    }
+  },
+  "defenses": {
+    "hit_points": {
+      "max": 22,
+      "current": 22,
+      "temporary": 0
+    },
+    "armor_class": {
+      "value": 12,
+      "formula": "unarmored_base + dex_mod + cloak_of_protection",
+      "components": [
+        {
+          "label": "unarmored_base",
+          "value": 10
+        },
+        {
+          "label": "dexterity.modifier",
+          "value": 1
+        },
+        {
+          "label": "cloak_of_protection",
+          "value": 1
+        }
+      ]
+    },
+    "initiative": {
+      "value": 1,
+      "formula": "dexterity.modifier",
+      "components": [
+        {
+          "label": "dexterity.modifier",
+          "value": 1
+        }
+      ]
+    },
+    "speed": {
+      "walking": 30,
+      "origin": "species_human"
+    },
+    "resistances": [],
+    "immunities": [],
+    "vulnerabilities": [],
+    "conditions_active": [],
+    "note": "AC shown does not include Mage Armor, which is known but not currently marked active."
+  },
+  "saving_throws": {
+    "proficient": [
+      "intelligence",
+      "wisdom"
+    ],
+    "proficiency_origin": "wizard_core",
+    "values": {
+      "strength": {
+        "value": 0,
+        "proficient": false,
+        "formula": "ability_mod + cloak_of_protection"
+      },
+      "dexterity": {
+        "value": 2,
+        "proficient": false,
+        "formula": "ability_mod + cloak_of_protection"
+      },
+      "constitution": {
+        "value": 1,
+        "proficient": false,
+        "formula": "ability_mod + cloak_of_protection"
+      },
+      "intelligence": {
+        "value": 7,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus + cloak_of_protection"
+      },
+      "wisdom": {
+        "value": 6,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus + cloak_of_protection"
+      },
+      "charisma": {
+        "value": 3,
+        "proficient": false,
+        "formula": "ability_mod + cloak_of_protection"
+      }
+    }
+  },
+  "skills": [
+    {
+      "id": "acrobatics",
+      "ability": "dexterity",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "animal_handling",
+      "ability": "wisdom",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "arcana",
+      "ability": "intelligence",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 6,
+      "origin": "background_silent_ones_acolyte (inferred — grant not directly confirmed; see validation.unresolved)",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "athletics",
+      "ability": "strength",
+      "proficient": false,
+      "expertise": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "deception",
+      "ability": "charisma",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 5,
+      "origin": "species_human:skillful",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "history",
+      "ability": "intelligence",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 6,
+      "origin": "background_silent_ones_acolyte (inferred — grant not directly confirmed; see validation.unresolved)",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "insight",
+      "ability": "wisdom",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 5,
+      "origin": "wizard_core",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "intimidation",
+      "ability": "charisma",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "investigation",
+      "ability": "intelligence",
+      "proficient": true,
+      "expertise": true,
+      "bonus": 9,
+      "origin": "wizard_core + scholar_expertise",
+      "formula": "ability_mod + 2*proficiency_bonus (expertise)"
+    },
+    {
+      "id": "medicine",
+      "ability": "wisdom",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "nature",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 3,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "perception",
+      "ability": "wisdom",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 5,
+      "origin": "feat_skilled:human",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "performance",
+      "ability": "charisma",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "persuasion",
+      "ability": "charisma",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 5,
+      "origin": "feat_skilled:human",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "religion",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 3,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "sleight_of_hand",
+      "ability": "dexterity",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "stealth",
+      "ability": "dexterity",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "survival",
+      "ability": "wisdom",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 5,
+      "origin": "feat_skilled:human",
+      "formula": "ability_mod + proficiency_bonus"
+    }
+  ],
+  "senses": {
+    "passive_perception": {
+      "value": 15,
+      "formula": "10 + skills.perception.bonus"
+    },
+    "passive_investigation": {
+      "value": 19,
+      "formula": "10 + skills.investigation.bonus"
+    },
+    "passive_insight": {
+      "value": 15,
+      "formula": "10 + skills.insight.bonus"
+    },
+    "special": []
+  },
+  "proficiencies": {
+    "armor": [],
+    "weapons": [
+      "Simple Weapons"
+    ],
+    "tools": [
+      "Alchemist's Supplies"
+    ],
+    "languages": [
+      "Common",
+      "Common Sign Language",
+      "Elvish",
+      "Keolandish",
+      "Old Oeridian",
+      "Old Suel",
+      "Orc"
+    ],
+    "weapon_masteries": []
+  },
+  "features": [
+    {
+      "id": "core_wizard_traits",
+      "class": "wizard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 165
+      },
+      "detail": "Skill proficiencies: Insight, Investigation"
+    },
+    {
+      "id": "wizard_spellcasting",
+      "class": "wizard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 165
+      }
+    },
+    {
+      "id": "ritual_adept",
+      "class": "wizard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 166
+      }
+    },
+    {
+      "id": "arcane_recovery",
+      "class": "wizard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 166
+      },
+      "resource_ref": "arcane_recovery_uses",
+      "effect": "recover expended spell slots totaling up to 3 levels (none level 6+), 1/long rest"
+    },
+    {
+      "id": "scholar",
+      "class": "wizard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 166
+      },
+      "effect": "gain Expertise in one proficient skill",
+      "choice": "investigation"
+    },
+    {
+      "id": "wizard_subclass_arcanist",
+      "class": "wizard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 167
+      }
+    },
+    {
+      "id": "memorize_spell",
+      "class": "wizard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 167
+      },
+      "effect": "swap a prepared level 1+ Wizard spell after a Short Rest"
+    },
+    {
+      "id": "species_creature_type",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "detail": "Humanoid"
+    },
+    {
+      "id": "species_size",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "detail": "Medium (chosen; Human may select Medium or Small)"
+    },
+    {
+      "id": "resourceful",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "effect": "gain Heroic Inspiration on finishing a Long Rest"
+    },
+    {
+      "id": "skillful",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 193
+      },
+      "effect": "proficiency in one skill of choice",
+      "choice": "deception"
+    },
+    {
+      "id": "versatile",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "effect": "gain an Origin feat of choice",
+      "choice": "skilled"
+    },
+    {
+      "id": "ability_score_increases",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024"
+      },
+      "choice": "increase Dexterity, Intelligence, and Wisdom by 1 each"
+    }
+  ],
+  "feats": [
+    {
+      "id": "mage_slayer",
+      "name": "Mage Slayer",
+      "source": {
+        "book": "PHB-2024",
+        "page": 205
+      },
+      "origin": "wizard_4_asi",
+      "grants": [
+        "dexterity +1",
+        "Concentration Breaker (disadvantage on a damaged creature's Concentration save)",
+        "Guarded Mind (turn a failed Int/Wis/Cha save into a success, 1/short or long rest)"
+      ]
+    },
+    {
+      "id": "skilled_human",
+      "name": "Skilled",
+      "source": {
+        "book": "PHB-2024",
+        "page": 201
+      },
+      "origin": "species_human:versatile",
+      "grants": [
+        "proficiency in Persuasion, Perception, Survival"
+      ]
+    },
+    {
+      "id": "secret_keeper",
+      "name": "Secret Keeper",
+      "source": null,
+      "origin": "background:silent_ones_acolyte",
+      "note": "No description text was present in the DOM for this feat; grants not confirmed."
+    }
+  ],
+  "resources": [
+    {
+      "id": "arcane_recovery_uses",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "long_rest"
+    },
+    {
+      "id": "guarded_mind_uses",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "short_rest"
+    }
+  ],
+  "spellcasting": {
+    "ability": "intelligence",
+    "spell_attack_bonus": {
+      "value": 6,
+      "formula": "intelligence.modifier + proficiency_bonus",
+      "components": [
+        {
+          "label": "intelligence.modifier",
+          "value": 3
+        },
+        {
+          "label": "proficiency_bonus",
+          "value": 3
+        }
+      ]
+    },
+    "spell_save_dc": {
+      "value": 14,
+      "formula": "8 + intelligence.modifier + proficiency_bonus"
+    },
+    "note": "Spellbook/prepared list as shown on the sheet; slot counts not legible and not independently derived.",
+    "cantrips": [
+      {
+        "id": "light",
+        "class": "wizard",
+        "casting_time": "action",
+        "range": "touch",
+        "duration": "1 hour",
+        "components": "V/M"
+      },
+      {
+        "id": "mending",
+        "class": "wizard",
+        "casting_time": "1 minute",
+        "range": "touch",
+        "components": "V/S/M"
+      },
+      {
+        "id": "message",
+        "class": "wizard",
+        "casting_time": "action",
+        "range": 120,
+        "duration": "1 round",
+        "components": "S/M"
+      },
+      {
+        "id": "ray_of_frost",
+        "class": "wizard",
+        "casting_time": "action",
+        "range": 60,
+        "attack_bonus": 6,
+        "damage": "2d8",
+        "components": "V/S"
+      }
+    ],
+    "known_spells": [
+      {
+        "id": "detect_magic",
+        "level": 1,
+        "class": "wizard",
+        "ritual": true
+      },
+      {
+        "id": "find_familiar",
+        "level": 1,
+        "class": "wizard",
+        "ritual": true,
+        "note": "familiar is a Burrow Owl, listed in inventory"
+      },
+      {
+        "id": "identify",
+        "level": 1,
+        "class": "wizard",
+        "ritual": true
+      },
+      {
+        "id": "mage_armor",
+        "level": 1,
+        "class": "wizard"
+      },
+      {
+        "id": "magic_missile",
+        "level": 1,
+        "class": "wizard"
+      },
+      {
+        "id": "shield",
+        "level": 1,
+        "class": "wizard"
+      },
+      {
+        "id": "tensers_steady_aim",
+        "level": 1,
+        "class": "wizard"
+      },
+      {
+        "id": "bigbys_silencing_hand",
+        "level": 2,
+        "class": "wizard"
+      },
+      {
+        "id": "cloud_of_daggers",
+        "level": 2,
+        "class": "wizard"
+      },
+      {
+        "id": "misty_step",
+        "level": 2,
+        "class": "wizard"
+      },
+      {
+        "id": "melfs_minute_meteors",
+        "level": 3,
+        "class": "wizard",
+        "save": "dexterity",
+        "save_dc": 14
+      },
+      {
+        "id": "slow",
+        "level": 3,
+        "class": "wizard",
+        "save": "wisdom",
+        "save_dc": 14
+      }
+    ],
+    "slots": {
+      "1": {
+        "max": 4,
+        "current": null,
+        "derived": true
+      },
+      "2": {
+        "max": 3,
+        "current": null,
+        "derived": true
+      },
+      "3": {
+        "max": 2,
+        "current": null,
+        "derived": true
+      },
+      "note": "Computed from the standard PHB-2024 full-caster slot table at Wizard level 5, not read directly off the sheet's Spells tab."
+    }
+  },
+  "actions": {
+    "attacks_per_action": 1,
+    "extra_attack": false,
+    "extra_attack_available_at": null,
+    "attacks": [
+      {
+        "id": "quarterstaff_arcane_focus",
+        "type": "melee_weapon",
+        "reach": 5,
+        "attack_bonus": 2,
+        "damage": "1d6-1 (1d8-1 versatile)",
+        "properties": [
+          "Simple",
+          "Versatile"
+        ],
+        "note": "doubles as Arcane Focus"
+      },
+      {
+        "id": "ray_of_frost",
+        "type": "spell_attack",
+        "range": 60,
+        "attack_bonus": 6,
+        "damage": "2d8",
+        "note": "Wizard cantrip"
+      },
+      {
+        "id": "unarmed_strike",
+        "type": "melee_attack",
+        "reach": 5,
+        "attack_bonus": 2,
+        "damage": "1 + str_mod bludgeoning (0 due to negative Strength modifier)"
+      }
+    ],
+    "bonus_action_contention": [
+      "Misty Step"
+    ],
+    "reactions": [
+      "Opportunity Attack",
+      "Shield (spell)"
+    ],
+    "other_actions": [
+      {
+        "id": "mending_ritual",
+        "type": "spell"
+      }
+    ]
+  },
+  "inventory": {
+    "weight_carried": 50,
+    "carrying_capacity": null,
+    "encumbrance_status": "unencumbered",
+    "attunement": {
+      "slots_total": null,
+      "slots_used": 1,
+      "attuned_items": [
+        "cloak_of_protection"
+      ]
+    },
+    "containers": [
+      {
+        "id": "equipment",
+        "weight": 12,
+        "items": [
+          {
+            "id": "cloak_of_protection",
+            "category": "Wondrous item",
+            "note": "+1 AC and saving throws"
+          },
+          {
+            "id": "familiar_burrow_owl",
+            "category": "Companion",
+            "qty": 1,
+            "note": "from Find Familiar"
+          },
+          {
+            "id": "fine_clothes",
+            "category": "Adventuring Gear",
+            "weight": 6,
+            "qty": 1,
+            "cost_gp": 15
+          },
+          {
+            "id": "hooded_lantern",
+            "category": "Adventuring Gear",
+            "weight": 2,
+            "qty": 1,
+            "cost_gp": 5
+          },
+          {
+            "id": "quarterstaff_arcane_focus",
+            "category": "Weapon",
+            "weight": 4,
+            "cost_gp": 0.2,
+            "note": "customized as arcane focus"
+          },
+          {
+            "id": "spellbook",
+            "category": "Gear",
+            "qty": 1
+          }
+        ]
+      },
+      {
+        "id": "backpack",
+        "weight": 31.5,
+        "items": [
+          {
+            "id": "alchemists_supplies",
+            "category": "Tool",
+            "weight": 8,
+            "qty": 1,
+            "cost_gp": 50
+          },
+          {
+            "id": "bedroll",
+            "category": "Adventuring Gear",
+            "weight": 7,
+            "qty": 1,
+            "cost_gp": 1
+          },
+          {
+            "id": "oil",
+            "category": "Adventuring Gear",
+            "weight": 10,
+            "qty": 10,
+            "cost_gp": 1
+          },
+          {
+            "id": "parchment",
+            "category": "Adventuring Gear",
+            "qty": 10,
+            "cost_gp": 1
+          },
+          {
+            "id": "potion_of_healing",
+            "category": "Consumable",
+            "weight": 0.5,
+            "qty": 1,
+            "cost_gp": 50
+          },
+          {
+            "id": "tinderbox",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 0.5
+          }
+        ]
+      },
+      {
+        "id": "pouch",
+        "weight": 6.5,
+        "items": [
+          {
+            "id": "book",
+            "category": "Adventuring Gear",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 25
+          },
+          {
+            "id": "ink",
+            "category": "Adventuring Gear",
+            "qty": 1,
+            "cost_gp": 10
+          },
+          {
+            "id": "ink_pen",
+            "category": "Adventuring Gear",
+            "qty": 1,
+            "cost_gp": 0.02
+          },
+          {
+            "id": "mirror",
+            "category": "Adventuring Gear",
+            "weight": 0.5,
+            "qty": 1,
+            "cost_gp": 5
+          }
+        ]
+      }
+    ]
+  },
+  "extras": [],
+  "narrative": {
+    "backstory_summary": null,
+    "note": "No Background/Notes/backstory page is exposed on a view-only (non-owned) character sheet. All narrative fields unresolved."
+  },
+  "validation": {
+    "unresolved": [
+      {
+        "field": "identity.background",
+        "issue": "'Silent Ones Acolyte' is not a PHB-2024 background; its origin feat 'Secret Keeper' has no description text in the DOM. Its exact skill/tool/feature grants are inferred from leftover unattributed proficiencies (Arcana, History, Alchemist's Supplies), not confirmed."
+      },
+      {
+        "field": "skills.arcana / skills.history",
+        "issue": "Both show proficient-level bonuses with no confirmed source; attributed to the background by elimination."
+      },
+      {
+        "field": "abilities.*.base",
+        "issue": "Only the labeled Human +1/+1/+1 and Mage Slayer +1 Dex are confirmed; full base-score breakdown not visible without builder access."
+      },
+      {
+        "field": "narrative.*",
+        "issue": "Entire section unresolved — no Background/Notes page accessible for a non-owned character."
+      }
+    ],
+    "flags": [
+      {
+        "id": "view_only_capture",
+        "severity": "info",
+        "detail": "Captured from campaign-roster VIEW access, not owned by gruevyhat. Builder/Notes/Background pages were not reachable; capture is sheet-visible-only."
+      }
+    ]
+  }
+}

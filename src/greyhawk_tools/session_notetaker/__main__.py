@@ -1,4 +1,4 @@
-"""Entry point for `python -m session_audio_notetaker`."""
+"""Entry point for `python -m greyhawk_tools.session_notetaker`."""
 
 import sys
 from .session import GreyhawkSession

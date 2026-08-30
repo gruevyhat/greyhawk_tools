@@ -1,0 +1,1133 @@
+{
+  "schema": {
+    "name": "dnd5e-2024-character",
+    "version": "1.0.0",
+    "conventions": {
+      "ids": "snake_case, stable across captures, used as join keys",
+      "derived_values": "Any computed number is an object with {value, formula, components}. Never store a computed number as a bare scalar — it hides the derivation and makes drift undetectable.",
+      "provenance": "Every rules element carries `source` {book, page}. Every character-specific value carries `origin` naming the choice that produced it.",
+      "unresolved": "Fields that could not be determined from the sheet are null with a sibling entry in validation.unresolved. Nulls are never silently filled.",
+      "units": "Distances in feet, weights in pounds, currency in gp."
+    }
+  },
+  "capture": {
+    "source_url": "https://www.dndbeyond.com/characters/121672153",
+    "captured_at": "2026-08-15",
+    "method": "browser DOM text extraction, tab-by-tab. Owned by gruevyhat (the capturing player) — full MANAGE access, including Background and Notes tabs.",
+    "completeness": "All seven tabs read (Actions, Spells, Inventory, Features & Traits, Background, Notes, Extras). Replaces the prior flat-schema capture (character/classes/abilityScores/... keys) with the same dnd5e-2024-character schema used by the other 11 party members."
+  },
+  "identity": {
+    "id": "ulfaerr",
+    "name": "Ulfraerr",
+    "short_name": "Ulfaerr",
+    "house": null,
+    "name_note": "Sheet header and D&D Beyond URL both spell the name 'Ulfraerr'; the repo's file/id ('ulfaerr') and CLAUDE.md use the transposed spelling 'Ulfaerr' — kept as-is for continuity with existing tooling and file references.",
+    "roster_status": "active",
+    "species": {
+      "id": "human",
+      "creature_type": "Humanoid",
+      "size": "Medium",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      }
+    },
+    "background": {
+      "id": "soldier",
+      "source": {
+        "book": "PHB-2024",
+        "page": 185
+      },
+      "note": "Confirmed directly on the Background tab (Soldier Ability Score Improvements: +2 Constitution / +1 Strength)."
+    },
+    "alignment": "Neutral",
+    "campaign": "Greyhawk",
+    "player": "gruevyhat",
+    "demographics": {
+      "gender": null,
+      "age": null,
+      "height": null,
+      "weight": null,
+      "eyes": null,
+      "hair": null,
+      "skin": null,
+      "faith": "Llerg",
+      "note": "Background tab's Characteristics section is mostly unfilled ('--') apart from Alignment, Size, and Faith."
+    }
+  },
+  "progression": {
+    "character_level": 5,
+    "classes": [
+      {
+        "id": "barbarian",
+        "level": 1,
+        "subclass": null,
+        "subclass_available_at_class_level": 3,
+        "spellcasting_ability": null,
+        "caster_type": "none",
+        "source": {
+          "book": "PHB-2024",
+          "page": 51
+        }
+      },
+      {
+        "id": "warlock",
+        "level": 4,
+        "subclass": {
+          "id": "the_undead",
+          "source": {
+            "book": "VRGtR",
+            "page": null
+          }
+        },
+        "spellcasting_ability": "charisma",
+        "caster_type": "pact",
+        "source": {
+          "book": "PHB-2024",
+          "page": 153
+        }
+      }
+    ],
+    "proficiency_bonus": {
+      "value": 3,
+      "formula": "2 + floor((character_level - 1) / 4)",
+      "components": [
+        {
+          "label": "character_level",
+          "value": 5
+        }
+      ]
+    }
+  },
+  "abilities": {
+    "strength": {
+      "total": 17,
+      "modifier": {
+        "value": 3,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 16,
+      "increases": [
+        {
+          "source": "background_soldier_asi",
+          "ability": "strength",
+          "value": 1
+        }
+      ]
+    },
+    "dexterity": {
+      "total": 12,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 12,
+      "increases": []
+    },
+    "constitution": {
+      "total": 14,
+      "modifier": {
+        "value": 2,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 12,
+      "increases": [
+        {
+          "source": "background_soldier_asi",
+          "ability": "constitution",
+          "value": 2
+        }
+      ]
+    },
+    "intelligence": {
+      "total": 8,
+      "modifier": {
+        "value": -1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 8,
+      "increases": []
+    },
+    "wisdom": {
+      "total": 12,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 12,
+      "increases": []
+    },
+    "charisma": {
+      "total": 14,
+      "modifier": {
+        "value": 2,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 14,
+      "increases": []
+    }
+  },
+  "defenses": {
+    "hit_points": {
+      "max": 42,
+      "current": 32,
+      "temporary": 12
+    },
+    "armor_class": {
+      "value": 15,
+      "formula": "scale_mail_base + min(dexterity.modifier, 2)",
+      "components": [
+        {
+          "label": "scale_mail_base",
+          "value": 14
+        },
+        {
+          "label": "dexterity.modifier (capped +2)",
+          "value": 1
+        }
+      ],
+      "note": "Scale Mail is equipped (Medium Armor, in inventory); Barbarian's Unarmored Defense (13 + shield) is listed as a feature but does not apply while armored."
+    },
+    "initiative": {
+      "value": 1,
+      "formula": "dexterity.modifier",
+      "components": [
+        {
+          "label": "dexterity.modifier",
+          "value": 1
+        }
+      ]
+    },
+    "speed": {
+      "walking": 30,
+      "origin": "species_human"
+    },
+    "resistances": [],
+    "vulnerabilities": [],
+    "conditions_active": [],
+    "immunities": [
+      {
+        "condition": "frightened",
+        "condition_type": "conditional",
+        "source": "warlock_subclass_the_undead:form_of_dread",
+        "note": "Only while Form of Dread is active (1-minute duration after using the bonus action), not a permanent immunity — the sheet's Defenses panel lists it unconditionally."
+      }
+    ]
+  },
+  "saving_throws": {
+    "proficient": [
+      "strength",
+      "constitution"
+    ],
+    "proficiency_origin": "core_barbarian_traits",
+    "values": {
+      "strength": {
+        "value": 6,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus"
+      },
+      "dexterity": {
+        "value": 1,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "constitution": {
+        "value": 5,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus"
+      },
+      "intelligence": {
+        "value": -1,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "wisdom": {
+        "value": 1,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "charisma": {
+        "value": 2,
+        "proficient": false,
+        "formula": "ability_mod"
+      }
+    }
+  },
+  "skills": [
+    {
+      "id": "acrobatics",
+      "ability": "dexterity",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "animal_handling",
+      "ability": "wisdom",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "arcana",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "athletics",
+      "ability": "strength",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 6,
+      "origin": "background_soldier",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "deception",
+      "ability": "charisma",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "history",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "insight",
+      "ability": "wisdom",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "intimidation",
+      "ability": "charisma",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 5,
+      "origin": "background_soldier",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "investigation",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "medicine",
+      "ability": "wisdom",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "nature",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "perception",
+      "ability": "wisdom",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 4,
+      "origin": "core_barbarian_traits",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "performance",
+      "ability": "charisma",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "persuasion",
+      "ability": "charisma",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "religion",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "sleight_of_hand",
+      "ability": "dexterity",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "stealth",
+      "ability": "dexterity",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 4,
+      "origin": "species_human:skillful",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "survival",
+      "ability": "wisdom",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 4,
+      "origin": "core_barbarian_traits",
+      "formula": "ability_mod + proficiency_bonus"
+    }
+  ],
+  "senses": {
+    "passive_perception": {
+      "value": 14,
+      "formula": "10 + skills.perception.bonus"
+    },
+    "passive_investigation": {
+      "value": 9,
+      "formula": "10 + skills.investigation.bonus"
+    },
+    "passive_insight": {
+      "value": 11,
+      "formula": "10 + skills.insight.bonus"
+    },
+    "special": []
+  },
+  "proficiencies": {
+    "armor": [
+      "Light Armor",
+      "Medium Armor",
+      "Shields"
+    ],
+    "weapons": [
+      "Martial Weapons",
+      "Simple Weapons"
+    ],
+    "tools": [
+      "Dice Set"
+    ],
+    "languages": [
+      "Common",
+      "Goblin",
+      "Suloise"
+    ],
+    "weapon_masteries": [
+      {
+        "weapon": "halberd",
+        "mastery": "cleave",
+        "source": "barbarian"
+      },
+      {
+        "weapon": "dagger",
+        "mastery": "nick",
+        "source": "barbarian"
+      }
+    ]
+  },
+  "features": [
+    {
+      "id": "core_barbarian_traits",
+      "class": "barbarian",
+      "source": {
+        "book": "PHB-2024",
+        "page": 51
+      },
+      "detail": "Skill proficiencies: Perception, Survival"
+    },
+    {
+      "id": "rage",
+      "class": "barbarian",
+      "source": {
+        "book": "PHB-2024",
+        "page": 51
+      },
+      "resource_ref": "rage_uses",
+      "activation": "bonus_action",
+      "effect": "2 uses per Long Rest; regain 1 use on a Short Rest"
+    },
+    {
+      "id": "unarmored_defense",
+      "class": "barbarian",
+      "source": {
+        "book": "PHB-2024",
+        "page": 51
+      },
+      "effect": "While not wearing armor, base AC = 13 + shield bonus",
+      "note": "Not currently active — Ulfraerr wears Scale Mail."
+    },
+    {
+      "id": "weapon_mastery_barbarian",
+      "class": "barbarian",
+      "source": {
+        "book": "PHB-2024",
+        "page": 52
+      }
+    },
+    {
+      "id": "core_warlock_traits",
+      "class": "warlock",
+      "source": {
+        "book": "PHB-2024",
+        "page": 153
+      }
+    },
+    {
+      "id": "eldritch_invocations",
+      "class": "warlock",
+      "source": {
+        "book": "PHB-2024",
+        "page": 153
+      },
+      "choices": [
+        "pact_of_the_chain",
+        "pact_of_the_blade"
+      ]
+    },
+    {
+      "id": "pact_of_the_chain",
+      "class": "warlock",
+      "source": {
+        "book": "PHB-2024",
+        "page": 153
+      },
+      "effect": "Learn Find Familiar, castable as a Magic action without a spell slot; can forgo one attack to let the familiar attack with its Reaction"
+    },
+    {
+      "id": "pact_of_the_blade",
+      "class": "warlock",
+      "source": {
+        "book": "PHB-2024",
+        "page": 153
+      },
+      "activation": "bonus_action",
+      "effect": "Conjure a pact weapon (Llerg's Rage), or bond with a magic weapon; can attack with Charisma instead of Strength/Dexterity"
+    },
+    {
+      "id": "pact_magic",
+      "class": "warlock",
+      "source": {
+        "book": "PHB-2024",
+        "page": 154
+      },
+      "resource_ref": "pact_magic_slots"
+    },
+    {
+      "id": "magical_cunning",
+      "class": "warlock",
+      "source": {
+        "book": "PHB-2024",
+        "page": 154
+      },
+      "resource_ref": "magical_cunning_uses",
+      "effect": "Once per Long Rest, spend 1 minute to regain up to 1 expended Pact Magic slot"
+    },
+    {
+      "id": "warlock_subclass_the_undead",
+      "class": "warlock",
+      "subclass": "the_undead",
+      "source": {
+        "book": "VRGtR",
+        "page": null
+      },
+      "detail": "Expanded Spell List"
+    },
+    {
+      "id": "form_of_dread",
+      "class": "warlock",
+      "subclass": "the_undead",
+      "source": {
+        "book": "VRGtR",
+        "page": null
+      },
+      "activation": "bonus_action",
+      "resource_ref": "form_of_dread_uses",
+      "effect": "1 minute: gain 1d10+4 temp HP; once/turn on a hit, force Wisdom save (DC 13) or target is frightened until the end of your next turn; you are immune to frightened"
+    },
+    {
+      "id": "ability_score_improvement_warlock",
+      "class": "warlock",
+      "source": {
+        "book": "PHB-2024",
+        "page": 155
+      },
+      "origin": "warlock_4_asi",
+      "grants": [
+        "Great Weapon Master"
+      ]
+    },
+    {
+      "id": "species_creature_type",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "detail": "Humanoid"
+    },
+    {
+      "id": "species_size",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "detail": "Medium"
+    },
+    {
+      "id": "resourceful",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "effect": "gain Heroic Inspiration on finishing a Long Rest"
+    },
+    {
+      "id": "skillful",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 193
+      },
+      "effect": "proficiency in one skill of choice",
+      "choice": "stealth"
+    },
+    {
+      "id": "versatile",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "effect": "gain an Origin feat of choice",
+      "choice": "magic_initiate_druid"
+    }
+  ],
+  "feats": [
+    {
+      "id": "great_weapon_master",
+      "name": "Great Weapon Master",
+      "source": {
+        "book": "PHB-2024",
+        "page": 204
+      },
+      "origin": "warlock_4_asi",
+      "grants": [
+        "Strength +1",
+        "Heavy Weapon Mastery: when you hit with a Heavy weapon as part of the Attack action, you can deal +3 damage",
+        "Hew: immediately after a Critical Hit or reducing a creature to 0 HP with a melee weapon, make one attack with the same weapon as a Bonus Action"
+      ]
+    },
+    {
+      "id": "magic_initiate_druid",
+      "name": "Magic Initiate (Druid)",
+      "source": {
+        "book": "PHB-2024",
+        "page": 201
+      },
+      "origin": "species_human:versatile",
+      "spellcasting_ability": "wisdom",
+      "grants": [
+        "two Druid cantrips of choice (Guidance, Primal Savagery)",
+        "one 1st-level Druid spell always prepared, castable once/long rest without a slot (Longstrider)"
+      ]
+    },
+    {
+      "id": "savage_attacker",
+      "name": "Savage Attacker",
+      "source": {
+        "book": "PHB-2024",
+        "page": 201
+      },
+      "origin": "background:soldier",
+      "effect": "once per turn, roll weapon damage dice twice and use either result"
+    }
+  ],
+  "resources": [
+    {
+      "id": "rage_uses",
+      "max": 2,
+      "current": 2,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "note": "1 use regained on short rest"
+    },
+    {
+      "id": "pact_magic_slots",
+      "max": 2,
+      "current": 2,
+      "unit": "slots",
+      "slot_level": 2,
+      "recharge": "short_rest",
+      "note": "Derived from the standard Warlock-4 Pact Magic progression (2 slots, both 2nd level), not read directly off a slot-tracker widget — Pact Magic is unusual in recharging on a Short Rest rather than only a Long Rest."
+    },
+    {
+      "id": "magical_cunning_uses",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "long_rest"
+    },
+    {
+      "id": "form_of_dread_uses",
+      "max": 3,
+      "current": 3,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "origin": "warlock_subclass_the_undead"
+    },
+    {
+      "id": "longstrider_free_cast",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "origin": "magic_initiate_druid"
+    }
+  ],
+  "spellcasting": {
+    "ability": "charisma",
+    "spell_attack_bonus": {
+      "value": 5,
+      "formula": "charisma.modifier + proficiency_bonus",
+      "components": [
+        {
+          "label": "charisma.modifier",
+          "value": 2
+        },
+        {
+          "label": "proficiency_bonus",
+          "value": 3
+        }
+      ]
+    },
+    "spell_save_dc": {
+      "value": 13,
+      "formula": "8 + charisma.modifier + proficiency_bonus"
+    },
+    "note": "Magic Initiate (Druid) spells use Wisdom instead of Charisma (spell_attack_bonus 4 = wisdom.modifier +1 + proficiency_bonus +3), per the feat's own choice of ability.",
+    "cantrips": [
+      {
+        "id": "eldritch_blast",
+        "class": "warlock",
+        "attack_bonus": 5,
+        "damage": "1d10",
+        "note": "Count: 2 beams at character level 5"
+      },
+      {
+        "id": "friends",
+        "class": "warlock",
+        "save": "wisdom",
+        "save_dc": 13
+      },
+      {
+        "id": "guidance",
+        "class": "magic_initiate_druid",
+        "spellcasting_ability": "wisdom"
+      },
+      {
+        "id": "mage_hand",
+        "class": "warlock"
+      },
+      {
+        "id": "primal_savagery",
+        "class": "magic_initiate_druid",
+        "spellcasting_ability": "wisdom",
+        "attack_bonus": 4,
+        "damage": "2d10",
+        "note": "Acid; cantrip damage scaling at character level 5"
+      }
+    ],
+    "known_spells": [
+      {
+        "id": "false_life",
+        "level": 1,
+        "class": "warlock"
+      },
+      {
+        "id": "find_familiar",
+        "level": 1,
+        "class": "pact_of_the_chain",
+        "origin": "free_cast_no_slot"
+      },
+      {
+        "id": "armor_of_agathys",
+        "level": 1,
+        "class": "warlock",
+        "casting_time": "bonus_action",
+        "damage": "10",
+        "note": "Temp HP + retaliation damage"
+      },
+      {
+        "id": "expeditious_retreat",
+        "level": 1,
+        "class": "warlock",
+        "casting_time": "bonus_action",
+        "concentration": true
+      },
+      {
+        "id": "invisibility",
+        "level": 2,
+        "class": "warlock"
+      },
+      {
+        "id": "misty_step",
+        "level": 2,
+        "class": "warlock",
+        "casting_time": "bonus_action"
+      },
+      {
+        "id": "suggestion",
+        "level": 2,
+        "class": "warlock",
+        "save": "wisdom",
+        "save_dc": 13,
+        "concentration": true
+      },
+      {
+        "id": "longstrider",
+        "level": 1,
+        "class": "magic_initiate_druid",
+        "origin": "always_prepared_free_cast_1_per_long_rest",
+        "spellcasting_ability": "wisdom"
+      }
+    ],
+    "slots": {
+      "pact_magic": {
+        "count": 2,
+        "level": 2,
+        "resource_ref": "pact_magic_slots"
+      }
+    }
+  },
+  "actions": {
+    "attacks_per_action": 1,
+    "extra_attack": false,
+    "extra_attack_available_at": {
+      "class": "barbarian",
+      "level": 5
+    },
+    "attacks": [
+      {
+        "id": "llergs_rage",
+        "type": "melee_weapon",
+        "reach": 10,
+        "attack_bonus": 7,
+        "damage": "1d10+7",
+        "properties": [
+          "martial",
+          "heavy",
+          "reach",
+          "two_handed"
+        ],
+        "mastery": "cleave",
+        "note": "Named/customized Halberd conjured via Pact of the Blade. Displayed static bonus (+7) does not cleanly decompose into Str mod (+3) + Rage (+2) + Great Weapon Master's optional +3 Heavy Weapon Mastery bonus without double-counting or an unidentified magic bonus — the sheet's total is recorded as authoritative rather than reconstructed. Attack bonus (+7) = Str (+3) + proficiency (+3) + likely +1 magic weapon."
+      },
+      {
+        "id": "dagger",
+        "type": "melee_weapon",
+        "reach": 5,
+        "range": [
+          20,
+          60
+        ],
+        "attack_bonus": 6,
+        "damage": "1d4+3",
+        "properties": [
+          "simple",
+          "finesse",
+          "light",
+          "thrown"
+        ],
+        "mastery": "nick"
+      },
+      {
+        "id": "dagger_offhand",
+        "type": "melee_weapon",
+        "reach": 5,
+        "range": [
+          20,
+          60
+        ],
+        "attack_bonus": 6,
+        "damage": "1d4",
+        "properties": [
+          "simple",
+          "finesse",
+          "light",
+          "thrown",
+          "dual_wield"
+        ],
+        "mastery": "nick",
+        "trigger": "bonus_action_two_weapon_fighting",
+        "note": "No ability modifier added to off-hand damage — no Dual Wielder feat or Two-Weapon Fighting style present."
+      },
+      {
+        "id": "eldritch_blast",
+        "type": "spell_attack",
+        "range": 120,
+        "attack_bonus": 5,
+        "damage": "1d10",
+        "note": "Count: 2 beams, each can target separately"
+      },
+      {
+        "id": "primal_savagery",
+        "type": "spell_attack",
+        "range": "self",
+        "attack_bonus": 4,
+        "damage": "2d10",
+        "note": "Acid; Wisdom-based (Magic Initiate)"
+      },
+      {
+        "id": "unarmed_strike",
+        "type": "melee_attack",
+        "reach": 5,
+        "attack_bonus": 6,
+        "damage": "4",
+        "options": [
+          "damage",
+          "grapple",
+          "shove"
+        ]
+      }
+    ],
+    "bonus_action_contention": [
+      "rage",
+      "pact_of_the_blade_conjure",
+      "dagger_offhand",
+      "form_of_dread_transform",
+      "hew",
+      "misty_step",
+      "armor_of_agathys",
+      "expeditious_retreat"
+    ],
+    "concentration_contention": [
+      "expeditious_retreat",
+      "suggestion"
+    ],
+    "reactions": [
+      "opportunity_attack"
+    ]
+  },
+  "inventory": {
+    "weight_carried": 117.42,
+    "carrying_capacity": null,
+    "encumbrance_status": "unencumbered",
+    "attunement": {
+      "slots_total": 3,
+      "slots_used": 1,
+      "attuned_items": [
+        "dark_shard_amulet"
+      ],
+      "note": "slots_total is the standard rule value (3), not an explicit sheet readout."
+    },
+    "containers": [
+      {
+        "id": "equipment",
+        "weight": 55.72,
+        "items": [
+          {
+            "id": "llergs_rage",
+            "category": "Weapon (Halberd, Pact Weapon)",
+            "weight": 6,
+            "note": "mastery: cleave"
+          },
+          {
+            "id": "dagger",
+            "category": "Weapon",
+            "weight": 1,
+            "qty": 3,
+            "cost_gp": 2,
+            "note": "mastery: nick; 3 plain daggers plus 1 tagged for dual-wield (dagger_offhand), 4 total"
+          },
+          {
+            "id": "dark_shard_amulet",
+            "category": "Wondrous Item (Legacy)",
+            "note": "1 Charge; attuned"
+          },
+          {
+            "id": "scale_mail",
+            "category": "Medium Armor",
+            "weight": 45,
+            "cost_gp": 50,
+            "note": "AC 14 base; equipped"
+          }
+        ]
+      },
+      {
+        "id": "backpack",
+        "items": [
+          {
+            "id": "oil",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 2,
+            "cost_gp": 0.2
+          },
+          {
+            "id": "rations",
+            "category": "Adventuring Gear",
+            "weight": 2,
+            "qty": 10,
+            "cost_gp": 0.5
+          },
+          {
+            "id": "rope",
+            "category": "Adventuring Gear",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 1
+          },
+          {
+            "id": "tinderbox",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 0.5
+          },
+          {
+            "id": "torch",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 10,
+            "cost_gp": 0.01
+          },
+          {
+            "id": "waterskin",
+            "category": "Adventuring Gear",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 0.2
+          }
+        ]
+      },
+      {
+        "id": "pouch",
+        "weight": 1.7,
+        "items": [
+          {
+            "id": "gnoll_ear",
+            "category": "Custom",
+            "cost_gp": 14,
+            "note": "Trophy/flavor item"
+          }
+        ]
+      }
+    ]
+  },
+  "extras": [
+    {
+      "id": "owl",
+      "type": "familiar",
+      "size": "Tiny",
+      "creature_type": "Fey, Fiend, or Celestial",
+      "armor_class": 11,
+      "hit_points": {
+        "max": 1,
+        "current": 1
+      },
+      "speed": {
+        "flying": 60
+      },
+      "note": "Appears to be D&D Beyond's default Find Familiar template entry rather than a currently-summoned familiar."
+    },
+    {
+      "id": "wortle",
+      "type": "familiar",
+      "size": "Tiny",
+      "creature_type": "Fiend (Devil, Shapechanger)",
+      "armor_class": 13,
+      "hit_points": {
+        "max": 10,
+        "current": 10
+      },
+      "speed": {
+        "flying": 40
+      },
+      "note": "Named/customized — the actual bonded familiar via Pact of the Chain."
+    }
+  ],
+  "narrative": {
+    "backstory_summary": "Born during a blood moon in the Lortmil Mountains as his mother died in childbirth, Ulfraerr was raised under a cloud of suspicion. A first, devastating Rage at his coming-of-age vigil (killing an owlbear and two fellow hunters) deepened the clan's fear and drove his father to vanish in a mountain storm. Now, with ancestral burial mounds stirring and children going missing, the clan's dying wise woman warned him that 'the darkness in your blood is both curse and gift' — and Ulfraerr walks the line between civilization and the savagery within him, seeking allies and answers about his own nature.",
+    "note": null
+  },
+  "validation": {
+    "unresolved": [
+      {
+        "field": "actions.attacks[llergs_rage].damage",
+        "issue": "The +7 static damage bonus on Llerg's Rage does not cleanly decompose from visible components (Str +3, Rage +2, GWM's optional +3 Heavy Weapon Mastery, possible +1 magic weapon) — recorded the sheet's displayed total as authoritative rather than reconstructing it."
+      },
+      {
+        "field": "resources.rage_uses/magical_cunning_uses/form_of_dread_uses.current",
+        "issue": "Live counter values were not legible via text extraction (only max/long-rest labels were); defaulted current to max, though HP (32/42 current/max) shows the character is mid-adventure and some resources may already be spent."
+      },
+      {
+        "field": "spellcasting.slots",
+        "issue": "Pact Magic slot count (2 slots, 2nd level) derived from the standard Warlock-4 progression table, not read directly off a slot-tracker widget; the Spells tab's own level-grouping headers were ambiguous in the extracted text (spells of different real spell levels appeared grouped under one '2ND LEVEL' heading)."
+      },
+      {
+        "field": "inventory.attunement.slots_total",
+        "issue": "Assumed the standard rule value of 3; not explicitly shown on the sheet."
+      },
+      {
+        "field": "inventory.containers[equipment].items[dagger].qty",
+        "issue": "Sheet listed 4 separate Dagger line items (3 plain + 1 dual-wield-tagged) with blank quantity fields; captured as 3 plain + 1 offhand-tagged rather than a single stacked qty."
+      },
+      {
+        "field": "extras[owl]",
+        "issue": "Likely a default/unused Find Familiar template entry rather than an actively summoned creature; kept for completeness since it was present in the DOM capture."
+      }
+    ],
+    "flags": [
+      {
+        "id": "owned_character_capture",
+        "severity": "info",
+        "detail": "Owned by gruevyhat (the capturing player) — full MANAGE access. Unlike the Vicky Fistvigor capture, Background and Notes tabs here are fully populated (Soldier background confirmed directly, full backstory present), not blank."
+      },
+      {
+        "id": "schema_migration",
+        "severity": "info",
+        "detail": "This file replaces a prior flat-schema capture (top-level keys: character, classes, abilityScores, weaponAttacks, etc.) with the same dnd5e-2024-character schema used by the other 11 party members, per the CLAUDE.md 'Notes for Future Development' item."
+      }
+    ]
+  }
+}

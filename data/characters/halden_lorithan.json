@@ -1,0 +1,1046 @@
+{
+  "schema": {
+    "name": "dnd5e-2024-character",
+    "version": "1.0.0",
+    "conventions": {
+      "ids": "snake_case, stable across captures, used as join keys",
+      "derived_values": "Any computed number is an object with {value, formula, components}. Never store a computed number as a bare scalar — it hides the derivation and makes drift undetectable.",
+      "provenance": "Every rules element carries `source` {book, page}. Every character-specific value carries `origin` naming the choice that produced it.",
+      "unresolved": "Fields that could not be determined from the sheet are null with a sibling entry in validation.unresolved. Nulls are never silently filled.",
+      "units": "Distances in feet, weights in pounds, currency in gp."
+    }
+  },
+  "capture": {
+    "source_url": "https://www.dndbeyond.com/characters/139584701",
+    "captured_at": "2026-08-15",
+    "method": "browser DOM text extraction, tab-by-tab, via campaign roster VIEW access (not owned by the capturing player)",
+    "completeness": "Actions, Spells, Inventory, Features & Traits, Extras all read. No Background/Notes/backstory page is exposed on a view-only (non-owned) character sheet, so narrative fields are unresolved. Spells tab lists the broad Cleric spell list rather than a fixed 'known' set, consistent with Clerics preparing spells daily; recorded as a flat list of what's shown, not a true daily-prepared roster."
+  },
+  "identity": {
+    "id": "halden_lorithan",
+    "name": "Halden Lorithan",
+    "short_name": "Halden",
+    "house": null,
+    "name_note": null,
+    "roster_status": "active",
+    "species": {
+      "id": "human",
+      "creature_type": "Humanoid",
+      "size": "Medium",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      }
+    },
+    "background": {
+      "id": "acolyte",
+      "source": {
+        "book": "PHB-2024",
+        "page": 179
+      },
+      "note": "Inferred from the Magic Initiate (Cleric) feat labeled 'From: Acolyte'."
+    },
+    "alignment": null,
+    "campaign": "Greyhawk",
+    "player": "DamonSalatore",
+    "demographics": {
+      "gender": "Male",
+      "age": null,
+      "height": null,
+      "weight": null,
+      "eyes": null,
+      "hair": null,
+      "skin": null,
+      "faith": null,
+      "note": "Only gender is shown in the sheet header; other fields not visible without builder access."
+    }
+  },
+  "progression": {
+    "character_level": 5,
+    "classes": [
+      {
+        "id": "cleric",
+        "level": 5,
+        "subclass": {
+          "id": "life_domain",
+          "source": {
+            "book": "PHB-2024",
+            "page": 71
+          }
+        },
+        "spellcasting_ability": "wisdom",
+        "caster_type": "full",
+        "source": {
+          "book": "PHB-2024",
+          "page": 69
+        }
+      }
+    ],
+    "proficiency_bonus": {
+      "value": 3,
+      "formula": "2 + floor((character_level - 1) / 4)",
+      "components": [
+        {
+          "label": "character_level",
+          "value": 5
+        }
+      ]
+    }
+  },
+  "abilities": {
+    "strength": {
+      "total": 15,
+      "modifier": {
+        "value": 2,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "dexterity": {
+      "total": 12,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "constitution": {
+      "total": 14,
+      "modifier": {
+        "value": 2,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "intelligence": {
+      "total": 9,
+      "modifier": {
+        "value": -1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "wisdom": {
+      "total": 18,
+      "modifier": {
+        "value": 4,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": [
+        {
+          "source": "cleric_4_asi",
+          "ability": "wisdom",
+          "value": 2
+        }
+      ]
+    },
+    "charisma": {
+      "total": 8,
+      "modifier": {
+        "value": -1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    }
+  },
+  "defenses": {
+    "hit_points": {
+      "max": 38,
+      "current": 35,
+      "temporary": 0
+    },
+    "armor_class": {
+      "value": 20,
+      "formula": "plate_base + shield",
+      "components": [
+        {
+          "label": "plate_base",
+          "value": 18
+        },
+        {
+          "label": "shield",
+          "value": 2
+        }
+      ]
+    },
+    "initiative": {
+      "value": 4,
+      "formula": "dexterity.modifier + alert_feat",
+      "components": [
+        {
+          "label": "dexterity.modifier",
+          "value": 1
+        },
+        {
+          "label": "alert_feat",
+          "value": 3
+        }
+      ]
+    },
+    "speed": {
+      "walking": 30,
+      "origin": "species_human"
+    },
+    "resistances": [],
+    "immunities": [],
+    "vulnerabilities": [],
+    "conditions_active": []
+  },
+  "saving_throws": {
+    "proficient": [
+      "wisdom",
+      "charisma"
+    ],
+    "proficiency_origin": "cleric_core",
+    "values": {
+      "strength": {
+        "value": 2,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "dexterity": {
+        "value": 1,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "constitution": {
+        "value": 2,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "intelligence": {
+        "value": -1,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "wisdom": {
+        "value": 7,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus"
+      },
+      "charisma": {
+        "value": 2,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus"
+      }
+    }
+  },
+  "skills": [
+    {
+      "id": "acrobatics",
+      "ability": "dexterity",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "animal_handling",
+      "ability": "wisdom",
+      "proficient": false,
+      "bonus": 4,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "arcana",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "athletics",
+      "ability": "strength",
+      "proficient": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "deception",
+      "ability": "charisma",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "history",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "insight",
+      "ability": "wisdom",
+      "proficient": true,
+      "bonus": 7,
+      "origin": "cleric_core",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "intimidation",
+      "ability": "charisma",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "investigation",
+      "ability": "intelligence",
+      "proficient": true,
+      "bonus": 2,
+      "origin": "species_human:skillful",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "medicine",
+      "ability": "wisdom",
+      "proficient": true,
+      "bonus": 7,
+      "origin": "background_acolyte (inferred from Magic Initiate (Cleric) feat labeled 'From: Acolyte')",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "nature",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "perception",
+      "ability": "wisdom",
+      "proficient": false,
+      "bonus": 4,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "performance",
+      "ability": "charisma",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "persuasion",
+      "ability": "charisma",
+      "proficient": true,
+      "bonus": 2,
+      "origin": "cleric_core",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "religion",
+      "ability": "intelligence",
+      "proficient": true,
+      "bonus": 2,
+      "origin": "background_acolyte (inferred from Magic Initiate (Cleric) feat labeled 'From: Acolyte')",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "sleight_of_hand",
+      "ability": "dexterity",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "stealth",
+      "ability": "dexterity",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "survival",
+      "ability": "wisdom",
+      "proficient": false,
+      "bonus": 4,
+      "origin": null,
+      "formula": "ability_mod"
+    }
+  ],
+  "senses": {
+    "passive_perception": {
+      "value": 14,
+      "formula": "10 + skills.perception.bonus"
+    },
+    "passive_investigation": {
+      "value": 12,
+      "formula": "10 + skills.investigation.bonus"
+    },
+    "passive_insight": {
+      "value": 17,
+      "formula": "10 + skills.insight.bonus"
+    },
+    "special": [
+      {
+        "id": "truesight",
+        "range": 120,
+        "source": "item:gem_of_seeing",
+        "note": "Granted by the attuned Gem of Seeing, not an innate trait."
+      }
+    ]
+  },
+  "proficiencies": {
+    "armor": [
+      "Heavy Armor",
+      "Light Armor",
+      "Medium Armor",
+      "Shields"
+    ],
+    "weapons": [
+      "Martial Weapons",
+      "Simple Weapons"
+    ],
+    "tools": [
+      "Calligrapher's Supplies"
+    ],
+    "languages": [
+      "Common",
+      "Draconic",
+      "Orc"
+    ],
+    "weapon_masteries": []
+  },
+  "features": [
+    {
+      "id": "core_cleric_traits",
+      "class": "cleric",
+      "source": {
+        "book": "PHB-2024",
+        "page": 69
+      },
+      "detail": "Skill proficiencies: Insight, Persuasion"
+    },
+    {
+      "id": "cleric_spellcasting",
+      "class": "cleric",
+      "source": {
+        "book": "PHB-2024",
+        "page": 69
+      }
+    },
+    {
+      "id": "divine_order",
+      "class": "cleric",
+      "source": {
+        "book": "PHB-2024",
+        "page": 70
+      },
+      "choice": "protector",
+      "effect": "proficiency with Martial weapons and training with Heavy armor"
+    },
+    {
+      "id": "channel_divinity",
+      "class": "cleric",
+      "source": {
+        "book": "PHB-2024",
+        "page": 70
+      },
+      "resource_ref": "channel_divinity_uses",
+      "effect": "Divine Spark or Turn Undead; 2/long rest, 1 use regained on short rest; save DC = spell save DC (15)"
+    },
+    {
+      "id": "cleric_subclass_life_domain",
+      "class": "cleric",
+      "source": {
+        "book": "PHB-2024",
+        "page": 71
+      }
+    },
+    {
+      "id": "disciple_of_life",
+      "class": "cleric",
+      "subclass": "life_domain",
+      "source": {
+        "book": "PHB-2024",
+        "page": 73
+      },
+      "effect": "spell-slot healing spells restore an extra 2 + slot level"
+    },
+    {
+      "id": "life_domain_spells",
+      "class": "cleric",
+      "subclass": "life_domain",
+      "source": {
+        "book": "PHB-2024",
+        "page": 73
+      },
+      "effect": "always-prepared bonus spells by Cleric level"
+    },
+    {
+      "id": "preserve_life",
+      "class": "cleric",
+      "subclass": "life_domain",
+      "source": {
+        "book": "PHB-2024",
+        "page": 73
+      },
+      "resource_ref": "channel_divinity_uses",
+      "effect": "Magic action: expend Channel Divinity to restore 25 HP split among Bloodied creatures within 30 ft. (up to half max HP each)"
+    },
+    {
+      "id": "sear_undead",
+      "class": "cleric",
+      "subclass": "life_domain",
+      "source": {
+        "book": "PHB-2024",
+        "page": 71
+      },
+      "resource_ref": "channel_divinity_uses",
+      "effect": "Turn Undead's failed-save targets take 4d8 Radiant damage",
+      "note": "Actions tab lists this attack's damage as 1d8, inconsistent with the 4d8 stated in the feature text; recorded both, see validation.unresolved."
+    },
+    {
+      "id": "species_creature_type",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "detail": "Humanoid"
+    },
+    {
+      "id": "species_size",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "detail": "Medium (chosen; Human may select Medium or Small)"
+    },
+    {
+      "id": "resourceful",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "effect": "gain Heroic Inspiration on finishing a Long Rest"
+    },
+    {
+      "id": "skillful",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 193
+      },
+      "effect": "proficiency in one skill of choice",
+      "choice": "investigation"
+    },
+    {
+      "id": "versatile",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "effect": "gain an Origin feat of choice",
+      "choice": "alert"
+    }
+  ],
+  "feats": [
+    {
+      "id": "ability_score_improvement",
+      "name": "Ability Score Improvement",
+      "source": {
+        "book": "PHB-2024",
+        "page": 202
+      },
+      "origin": "cleric_4_asi",
+      "grants": [
+        "wisdom +2"
+      ]
+    },
+    {
+      "id": "alert",
+      "name": "Alert",
+      "source": {
+        "book": "PHB-2024",
+        "page": 200
+      },
+      "origin": "species_human:versatile",
+      "grants": [
+        "+3 to Initiative rolls",
+        "swap Initiative with a willing, non-Incapacitated ally"
+      ]
+    },
+    {
+      "id": "magic_initiate_cleric",
+      "name": "Magic Initiate (Cleric)",
+      "source": {
+        "book": "PHB-2024",
+        "page": 201
+      },
+      "origin": "background:acolyte",
+      "spellcasting_ability": "wisdom",
+      "grants": [
+        "two Cleric cantrips of choice (Guidance, Sacred Flame)",
+        "one 1st-level Cleric spell always prepared, castable once/long rest without a slot (Bless)"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "channel_divinity_uses",
+      "max": 2,
+      "current": 2,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "note": "1 use regained on short rest"
+    },
+    {
+      "id": "bless_free_cast",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "origin": "magic_initiate_cleric"
+    },
+    {
+      "id": "gem_of_seeing_charges",
+      "max": 3,
+      "current": 2,
+      "unit": "charges",
+      "recharge": null,
+      "origin": "item:gem_of_seeing"
+    }
+  ],
+  "spellcasting": {
+    "ability": "wisdom",
+    "spell_attack_bonus": {
+      "value": 7,
+      "formula": "wisdom.modifier + proficiency_bonus",
+      "components": [
+        {
+          "label": "wisdom.modifier",
+          "value": 4
+        },
+        {
+          "label": "proficiency_bonus",
+          "value": 3
+        }
+      ]
+    },
+    "spell_save_dc": {
+      "value": 15,
+      "formula": "8 + wisdom.modifier + proficiency_bonus"
+    },
+    "note": "Clerics prepare a daily selection from the whole class spell list (plus always-prepared domain spells); this list reflects everything shown on the sheet, not a fixed 'known' roster. Slot counts not legible and not independently derived.",
+    "cantrips": [
+      {
+        "id": "guidance",
+        "class": "magic_initiate_cleric"
+      },
+      {
+        "id": "resistance",
+        "class": "cleric"
+      },
+      {
+        "id": "sacred_flame",
+        "class": "magic_initiate_cleric",
+        "save": "dexterity",
+        "save_dc": 15,
+        "damage": "2d8"
+      },
+      {
+        "id": "spare_the_dying",
+        "class": "cleric"
+      },
+      {
+        "id": "thaumaturgy",
+        "class": "cleric"
+      },
+      {
+        "id": "toll_the_dead",
+        "class": "cleric",
+        "save": "wisdom",
+        "save_dc": 15,
+        "damage": "2d8"
+      }
+    ],
+    "known_spells": [
+      {
+        "id": "bless",
+        "level": 1,
+        "class": "cleric",
+        "note": "also always-prepared/free-cast 1/long rest via Magic Initiate"
+      },
+      {
+        "id": "command",
+        "level": 1,
+        "class": "cleric",
+        "save": "wisdom",
+        "save_dc": 15
+      },
+      {
+        "id": "cure_wounds",
+        "level": 1,
+        "class": "cleric"
+      },
+      {
+        "id": "guiding_bolt",
+        "level": 1,
+        "class": "cleric",
+        "attack_bonus": 7,
+        "damage": "4d6"
+      },
+      {
+        "id": "healing_word",
+        "level": 1,
+        "class": "cleric",
+        "casting_time": "bonus_action"
+      },
+      {
+        "id": "aid",
+        "level": 2,
+        "class": "cleric"
+      },
+      {
+        "id": "enhance_ability",
+        "level": 2,
+        "class": "cleric"
+      },
+      {
+        "id": "hold_person",
+        "level": 2,
+        "class": "cleric",
+        "save": "wisdom",
+        "save_dc": 15
+      },
+      {
+        "id": "lesser_restoration",
+        "level": 2,
+        "class": "cleric",
+        "casting_time": "bonus_action"
+      },
+      {
+        "id": "silence",
+        "level": 2,
+        "class": "cleric"
+      },
+      {
+        "id": "spiritual_weapon",
+        "level": 2,
+        "class": "cleric",
+        "casting_time": "bonus_action",
+        "attack_bonus": 7,
+        "damage": "1d8+4"
+      },
+      {
+        "id": "dispel_magic",
+        "level": 3,
+        "class": "cleric"
+      },
+      {
+        "id": "mass_healing_word",
+        "level": 3,
+        "class": "cleric",
+        "casting_time": "bonus_action"
+      },
+      {
+        "id": "revivify",
+        "level": 3,
+        "class": "cleric"
+      },
+      {
+        "id": "spirit_guardians",
+        "level": 3,
+        "class": "cleric",
+        "save": "wisdom",
+        "save_dc": 15,
+        "damage": "3d8"
+      }
+    ],
+    "slots": {
+      "1": {
+        "max": 4,
+        "current": null,
+        "derived": true
+      },
+      "2": {
+        "max": 3,
+        "current": null,
+        "derived": true
+      },
+      "3": {
+        "max": 2,
+        "current": null,
+        "derived": true
+      },
+      "note": "Computed from the standard PHB-2024 full-caster slot table at Cleric level 5, not read directly off the sheet's Spells tab."
+    }
+  },
+  "actions": {
+    "attacks_per_action": 1,
+    "extra_attack": false,
+    "extra_attack_available_at": null,
+    "attacks": [
+      {
+        "id": "crossbow_heavy",
+        "type": "ranged_weapon",
+        "range": "100/400",
+        "attack_bonus": 4,
+        "damage": "1d10+1",
+        "properties": [
+          "Martial",
+          "Ammunition",
+          "Heavy",
+          "Loading",
+          "Two-Handed"
+        ]
+      },
+      {
+        "id": "mace",
+        "type": "melee_weapon",
+        "reach": 5,
+        "attack_bonus": 5,
+        "damage": "1d6+2",
+        "properties": [
+          "Simple"
+        ],
+        "mastery": "sap"
+      },
+      {
+        "id": "guiding_bolt",
+        "type": "spell_attack",
+        "range": 120,
+        "attack_bonus": 7,
+        "damage": "4d6",
+        "note": "1st-level Cleric spell"
+      },
+      {
+        "id": "unarmed_strike",
+        "type": "melee_attack",
+        "reach": 5,
+        "attack_bonus": 5,
+        "damage": "1 + str_mod bludgeoning"
+      },
+      {
+        "id": "channel_divinity_sear_undead",
+        "type": "special",
+        "damage": "1d8",
+        "note": "Actions tab shows 1d8; feature text states 4d8 Radiant. Discrepancy not resolved — see validation.unresolved."
+      }
+    ],
+    "bonus_action_contention": [
+      "Healing Word",
+      "Spiritual Weapon",
+      "Lesser Restoration",
+      "Mass Healing Word",
+      "Channel Divinity: Divine Spark"
+    ],
+    "reactions": [
+      "Opportunity Attack"
+    ]
+  },
+  "inventory": {
+    "weight_carried": 167,
+    "carrying_capacity": null,
+    "encumbrance_status": "unencumbered",
+    "attunement": {
+      "slots_total": null,
+      "slots_used": 1,
+      "attuned_items": [
+        "gem_of_seeing"
+      ]
+    },
+    "containers": [
+      {
+        "id": "equipment",
+        "weight": 167,
+        "items": [
+          {
+            "id": "gem_of_seeing",
+            "category": "Wondrous item",
+            "note": "grants Truesight 120 ft. while attuned; 2/3 charges"
+          },
+          {
+            "id": "book",
+            "category": "Adventuring Gear",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 25
+          },
+          {
+            "id": "calligraphers_supplies",
+            "category": "Tool",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 10
+          },
+          {
+            "id": "chain_shirt",
+            "category": "Medium Armor",
+            "weight": 20,
+            "cost_gp": 50,
+            "note": "AC 13, spare"
+          },
+          {
+            "id": "crossbow_heavy",
+            "category": "Weapon",
+            "weight": 18,
+            "cost_gp": 50
+          },
+          {
+            "id": "half_plate",
+            "category": "Medium Armor",
+            "weight": 40,
+            "cost_gp": 750,
+            "note": "AC 15, Stealth disadvantage, spare"
+          },
+          {
+            "id": "holy_symbol",
+            "category": "Holy Symbol",
+            "qty": 1,
+            "note": "carried in duplicate (x2)"
+          },
+          {
+            "id": "holy_symbol_2",
+            "category": "Holy Symbol",
+            "qty": 1
+          },
+          {
+            "id": "mace",
+            "category": "Weapon",
+            "weight": 4,
+            "cost_gp": 5,
+            "note": "mastery: sap"
+          },
+          {
+            "id": "parchment",
+            "category": "Adventuring Gear",
+            "qty": 10,
+            "cost_gp": 1
+          },
+          {
+            "id": "plate",
+            "category": "Heavy Armor",
+            "weight": 65,
+            "cost_gp": 1500,
+            "note": "AC 18, Str 15 required, Stealth disadvantage — equipped"
+          },
+          {
+            "id": "robe",
+            "category": "Adventuring Gear",
+            "weight": 4,
+            "qty": 1,
+            "cost_gp": 1
+          },
+          {
+            "id": "shield",
+            "category": "Shield",
+            "weight": 6,
+            "cost_gp": 10,
+            "note": "+2 AC"
+          }
+        ]
+      },
+      {
+        "id": "backpack",
+        "weight": 29.5,
+        "items": [
+          {
+            "id": "blanket",
+            "category": "Adventuring Gear",
+            "weight": 3,
+            "qty": 1,
+            "cost_gp": 0.5
+          },
+          {
+            "id": "holy_water",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 25
+          },
+          {
+            "id": "lamp",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 0.5
+          },
+          {
+            "id": "potion_of_healing",
+            "category": "Consumable",
+            "weight": 0.5,
+            "qty": 1,
+            "note": "1 charge"
+          },
+          {
+            "id": "rations",
+            "category": "Adventuring Gear",
+            "weight": 14,
+            "qty": 7,
+            "cost_gp": 3.5
+          },
+          {
+            "id": "robe_backpack",
+            "category": "Adventuring Gear",
+            "weight": 4,
+            "qty": 1,
+            "cost_gp": 1
+          },
+          {
+            "id": "tinderbox",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 0.5
+          }
+        ]
+      }
+    ]
+  },
+  "extras": [],
+  "narrative": {
+    "backstory_summary": null,
+    "note": "No Background/Notes/backstory page is exposed on a view-only (non-owned) character sheet. All narrative fields unresolved."
+  },
+  "validation": {
+    "unresolved": [
+      {
+        "field": "actions.attacks[channel_divinity_sear_undead].damage",
+        "issue": "Actions tab shows 1d8; the Sear Undead feature text states 4d8 Radiant. Not reconciled from DOM text alone."
+      },
+      {
+        "field": "skills.medicine / skills.religion / proficiencies.tools",
+        "issue": "Attributed to an inferred Acolyte background by elimination; the background page itself is not visible on a view-only sheet, so this is not directly confirmed."
+      },
+      {
+        "field": "abilities.*.base",
+        "issue": "Only the labeled Cleric 4 ASI (+2 Wisdom) is confirmed; full base-score breakdown not visible without builder access."
+      },
+      {
+        "field": "narrative.*",
+        "issue": "Entire section unresolved — no Background/Notes page accessible for a non-owned character."
+      }
+    ],
+    "flags": [
+      {
+        "id": "view_only_capture",
+        "severity": "info",
+        "detail": "Captured from campaign-roster VIEW access, not owned by gruevyhat. Builder/Notes/Background pages were not reachable; capture is sheet-visible-only."
+      }
+    ]
+  }
+}

@@ -5,6 +5,10 @@
 # Session data — transcripts and recordings are local only
 data/sessions/
 
+# docs/ is a symlink to ~/Documents/DND/Greyhawk — a large personal library of
+# rulebook scans, sheet exports, and art. Reference it, don't track it.
+/docs
+
 # Python
 __pycache__/
 *.pyc

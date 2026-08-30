@@ -1,0 +1,1101 @@
+{
+  "schema": {
+    "name": "dnd5e-2024-character",
+    "version": "1.0.0",
+    "conventions": {
+      "ids": "snake_case, stable across captures, used as join keys",
+      "derived_values": "Any computed number is an object with {value, formula, components}. Never store a computed number as a bare scalar — it hides the derivation and makes drift undetectable.",
+      "provenance": "Every rules element carries `source` {book, page}. Every character-specific value carries `origin` naming the choice that produced it.",
+      "unresolved": "Fields that could not be determined from the sheet are null with a sibling entry in validation.unresolved. Nulls are never silently filled.",
+      "units": "Distances in feet, weights in pounds, currency in gp."
+    }
+  },
+  "capture": {
+    "source_url": "https://www.dndbeyond.com/characters/144044496",
+    "captured_at": "2026-08-15",
+    "method": "browser DOM text extraction, tab-by-tab, via campaign roster VIEW access (not owned by the capturing player)",
+    "completeness": "Actions, Spells, Inventory, Features & Traits, Extras all read. No Background/Notes/backstory page is exposed on a view-only (non-owned) character sheet, so narrative fields are unresolved."
+  },
+  "identity": {
+    "id": "talon_aldric",
+    "name": "Talon Aldric",
+    "short_name": "Talon",
+    "house": null,
+    "name_note": null,
+    "roster_status": "active",
+    "species": {
+      "id": "human",
+      "creature_type": "Humanoid",
+      "size": "Medium",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      }
+    },
+    "background": {
+      "id": "soldier",
+      "source": {
+        "book": "PHB-2024",
+        "page": 189
+      },
+      "note": "Inferred from the Savage Attacker feat labeled 'From: Soldier', plus matching Dice Set and Athletics/Intimidation grants."
+    },
+    "alignment": null,
+    "campaign": "Greyhawk",
+    "player": "TalonAldric",
+    "demographics": {
+      "gender": "male",
+      "age": null,
+      "height": null,
+      "weight": null,
+      "eyes": null,
+      "hair": null,
+      "skin": null,
+      "faith": null,
+      "note": "Only gender is shown in the sheet header; other fields not visible without builder access."
+    }
+  },
+  "progression": {
+    "character_level": 5,
+    "classes": [
+      {
+        "id": "paladin",
+        "level": 5,
+        "subclass": {
+          "id": "oath_of_glory",
+          "source": {
+            "book": "PHB-2024",
+            "page": 111
+          }
+        },
+        "spellcasting_ability": "charisma",
+        "caster_type": "half",
+        "source": {
+          "book": "PHB-2024",
+          "page": 109
+        }
+      }
+    ],
+    "proficiency_bonus": {
+      "value": 3,
+      "formula": "2 + floor((character_level - 1) / 4)",
+      "components": [
+        {
+          "label": "character_level",
+          "value": 5
+        }
+      ]
+    }
+  },
+  "abilities": {
+    "strength": {
+      "total": 18,
+      "modifier": {
+        "value": 4,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "dexterity": {
+      "total": 12,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": [
+        {
+          "source": "paladin_4_asi",
+          "ability": "dexterity",
+          "value": 1
+        }
+      ]
+    },
+    "constitution": {
+      "total": 13,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": [
+        {
+          "source": "paladin_4_asi",
+          "ability": "constitution",
+          "value": 1
+        }
+      ]
+    },
+    "intelligence": {
+      "total": 8,
+      "modifier": {
+        "value": -1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "wisdom": {
+      "total": 12,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "charisma": {
+      "total": 14,
+      "modifier": {
+        "value": 2,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    }
+  },
+  "defenses": {
+    "hit_points": {
+      "max": 39,
+      "current": 15,
+      "temporary": 0
+    },
+    "armor_class": {
+      "value": 20,
+      "formula": "plate_base + shield",
+      "components": [
+        {
+          "label": "plate_base",
+          "value": 18
+        },
+        {
+          "label": "shield",
+          "value": 2
+        }
+      ]
+    },
+    "initiative": {
+      "value": 1,
+      "formula": "dexterity.modifier",
+      "components": [
+        {
+          "label": "dexterity.modifier",
+          "value": 1
+        }
+      ]
+    },
+    "speed": {
+      "walking": 30,
+      "origin": "species_human"
+    },
+    "resistances": [],
+    "immunities": [],
+    "vulnerabilities": [],
+    "conditions_active": []
+  },
+  "saving_throws": {
+    "proficient": [
+      "wisdom",
+      "charisma"
+    ],
+    "proficiency_origin": "paladin_core",
+    "values": {
+      "strength": {
+        "value": 4,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "dexterity": {
+        "value": 1,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "constitution": {
+        "value": 1,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "intelligence": {
+        "value": -1,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "wisdom": {
+        "value": 4,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus"
+      },
+      "charisma": {
+        "value": 5,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus"
+      }
+    }
+  },
+  "skills": [
+    {
+      "id": "acrobatics",
+      "ability": "dexterity",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "animal_handling",
+      "ability": "wisdom",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "arcana",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "athletics",
+      "ability": "strength",
+      "proficient": true,
+      "bonus": 7,
+      "origin": "background_soldier",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "deception",
+      "ability": "charisma",
+      "proficient": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "history",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "insight",
+      "ability": "wisdom",
+      "proficient": true,
+      "bonus": 4,
+      "origin": "paladin_core",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "intimidation",
+      "ability": "charisma",
+      "proficient": true,
+      "bonus": 5,
+      "origin": "paladin_core (also granted by background_soldier)",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "investigation",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "medicine",
+      "ability": "wisdom",
+      "proficient": true,
+      "bonus": 4,
+      "origin": "unresolved — bonus matches proficient formula but no source (Paladin core, Human, or Soldier background) accounts for it",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "nature",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "perception",
+      "ability": "wisdom",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "performance",
+      "ability": "charisma",
+      "proficient": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "persuasion",
+      "ability": "charisma",
+      "proficient": true,
+      "bonus": 5,
+      "origin": "species_human:skillful",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "religion",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "sleight_of_hand",
+      "ability": "dexterity",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "stealth",
+      "ability": "dexterity",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    },
+    {
+      "id": "survival",
+      "ability": "wisdom",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null,
+      "formula": "ability_mod"
+    }
+  ],
+  "senses": {
+    "passive_perception": {
+      "value": 11,
+      "formula": "10 + skills.perception.bonus"
+    },
+    "passive_investigation": {
+      "value": 9,
+      "formula": "10 + skills.investigation.bonus"
+    },
+    "passive_insight": {
+      "value": 14,
+      "formula": "10 + skills.insight.bonus"
+    },
+    "special": []
+  },
+  "proficiencies": {
+    "armor": [
+      "Heavy Armor",
+      "Light Armor",
+      "Medium Armor",
+      "Shields"
+    ],
+    "weapons": [
+      "Martial Weapons",
+      "Simple Weapons"
+    ],
+    "tools": [
+      "Dice Set"
+    ],
+    "languages": [
+      "Common",
+      "Goblin",
+      "Orc"
+    ],
+    "weapon_masteries": [
+      {
+        "weapon": "longsword",
+        "mastery": "sap",
+        "source": "paladin"
+      },
+      {
+        "weapon": "greatsword",
+        "mastery": "graze",
+        "source": "paladin"
+      }
+    ]
+  },
+  "features": [
+    {
+      "id": "core_paladin_traits",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 109
+      },
+      "detail": "Skill proficiencies: Intimidation, Insight"
+    },
+    {
+      "id": "lay_on_hands",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 109
+      },
+      "activation": "bonus_action",
+      "resource_ref": "lay_on_hands_pool",
+      "effect": "heal HP or cure Poisoned (5 HP cost) from a shared pool"
+    },
+    {
+      "id": "paladin_spellcasting",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 110
+      }
+    },
+    {
+      "id": "weapon_mastery_paladin",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 110
+      }
+    },
+    {
+      "id": "fighting_style",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 110
+      },
+      "choice": "blessed_warrior",
+      "effect": "learn Guidance and Toll the Dead cantrips, cast with Charisma"
+    },
+    {
+      "id": "paladins_smite",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 110
+      },
+      "resource_ref": "divine_smite_free_cast",
+      "effect": "always have Divine Smite prepared; cast without a slot 1/long rest"
+    },
+    {
+      "id": "channel_divinity",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 110
+      },
+      "resource_ref": "channel_divinity_uses",
+      "effect": "Divine Sense or class-specific effect; 2/long rest, 1 use regained on short rest; save DC = spell save DC (13)"
+    },
+    {
+      "id": "paladin_subclass_oath_of_glory",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 111
+      }
+    },
+    {
+      "id": "inspiring_smite",
+      "class": "paladin",
+      "subclass": "oath_of_glory",
+      "source": {
+        "book": "PHB-2024",
+        "page": 114
+      },
+      "effect": "after casting Divine Smite, expend Channel Divinity to distribute 2d8+5 temp HP within 30 ft."
+    },
+    {
+      "id": "oath_of_glory_spells",
+      "class": "paladin",
+      "subclass": "oath_of_glory",
+      "source": {
+        "book": "PHB-2024",
+        "page": 115
+      },
+      "effect": "always-prepared bonus spells by Paladin level (Guiding Bolt, Heroism, Enhance Ability, Magic Weapon)"
+    },
+    {
+      "id": "peerless_athlete",
+      "class": "paladin",
+      "subclass": "oath_of_glory",
+      "source": {
+        "book": "PHB-2024",
+        "page": 115
+      },
+      "resource_ref": "channel_divinity_uses",
+      "effect": "bonus action: expend Channel Divinity for 1 hour of advantage on Athletics/Acrobatics and +10 ft. jump distance"
+    },
+    {
+      "id": "ability_score_improvement",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 111
+      }
+    },
+    {
+      "id": "extra_attack",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 111
+      },
+      "effect": "attack twice with the Attack action"
+    },
+    {
+      "id": "faithful_steed",
+      "class": "paladin",
+      "source": {
+        "book": "PHB-2024",
+        "page": 111
+      },
+      "resource_ref": "find_steed_free_cast",
+      "effect": "always have Find Steed prepared; cast once/long rest without a slot"
+    },
+    {
+      "id": "species_creature_type",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "detail": "Humanoid"
+    },
+    {
+      "id": "species_size",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "detail": "Medium (chosen; Human may select Medium or Small)"
+    },
+    {
+      "id": "resourceful",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "effect": "gain Heroic Inspiration on finishing a Long Rest"
+    },
+    {
+      "id": "skillful",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 193
+      },
+      "effect": "proficiency in one skill of choice",
+      "choice": "persuasion"
+    },
+    {
+      "id": "versatile",
+      "species": "human",
+      "source": {
+        "book": "PHB-2024",
+        "page": 194
+      },
+      "effect": "gain an Origin feat of choice",
+      "choice": "magic_initiate_cleric"
+    }
+  ],
+  "feats": [
+    {
+      "id": "ability_score_improvement_paladin",
+      "name": "Ability Score Improvement",
+      "source": {
+        "book": "PHB-2024",
+        "page": 202
+      },
+      "origin": "paladin_4_asi",
+      "grants": [
+        "dexterity +1",
+        "constitution +1"
+      ]
+    },
+    {
+      "id": "magic_initiate_cleric",
+      "name": "Magic Initiate (Cleric)",
+      "source": {
+        "book": "PHB-2024",
+        "page": 201
+      },
+      "origin": "species_human:versatile",
+      "spellcasting_ability": "charisma",
+      "grants": [
+        "two Cleric cantrips of choice (Light, Word of Radiance)",
+        "one 1st-level Cleric spell always prepared, castable once/long rest without a slot (Bless)"
+      ]
+    },
+    {
+      "id": "savage_attacker",
+      "name": "Savage Attacker",
+      "source": {
+        "book": "PHB-2024",
+        "page": 201
+      },
+      "origin": "background:soldier",
+      "effect": "once per turn, roll weapon damage dice twice and use either result"
+    }
+  ],
+  "resources": [
+    {
+      "id": "lay_on_hands_pool",
+      "max": 25,
+      "current": 25,
+      "unit": "hit_points",
+      "recharge": "long_rest",
+      "formula": "5 * paladin_level"
+    },
+    {
+      "id": "channel_divinity_uses",
+      "max": 2,
+      "current": 2,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "note": "1 use regained on short rest"
+    },
+    {
+      "id": "divine_smite_free_cast",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "long_rest"
+    },
+    {
+      "id": "bless_free_cast",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "origin": "magic_initiate_cleric"
+    },
+    {
+      "id": "find_steed_free_cast",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "long_rest"
+    },
+    {
+      "id": "ring_of_animal_influence_charges",
+      "max": 3,
+      "current": 0,
+      "unit": "charges",
+      "recharge": null,
+      "origin": "item:ring_of_animal_influence",
+      "note": "not currently attuned"
+    }
+  ],
+  "spellcasting": {
+    "ability": "charisma",
+    "spell_attack_bonus": {
+      "value": 5,
+      "formula": "charisma.modifier + proficiency_bonus",
+      "components": [
+        {
+          "label": "charisma.modifier",
+          "value": 2
+        },
+        {
+          "label": "proficiency_bonus",
+          "value": 3
+        }
+      ]
+    },
+    "spell_save_dc": {
+      "value": 13,
+      "formula": "8 + charisma.modifier + proficiency_bonus"
+    },
+    "note": "Slot counts not legible on the sheet's Spells tab; not independently derived.",
+    "cantrips": [
+      {
+        "id": "guidance",
+        "class": "fighting_style_blessed_warrior"
+      },
+      {
+        "id": "light",
+        "class": "magic_initiate_cleric"
+      },
+      {
+        "id": "toll_the_dead",
+        "class": "fighting_style_blessed_warrior",
+        "save": "wisdom",
+        "save_dc": 13,
+        "damage": "2d8"
+      },
+      {
+        "id": "word_of_radiance",
+        "class": "magic_initiate_cleric",
+        "save": "constitution",
+        "save_dc": 13,
+        "damage": "2d6"
+      }
+    ],
+    "known_spells": [
+      {
+        "id": "animal_friendship",
+        "level": 1,
+        "class": "ring_of_animal_influence",
+        "origin": "item_charge",
+        "save": "wisdom",
+        "save_dc": 13
+      },
+      {
+        "id": "bless",
+        "level": 1,
+        "class": "paladin",
+        "note": "also always-prepared/free-cast 1/long rest via Magic Initiate"
+      },
+      {
+        "id": "command",
+        "level": 1,
+        "class": "paladin",
+        "save": "wisdom",
+        "save_dc": 13
+      },
+      {
+        "id": "divine_favor",
+        "level": 1,
+        "class": "paladin",
+        "casting_time": "bonus_action"
+      },
+      {
+        "id": "divine_smite",
+        "level": 1,
+        "class": "paladins_smite",
+        "origin": "always_prepared_free_cast_1_per_long_rest"
+      },
+      {
+        "id": "guiding_bolt",
+        "level": 1,
+        "class": "oath_of_glory",
+        "attack_bonus": 5,
+        "damage": "4d6"
+      },
+      {
+        "id": "heroism",
+        "level": 1,
+        "class": "oath_of_glory"
+      },
+      {
+        "id": "speak_with_animals",
+        "level": 1,
+        "class": "ring_of_animal_influence",
+        "origin": "item_charge"
+      },
+      {
+        "id": "wrathful_smite",
+        "level": 1,
+        "class": "paladin",
+        "casting_time": "bonus_action",
+        "save": "wisdom",
+        "save_dc": 13
+      },
+      {
+        "id": "enhance_ability",
+        "level": 2,
+        "class": "oath_of_glory"
+      },
+      {
+        "id": "find_steed",
+        "level": 2,
+        "class": "faithful_steed",
+        "origin": "always_prepared_free_cast_1_per_long_rest"
+      },
+      {
+        "id": "lesser_restoration",
+        "level": 2,
+        "class": "paladin",
+        "casting_time": "bonus_action"
+      },
+      {
+        "id": "magic_weapon",
+        "level": 2,
+        "class": "oath_of_glory",
+        "casting_time": "bonus_action"
+      },
+      {
+        "id": "shining_smite",
+        "level": 2,
+        "class": "paladin",
+        "casting_time": "bonus_action"
+      },
+      {
+        "id": "fear",
+        "level": 3,
+        "class": "ring_of_animal_influence",
+        "origin": "item_charge",
+        "save": "wisdom",
+        "save_dc": 13
+      }
+    ],
+    "slots": {
+      "1": {
+        "max": 4,
+        "current": null,
+        "derived": true
+      },
+      "2": {
+        "max": 2,
+        "current": null,
+        "derived": true
+      },
+      "note": "Computed from the standard PHB-2024 half-caster slot table at Paladin level 5, not read directly off the sheet's Spells tab."
+    }
+  },
+  "actions": {
+    "attacks_per_action": 2,
+    "extra_attack": true,
+    "extra_attack_available_at": {
+      "class": "paladin",
+      "level": 5
+    },
+    "attacks": [
+      {
+        "id": "crossbow_heavy",
+        "type": "ranged_weapon",
+        "range": "100/400",
+        "attack_bonus": 4,
+        "damage": "1d10+1",
+        "properties": [
+          "Martial",
+          "Ammunition",
+          "Heavy",
+          "Loading",
+          "Two-Handed"
+        ]
+      },
+      {
+        "id": "greatsword",
+        "type": "melee_weapon",
+        "reach": 5,
+        "attack_bonus": 7,
+        "damage": "2d6+4",
+        "properties": [
+          "Martial",
+          "Heavy",
+          "Two-Handed"
+        ],
+        "mastery": "graze"
+      },
+      {
+        "id": "longsword",
+        "type": "melee_weapon",
+        "reach": 5,
+        "attack_bonus": 7,
+        "damage": "1d8+4 (one-handed) / 1d10+4 (two-handed versatile)",
+        "properties": [
+          "Martial",
+          "Versatile"
+        ],
+        "mastery": "sap"
+      },
+      {
+        "id": "guiding_bolt",
+        "type": "spell_attack",
+        "range": 120,
+        "attack_bonus": 5,
+        "damage": "4d6",
+        "note": "1st-level Paladin (Oath of Glory) spell"
+      },
+      {
+        "id": "unarmed_strike",
+        "type": "melee_attack",
+        "reach": 5,
+        "attack_bonus": 7,
+        "damage": "1 + str_mod bludgeoning"
+      }
+    ],
+    "bonus_action_contention": [
+      "Lay on Hands",
+      "Divine Favor",
+      "Divine Smite",
+      "Wrathful Smite",
+      "Shining Smite",
+      "Magic Weapon",
+      "Lesser Restoration",
+      "Channel Divinity: Divine Sense / Peerless Athlete"
+    ],
+    "reactions": [
+      "Opportunity Attack"
+    ]
+  },
+  "inventory": {
+    "weight_carried": 165,
+    "carrying_capacity": null,
+    "encumbrance_status": "unencumbered",
+    "attunement": {
+      "slots_total": null,
+      "slots_used": 0,
+      "attuned_items": [],
+      "note": "Ring of Animal Influence and Cloak of Billowing are owned but neither is currently attuned."
+    },
+    "containers": [
+      {
+        "id": "equipment",
+        "weight": 165,
+        "items": [
+          {
+            "id": "ring_of_animal_influence",
+            "category": "Ring",
+            "note": "0/3 charges; not attuned"
+          },
+          {
+            "id": "chain_mail",
+            "category": "Heavy Armor",
+            "weight": 55,
+            "cost_gp": 75,
+            "note": "AC 16, Str 13 required, Stealth disadvantage — spare"
+          },
+          {
+            "id": "cloak_of_billowing",
+            "category": "Wondrous item",
+            "note": "cosmetic — makes the cloak billow dramatically"
+          },
+          {
+            "id": "crossbow_heavy",
+            "category": "Weapon",
+            "weight": 18,
+            "cost_gp": 50
+          },
+          {
+            "id": "greatsword",
+            "category": "Weapon",
+            "weight": 6,
+            "cost_gp": 50,
+            "note": "mastery: graze"
+          },
+          {
+            "id": "holy_symbol",
+            "category": "Holy Symbol",
+            "qty": 1
+          },
+          {
+            "id": "javelin",
+            "category": "Weapon",
+            "weight": 12,
+            "qty": 6,
+            "cost_gp": 3
+          },
+          {
+            "id": "longsword",
+            "category": "Weapon",
+            "weight": 3,
+            "cost_gp": 15,
+            "note": "mastery: sap"
+          },
+          {
+            "id": "plate",
+            "category": "Heavy Armor",
+            "weight": 65,
+            "cost_gp": 1500,
+            "note": "AC 18, Str 15 required, Stealth disadvantage — equipped"
+          },
+          {
+            "id": "shield",
+            "category": "Shield",
+            "weight": 6,
+            "cost_gp": 10,
+            "note": "+2 AC"
+          }
+        ]
+      },
+      {
+        "id": "backpack",
+        "weight": 30,
+        "items": [
+          {
+            "id": "blanket",
+            "category": "Adventuring Gear",
+            "weight": 3,
+            "qty": 1,
+            "cost_gp": 0.5
+          },
+          {
+            "id": "holy_water",
+            "category": "Adventuring Gear",
+            "weight": 2,
+            "qty": 2,
+            "cost_gp": 50
+          },
+          {
+            "id": "lamp",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 0.5
+          },
+          {
+            "id": "rations",
+            "category": "Adventuring Gear",
+            "weight": 14,
+            "qty": 7,
+            "cost_gp": 3.5
+          },
+          {
+            "id": "robe",
+            "category": "Adventuring Gear",
+            "weight": 4,
+            "qty": 1,
+            "cost_gp": 1
+          },
+          {
+            "id": "tinderbox",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 0.5
+          }
+        ]
+      },
+      {
+        "id": "riding_horse",
+        "weight": 0,
+        "items": [],
+        "note": "empty mount storage slot; no riding horse currently listed as owned"
+      }
+    ]
+  },
+  "extras": [],
+  "narrative": {
+    "backstory_summary": null,
+    "note": "No Background/Notes/backstory page is exposed on a view-only (non-owned) character sheet. All narrative fields unresolved."
+  },
+  "validation": {
+    "unresolved": [
+      {
+        "field": "skills.medicine",
+        "issue": "Bonus (+4) matches the proficient formula but no source (Paladin core, Human, or Soldier background) accounts for it."
+      },
+      {
+        "field": "abilities.*.base",
+        "issue": "Only the labeled Paladin 4 ASI (+1 Dex/+1 Con) is confirmed; full base-score breakdown not visible without builder access."
+      },
+      {
+        "field": "narrative.*",
+        "issue": "Entire section unresolved — no Background/Notes page accessible for a non-owned character."
+      }
+    ],
+    "flags": [
+      {
+        "id": "view_only_capture",
+        "severity": "info",
+        "detail": "Captured from campaign-roster VIEW access, not owned by gruevyhat. Builder/Notes/Background pages were not reachable; capture is sheet-visible-only."
+      },
+      {
+        "id": "greatsword_incompatible_with_shield",
+        "severity": "medium",
+        "detail": "armor_class (20) is plate_base + shield (+2), confirming a shield is equipped. A two-handed greatsword cannot be wielded alongside it, so the greatsword listed in actions.attacks is not the character's actual active loadout — the one-handed longsword (mastery: sap) is. The combat simulator policy (talon_aldric.py) uses the longsword for this reason."
+      }
+    ]
+  }
+}

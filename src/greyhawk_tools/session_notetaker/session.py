@@ -10,7 +10,6 @@ import time
 import wave
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
-from pathlib import Path
 
 import pyaudio
 import whisper
@@ -18,6 +17,9 @@ import litellm
 from dotenv import load_dotenv
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
+
+from ..characters import load_party
+from ..paths import session_dir
 
 load_dotenv()
 
@@ -44,7 +46,7 @@ class GreyhawkSession:
             print("[!] SLACK_BOT_TOKEN not set — Slack posting disabled", flush=True)
 
         self.session_date = datetime.now().strftime("%Y-%m-%d")
-        self.session_dir = Path("data/sessions") / self.session_date
+        self.session_dir = session_dir(self.session_date)
         self.session_dir.mkdir(parents=True, exist_ok=True)
         self.transcript_file = self.session_dir / "transcript.txt"
         self.summary_file = self.session_dir / "summary.md"
@@ -149,17 +151,8 @@ class GreyhawkSession:
             return None
 
     def _final_summary_structured(self, transcript: str):
-        prefix = ""
-        ulfaerr_file = Path("data/ulfaerr.json")
-        if ulfaerr_file.exists():
-            with open(ulfaerr_file) as f:
-                char = json.load(f)
-                name = char.get("character", {}).get("name", "")
-                classes = " / ".join(
-                    f"{c['name']} {c['level']}" for c in char.get("classes", [])
-                )
-                if name:
-                    prefix = f"Party includes: {name} ({classes})\n\n"
+        party = load_party()
+        prefix = f"Party includes: {'; '.join(party)}\n\n" if party else ""
         try:
             return self._llm(
                 """You are a tabletop RPG session scribe. Extract and structure in Markdown:
@@ -338,11 +331,11 @@ Be concise but capture the essence.""",
     def post(self, date: str = None):
         """Post a past session's summary to Slack."""
         target_date = date or self.session_date
-        session_dir = Path("data/sessions") / target_date
-        summary_file = session_dir / "summary.md"
-        transcript_file = session_dir / "transcript.txt"
+        past_dir = session_dir(target_date)
+        summary_file = past_dir / "summary.md"
+        transcript_file = past_dir / "transcript.txt"
 
-        if not session_dir.exists():
+        if not past_dir.exists():
             print(f"[!] No session found for {target_date}", file=sys.stderr)
             sys.exit(1)
 

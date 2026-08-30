@@ -1,0 +1,1066 @@
+{
+  "schema": {
+    "name": "dnd5e-2024-character",
+    "version": "1.0.0",
+    "conventions": {
+      "ids": "snake_case, stable across captures, used as join keys",
+      "derived_values": "Any computed number is an object with {value, formula, components}. Never store a computed number as a bare scalar — it hides the derivation and makes drift undetectable.",
+      "provenance": "Every rules element carries `source` {book, page}. Every character-specific value carries `origin` naming the choice that produced it.",
+      "unresolved": "Fields that could not be determined from the sheet are null with a sibling entry in validation.unresolved. Nulls are never silently filled.",
+      "units": "Distances in feet, weights in pounds, currency in gp."
+    }
+  },
+  "capture": {
+    "source_url": "https://www.dndbeyond.com/characters/139642480",
+    "captured_at": "2026-08-16",
+    "method": "browser DOM inspection, full (non-view-only) access, including the ability-score and saving-throw breakdown popups and the Attunement tab",
+    "completeness": "Actions, Spells, Inventory, Features & Traits, Extras all read, plus the per-ability score breakdown popups (base/bonus/source) and the saving-throw modifier source panel, not available on the original view-only capture. Ability score bases/increases, all six saving-throw values, armor class components, the Persuasion skill's origin, and attunement slot count are now fully resolved. No Background/Notes page content exists to capture (confirmed blank, not inaccessible)."
+  },
+  "identity": {
+    "id": "burtha_smith",
+    "name": "Burtha Smith",
+    "short_name": "Burtha",
+    "house": null,
+    "name_note": null,
+    "species": {
+      "id": "orc",
+      "creature_type": "Humanoid",
+      "size": "Medium",
+      "source": {
+        "book": "PHB-2024",
+        "page": 195
+      }
+    },
+    "background": {
+      "id": "artisan",
+      "note": "Inferred from the 'Crafter' origin feat, labeled 'From: Artisan' on the sheet. Background page itself is not visible on a view-only character.",
+      "source": {
+        "book": "PHB-2024",
+        "page": 200
+      }
+    },
+    "alignment": null,
+    "campaign": "Greyhawk",
+    "player": "BruthaGunz",
+    "demographics": {
+      "gender": "Female",
+      "age": null,
+      "height": null,
+      "weight": null,
+      "eyes": null,
+      "hair": null,
+      "skin": null,
+      "faith": null,
+      "note": "Only gender is shown in the sheet header; other fields not visible without builder access."
+    },
+    "roster_status": "active"
+  },
+  "progression": {
+    "character_level": 5,
+    "classes": [
+      {
+        "id": "fighter",
+        "level": 4,
+        "subclass": {
+          "id": "champion",
+          "source": {
+            "book": "PHB-2024",
+            "page": 92
+          }
+        },
+        "spellcasting_ability": null,
+        "caster_type": "none",
+        "source": {
+          "book": "PHB-2024",
+          "page": 91
+        }
+      },
+      {
+        "id": "ranger",
+        "level": 1,
+        "subclass": null,
+        "subclass_available_at_class_level": 3,
+        "spellcasting_ability": "wisdom",
+        "caster_type": "half",
+        "source": {
+          "book": "PHB-2024",
+          "page": 119
+        }
+      }
+    ],
+    "proficiency_bonus": {
+      "value": 3,
+      "formula": "2 + floor((character_level - 1) / 4)",
+      "components": [
+        {
+          "label": "character_level",
+          "value": 5
+        }
+      ]
+    }
+  },
+  "abilities": {
+    "strength": {
+      "total": 13,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 12,
+      "increases": [
+        {
+          "origin": "background_artisan",
+          "ability": "strength",
+          "value": 1,
+          "note": "Artisan background's ability-score choice (PHB-2024 backgrounds grant +2/+1 or +1/+1/+1 among three set abilities); shown on sheet as 'Artisan Ability Score Improvements'."
+        }
+      ]
+    },
+    "dexterity": {
+      "total": 18,
+      "modifier": {
+        "value": 4,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 15,
+      "increases": [
+        {
+          "origin": "background_artisan",
+          "ability": "dexterity",
+          "value": 2,
+          "note": "Artisan background's ability-score choice, same grant as the Strength +1 above."
+        },
+        {
+          "origin": "feat_dual_wielder",
+          "ability": "dexterity",
+          "value": 1,
+          "note": "Dual Wielder feat's Ability Score Increase (Str or Dex +1), taken via the Fighter 4 ASI slot; confirmed on sheet as 'Dexterity Score'."
+        }
+      ]
+    },
+    "constitution": {
+      "total": 14,
+      "modifier": {
+        "value": 2,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 14,
+      "increases": []
+    },
+    "intelligence": {
+      "total": 10,
+      "modifier": {
+        "value": 0,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 10,
+      "increases": []
+    },
+    "wisdom": {
+      "total": 13,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 13,
+      "increases": []
+    },
+    "charisma": {
+      "total": 8,
+      "modifier": {
+        "value": -1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": 8,
+      "increases": []
+    }
+  },
+  "defenses": {
+    "hit_points": {
+      "max": 44,
+      "current": 16,
+      "temporary": 0
+    },
+    "armor_class": {
+      "value": 18,
+      "formula": "breastplate_base + min(dex_mod,2) + cloak_of_protection + ring_of_protection",
+      "components": [
+        {
+          "label": "breastplate_base",
+          "value": 14
+        },
+        {
+          "label": "dexterity.modifier (capped +2, medium armor)",
+          "value": 2
+        },
+        {
+          "label": "Cloak of Protection",
+          "value": 1
+        },
+        {
+          "label": "Ring of Protection",
+          "value": 1
+        }
+      ]
+    },
+    "initiative": {
+      "value": 4,
+      "formula": "dexterity.modifier",
+      "components": [
+        {
+          "label": "dexterity.modifier",
+          "value": 4
+        }
+      ]
+    },
+    "speed": {
+      "walking": 30,
+      "origin": "species_orc"
+    },
+    "resistances": [],
+    "immunities": [],
+    "vulnerabilities": [],
+    "conditions_active": [],
+    "note": "Sheet shows two unlabeled '+1 on saves' indicators (near Str/Dex/Con save block) whose source could not be identified from DOM text; see validation.unresolved."
+  },
+  "saving_throws": {
+    "proficient": [
+      "strength",
+      "constitution"
+    ],
+    "proficiency_origin": "fighter_core",
+    "values": {
+      "strength": {
+        "value": 6,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus + protection_items",
+        "components": [
+          {
+            "label": "ability_mod",
+            "value": 1
+          },
+          {
+            "label": "proficiency_bonus",
+            "value": 3
+          },
+          {
+            "label": "Cloak of Protection",
+            "value": 1
+          },
+          {
+            "label": "Ring of Protection",
+            "value": 1
+          }
+        ]
+      },
+      "dexterity": {
+        "value": 6,
+        "proficient": false,
+        "formula": "ability_mod + protection_items",
+        "components": [
+          {
+            "label": "ability_mod",
+            "value": 4
+          },
+          {
+            "label": "Cloak of Protection",
+            "value": 1
+          },
+          {
+            "label": "Ring of Protection",
+            "value": 1
+          }
+        ]
+      },
+      "constitution": {
+        "value": 7,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus + protection_items",
+        "components": [
+          {
+            "label": "ability_mod",
+            "value": 2
+          },
+          {
+            "label": "proficiency_bonus",
+            "value": 3
+          },
+          {
+            "label": "Cloak of Protection",
+            "value": 1
+          },
+          {
+            "label": "Ring of Protection",
+            "value": 1
+          }
+        ]
+      },
+      "intelligence": {
+        "value": 2,
+        "proficient": false,
+        "formula": "ability_mod + protection_items",
+        "components": [
+          {
+            "label": "ability_mod",
+            "value": 0
+          },
+          {
+            "label": "Cloak of Protection",
+            "value": 1
+          },
+          {
+            "label": "Ring of Protection",
+            "value": 1
+          }
+        ]
+      },
+      "wisdom": {
+        "value": 3,
+        "proficient": false,
+        "formula": "ability_mod + protection_items",
+        "components": [
+          {
+            "label": "ability_mod",
+            "value": 1
+          },
+          {
+            "label": "Cloak of Protection",
+            "value": 1
+          },
+          {
+            "label": "Ring of Protection",
+            "value": 1
+          }
+        ]
+      },
+      "charisma": {
+        "value": 1,
+        "proficient": false,
+        "formula": "ability_mod + protection_items",
+        "components": [
+          {
+            "label": "ability_mod",
+            "value": -1
+          },
+          {
+            "label": "Cloak of Protection",
+            "value": 1
+          },
+          {
+            "label": "Ring of Protection",
+            "value": 1
+          }
+        ]
+      }
+    }
+  },
+  "skills": [
+    {
+      "id": "acrobatics",
+      "ability": "dexterity",
+      "proficient": true,
+      "bonus": 7,
+      "origin": "fighter_core"
+    },
+    {
+      "id": "animal_handling",
+      "ability": "wisdom",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null
+    },
+    {
+      "id": "arcana",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": 2,
+      "origin": "manual override on the D&D Beyond sheet, not derived from proficiency (INT mod +0, not proficient) — the character's customized Shortsword carries homebrew flavor text ('+4 Orish history and Arcane') that plausibly inspired it, though the two numbers don't match, so this is a deliberate but informally-sourced house-rule adjustment rather than a fully derived bonus"
+    },
+    {
+      "id": "athletics",
+      "ability": "strength",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null,
+      "note": "Advantage on Strength (Athletic) checks from Remarkable Athlete (Champion), shown as an 'A' badge; does not change the numeric bonus"
+    },
+    {
+      "id": "deception",
+      "ability": "charisma",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null
+    },
+    {
+      "id": "history",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": 0,
+      "origin": null
+    },
+    {
+      "id": "insight",
+      "ability": "wisdom",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null
+    },
+    {
+      "id": "intimidation",
+      "ability": "charisma",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null
+    },
+    {
+      "id": "investigation",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": 0,
+      "origin": null
+    },
+    {
+      "id": "medicine",
+      "ability": "wisdom",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null
+    },
+    {
+      "id": "nature",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": 0,
+      "origin": null
+    },
+    {
+      "id": "perception",
+      "ability": "wisdom",
+      "proficient": true,
+      "bonus": 4,
+      "origin": "fighter_core"
+    },
+    {
+      "id": "performance",
+      "ability": "charisma",
+      "proficient": false,
+      "bonus": -1,
+      "origin": null
+    },
+    {
+      "id": "persuasion",
+      "ability": "charisma",
+      "proficient": true,
+      "bonus": 2,
+      "origin": "background_artisan"
+    },
+    {
+      "id": "religion",
+      "ability": "intelligence",
+      "proficient": false,
+      "bonus": 0,
+      "origin": null
+    },
+    {
+      "id": "sleight_of_hand",
+      "ability": "dexterity",
+      "proficient": false,
+      "bonus": 4,
+      "origin": null
+    },
+    {
+      "id": "stealth",
+      "ability": "dexterity",
+      "proficient": true,
+      "bonus": 7,
+      "origin": "ranger_core"
+    },
+    {
+      "id": "survival",
+      "ability": "wisdom",
+      "proficient": false,
+      "bonus": 1,
+      "origin": null
+    }
+  ],
+  "senses": {
+    "passive_perception": {
+      "value": 14,
+      "formula": "10 + skills.perception.bonus"
+    },
+    "passive_investigation": {
+      "value": 10,
+      "formula": "10 + skills.investigation.bonus"
+    },
+    "passive_insight": {
+      "value": 11,
+      "formula": "10 + skills.insight.bonus"
+    },
+    "special": [
+      {
+        "id": "darkvision",
+        "range": 120,
+        "source": {
+          "book": "PHB-2024",
+          "page": 195
+        }
+      }
+    ]
+  },
+  "proficiencies": {
+    "armor": [
+      "Heavy Armor",
+      "Light Armor",
+      "Medium Armor",
+      "Shields"
+    ],
+    "weapons": [
+      "Martial Weapons",
+      "Simple Weapons"
+    ],
+    "tools": [
+      "Leatherworker's Tools",
+      "Smith's Tools",
+      "Tinker's Tools",
+      "Woodcarver's Tools"
+    ],
+    "languages": [
+      "Common",
+      "Dwarf",
+      "Elf"
+    ],
+    "weapon_masteries": [
+      {
+        "weapon": "shortsword",
+        "mastery": "vex",
+        "source": "fighter"
+      },
+      {
+        "weapon": "light_crossbow",
+        "mastery": "slow",
+        "source": "fighter"
+      },
+      {
+        "weapon": "scimitar",
+        "mastery": "nick",
+        "source": "fighter"
+      },
+      {
+        "weapon": "heavy_crossbow",
+        "mastery": "push",
+        "source": "fighter_level_4"
+      },
+      {
+        "weapon": "handaxe",
+        "mastery": "vex",
+        "source": "ranger"
+      },
+      {
+        "weapon": "longsword",
+        "mastery": "sap",
+        "source": "ranger"
+      }
+    ]
+  },
+  "features": [
+    {
+      "id": "core_fighter_traits",
+      "class": "fighter",
+      "source": {
+        "book": "PHB-2024",
+        "page": 91
+      },
+      "detail": "Skill proficiencies: Acrobatics, Perception"
+    },
+    {
+      "id": "fighting_style",
+      "class": "fighter",
+      "source": {
+        "book": "PHB-2024",
+        "page": 91
+      },
+      "choice": "two_weapon_fighting"
+    },
+    {
+      "id": "second_wind",
+      "class": "fighter",
+      "source": {
+        "book": "PHB-2024",
+        "page": 91
+      },
+      "activation": "bonus_action",
+      "resource_ref": "second_wind_uses",
+      "effect": "regain 1d10+4 HP"
+    },
+    {
+      "id": "weapon_mastery_fighter",
+      "class": "fighter",
+      "source": {
+        "book": "PHB-2024",
+        "page": 91
+      }
+    },
+    {
+      "id": "action_surge",
+      "class": "fighter",
+      "source": {
+        "book": "PHB-2024",
+        "page": 91
+      },
+      "resource_ref": "action_surge_uses",
+      "effect": "one additional action (not Magic), 1/short or long rest"
+    },
+    {
+      "id": "tactical_mind",
+      "class": "fighter",
+      "source": {
+        "book": "PHB-2024",
+        "page": 91
+      },
+      "effect": "expend Second Wind use to add 1d10 to a failed ability check"
+    },
+    {
+      "id": "fighter_subclass_champion",
+      "class": "fighter",
+      "source": {
+        "book": "PHB-2024",
+        "page": 92
+      }
+    },
+    {
+      "id": "improved_critical",
+      "class": "fighter",
+      "subclass": "champion",
+      "source": {
+        "book": "PHB-2024",
+        "page": 96
+      },
+      "effect": "critical hit on 19-20"
+    },
+    {
+      "id": "remarkable_athlete",
+      "class": "fighter",
+      "subclass": "champion",
+      "source": {
+        "book": "PHB-2024",
+        "page": 96
+      },
+      "effect": "advantage on Initiative and Strength (Athletics) checks; move half Speed after a critical hit without provoking opportunity attacks"
+    },
+    {
+      "id": "core_ranger_traits",
+      "class": "ranger",
+      "source": {
+        "book": "PHB-2024",
+        "page": 119
+      },
+      "detail": "Skill proficiency: Stealth"
+    },
+    {
+      "id": "ranger_spellcasting",
+      "class": "ranger",
+      "source": {
+        "book": "PHB-2024",
+        "page": 119
+      }
+    },
+    {
+      "id": "favored_enemy_hunters_mark",
+      "class": "ranger",
+      "source": {
+        "book": "PHB-2024",
+        "page": 119
+      },
+      "resource_ref": "hunters_mark_free_casts",
+      "effect": "cast Hunter's Mark without a spell slot, 2/long rest"
+    },
+    {
+      "id": "weapon_mastery_ranger",
+      "class": "ranger",
+      "source": {
+        "book": "PHB-2024",
+        "page": 120
+      }
+    },
+    {
+      "id": "adrenaline_rush",
+      "species": "orc",
+      "source": {
+        "book": "PHB-2024",
+        "page": 195
+      },
+      "activation": "bonus_action",
+      "resource_ref": "adrenaline_rush_uses",
+      "effect": "Dash + gain 3 temp HP, 3/short rest"
+    },
+    {
+      "id": "darkvision",
+      "species": "orc",
+      "source": {
+        "book": "PHB-2024",
+        "page": 195
+      },
+      "range": 120
+    },
+    {
+      "id": "relentless_endurance",
+      "species": "orc",
+      "source": {
+        "book": "PHB-2024",
+        "page": 195
+      },
+      "resource_ref": "relentless_endurance_uses",
+      "effect": "drop to 1 HP instead of 0, 1/long rest"
+    }
+  ],
+  "feats": [
+    {
+      "id": "two_weapon_fighting",
+      "name": "Two-Weapon Fighting",
+      "source": {
+        "book": "PHB-2024",
+        "page": 210
+      },
+      "origin": "fighter_fighting_style"
+    },
+    {
+      "id": "dual_wielder",
+      "name": "Dual Wielder",
+      "source": {
+        "book": "PHB-2024",
+        "page": 203
+      },
+      "origin": "fighter_4_asi",
+      "grants": [
+        "dexterity +1",
+        "Enhanced Dual Wielding (bonus-action off-hand attack with a non-two-handed melee weapon)",
+        "Quick Draw"
+      ]
+    },
+    {
+      "id": "crafter",
+      "name": "Crafter",
+      "source": {
+        "book": "PHB-2024",
+        "page": 200
+      },
+      "origin": "background:artisan",
+      "grants": [
+        "proficiency with 3 Artisan's Tools",
+        "20% discount on nonmagical items",
+        "Fast Crafting after a Long Rest"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "second_wind_uses",
+      "max": 3,
+      "current": 3,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "note": "1 use regained on short rest"
+    },
+    {
+      "id": "action_surge_uses",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "short_rest"
+    },
+    {
+      "id": "relentless_endurance_uses",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "long_rest"
+    },
+    {
+      "id": "adrenaline_rush_uses",
+      "max": 3,
+      "current": 3,
+      "unit": "uses",
+      "recharge": "short_rest"
+    },
+    {
+      "id": "hunters_mark_free_casts",
+      "max": 2,
+      "current": 2,
+      "unit": "uses",
+      "recharge": "long_rest"
+    }
+  ],
+  "spellcasting": {
+    "ability": "wisdom",
+    "spell_attack_bonus": {
+      "value": 4,
+      "formula": "wisdom.modifier + proficiency_bonus",
+      "components": [
+        {
+          "label": "wisdom.modifier",
+          "value": 1
+        },
+        {
+          "label": "proficiency_bonus",
+          "value": 3
+        }
+      ]
+    },
+    "spell_save_dc": {
+      "value": 12,
+      "formula": "8 + wisdom.modifier + proficiency_bonus"
+    },
+    "note": "Ranger 1 has no spell slots yet (Rangers gain their first slot at level 2). Cure Wounds and Jump are known/prepared but can only be cast via a slot once available; Hunter's Mark is free via Favored Enemy, 2/long rest.",
+    "cantrips": [],
+    "known_spells": [
+      {
+        "id": "cure_wounds",
+        "level": 1,
+        "class": "ranger",
+        "casting_time": "action",
+        "range": "touch",
+        "effect": "2d8+1 healing",
+        "components": "V/S"
+      },
+      {
+        "id": "hunters_mark",
+        "level": 1,
+        "class": "ranger",
+        "origin": "favored_enemy_free_cast",
+        "casting_time": "bonus_action",
+        "range": 90,
+        "duration": "concentration, 1 hour",
+        "components": "V"
+      },
+      {
+        "id": "jump",
+        "level": 1,
+        "class": "ranger",
+        "casting_time": "bonus_action",
+        "range": "touch",
+        "duration": "1 minute",
+        "components": "V/S/M"
+      }
+    ],
+    "slots": {
+      "1": {
+        "max": 0,
+        "current": 0
+      },
+      "note": "0 slots at Ranger 1; sheet shows a '1st Level Slots' header with no available uses."
+    }
+  },
+  "actions": {
+    "attacks_per_action": 1,
+    "extra_attack": false,
+    "extra_attack_available_at": {
+      "class": "fighter",
+      "level": 5
+    },
+    "attacks": [
+      {
+        "id": "crossbow_heavy",
+        "type": "ranged_weapon",
+        "range": "100/400",
+        "attack_bonus": 7,
+        "damage": "1d10+4",
+        "properties": [
+          "Martial",
+          "Ammunition",
+          "Heavy",
+          "Loading",
+          "Range",
+          "Two-Handed"
+        ],
+        "mastery": "push"
+      },
+      {
+        "id": "scimitar",
+        "type": "melee_weapon",
+        "reach": 5,
+        "attack_bonus": 7,
+        "damage": "1d6+4",
+        "properties": [
+          "Martial",
+          "Finesse",
+          "Light"
+        ],
+        "mastery": "nick"
+      },
+      {
+        "id": "shortsword_customized",
+        "type": "melee_weapon",
+        "reach": 5,
+        "attack_bonus": 8,
+        "damage": "1d6+5",
+        "properties": [
+          "Martial",
+          "Finesse",
+          "Light"
+        ],
+        "mastery": "vex",
+        "note": "Homebrew-customized copy: 'Bonus vs Orcs (+2); Divine Smite 1x/day vs Orcs; +4 Orish history and Arcane; +3 to Intimidate Ord; Extra Relentless Endurance; Glows near Orcs'. Flavor/DM-granted bonuses, not standard PHB text."
+      },
+      {
+        "id": "shortsword",
+        "type": "melee_weapon",
+        "reach": 5,
+        "attack_bonus": 7,
+        "damage": "1d6+4",
+        "properties": [
+          "Martial",
+          "Finesse",
+          "Light"
+        ],
+        "mastery": "vex"
+      },
+      {
+        "id": "unarmed_strike",
+        "type": "melee_attack",
+        "reach": 5,
+        "attack_bonus": 4,
+        "damage": "1 + str_mod bludgeoning"
+      }
+    ],
+    "bonus_action_contention": [
+      "Second Wind",
+      "Hunter's Mark",
+      "Adrenaline Rush (Dash)",
+      "Enhanced Dual Wielding off-hand attack"
+    ],
+    "other_actions": [
+      {
+        "id": "tactical_mind",
+        "type": "special",
+        "effect": "expend Second Wind use, roll 1d10 added to a failed ability check"
+      }
+    ]
+  },
+  "inventory": {
+    "weight_carried": 78,
+    "carrying_capacity": null,
+    "encumbrance_status": "unencumbered",
+    "attunement": {
+      "slots_total": 3,
+      "slots_used": 2,
+      "attuned_items": [
+        "ring_of_protection",
+        "cloak_of_protection"
+      ]
+    },
+    "containers": [
+      {
+        "id": "equipment",
+        "weight": 78,
+        "items": [
+          {
+            "id": "ring_of_protection",
+            "category": "Ring",
+            "note": "Warding, Jewelry"
+          },
+          {
+            "id": "cloak_of_protection",
+            "category": "Wondrous item",
+            "note": "Warding, Outerwear"
+          },
+          {
+            "id": "breastplate",
+            "category": "Medium Armor",
+            "weight": 20,
+            "cost_gp": 400,
+            "note": "AC 14"
+          },
+          {
+            "id": "crossbow_heavy",
+            "category": "Weapon",
+            "weight": 18,
+            "cost_gp": 50
+          },
+          {
+            "id": "crossbow_light",
+            "category": "Weapon",
+            "weight": 5,
+            "cost_gp": 25
+          },
+          {
+            "id": "leatherworkers_tools",
+            "category": "Tool",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 5
+          },
+          {
+            "id": "scimitar",
+            "category": "Weapon",
+            "weight": 3,
+            "cost_gp": 25
+          },
+          {
+            "id": "shield",
+            "category": "Shield",
+            "weight": 6,
+            "cost_gp": 10,
+            "note": "+2 AC"
+          },
+          {
+            "id": "shortsword_customized",
+            "category": "Weapon",
+            "weight": 2,
+            "cost_gp": 10
+          },
+          {
+            "id": "shortsword",
+            "category": "Weapon",
+            "weight": 2,
+            "cost_gp": 10
+          },
+          {
+            "id": "smiths_tools",
+            "category": "Tool",
+            "weight": 8,
+            "qty": 1,
+            "cost_gp": 20
+          },
+          {
+            "id": "travelers_clothes",
+            "category": "Adventuring Gear",
+            "weight": 4,
+            "qty": 1,
+            "cost_gp": 2
+          },
+          {
+            "id": "woodcarvers_tools",
+            "category": "Tool",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 1
+          }
+        ]
+      }
+    ]
+  },
+  "extras": [],
+  "narrative": {
+    "backstory_summary": null,
+    "note": "No Background/Notes/backstory page is exposed on a view-only (non-owned) character sheet in the current D&D Beyond UI. All narrative fields are unresolved for this capture; see validation.unresolved."
+  },
+  "validation": {
+    "unresolved": [
+      {
+        "field": "skills.arcana",
+        "issue": "The +2 bonus is a manual override in D&D Beyond (not derived from INT mod + proficiency); likely informally inspired by the customized Shortsword's homebrew flavor text ('+4 Orish history and Arcane'), but the numbers don't match exactly and no other source is documented."
+      },
+      {
+        "field": "narrative.*",
+        "issue": "Re-checked directly with full (non-view-only) access on 2026-08-16 via /characters/139642480 and /characters/139642480/notes — the sheet has no authored backstory/notes content. This is confirmed blank, not an access limitation."
+      }
+    ],
+    "flags": [
+      {
+        "id": "view_only_capture",
+        "severity": "info",
+        "detail": "Captured from campaign-roster VIEW access, not owned by gruevyhat. Builder/Notes/Background pages were not reachable; capture is sheet-visible-only."
+      }
+    ]
+  }
+}

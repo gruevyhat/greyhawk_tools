@@ -1,0 +1,1127 @@
+{
+  "schema": {
+    "name": "dnd5e-2024-character",
+    "version": "1.0.0",
+    "conventions": {
+      "ids": "snake_case, stable across captures, used as join keys",
+      "derived_values": "Any computed number is an object with {value, formula, components}. Never store a computed number as a bare scalar — it hides the derivation and makes drift undetectable.",
+      "provenance": "Every rules element carries `source` {book, page}. Every character-specific value carries `origin` naming the choice that produced it.",
+      "unresolved": "Fields that could not be determined from the sheet are null with a sibling entry in validation.unresolved. Nulls are never silently filled.",
+      "units": "Distances in feet, weights in pounds, currency in gp."
+    }
+  },
+  "capture": {
+    "source_url": "https://www.dndbeyond.com/characters/139566268",
+    "captured_at": "2026-08-15",
+    "method": "browser DOM text extraction, tab-by-tab, via campaign roster VIEW access (not owned by the capturing player)",
+    "completeness": "Actions, Spells, Inventory, Features & Traits, Extras all read. No Background/Notes/backstory page is exposed on a view-only (non-owned) character sheet, so narrative fields are unresolved. Background is inferred from the Skilled feat's explicit 'From: Charlatan' tag."
+  },
+  "identity": {
+    "id": "wimble_scheppen",
+    "name": "Wimble Scheppen Pebblethistle Stoutburrow Quickstep Leafwhistle Tinkerbright",
+    "short_name": "Wimble",
+    "house": null,
+    "name_note": null,
+    "roster_status": "active",
+    "species": {
+      "id": "forest_gnome",
+      "creature_type": "Humanoid",
+      "size": "Small",
+      "source": {
+        "book": "PHB-2024",
+        "page": null
+      },
+      "note": "Species trait entries on the sheet cite legacy 'BR'/'PHB' pg. 37 source tags rather than PHB-2024 page numbers; recorded verbatim per-feature below."
+    },
+    "background": {
+      "id": "charlatan",
+      "source": {
+        "book": "PHB-2024",
+        "page": 188
+      },
+      "note": "Inferred from the Skilled feat's 'From: Charlatan' tag, plus matching Deception/Sleight of Hand skill grants and Disguise Kit/Forgery Kit tool grants."
+    },
+    "alignment": null,
+    "campaign": "Greyhawk",
+    "player": "Iamheck",
+    "demographics": {
+      "gender": "male",
+      "age": null,
+      "height": null,
+      "weight": null,
+      "eyes": null,
+      "hair": null,
+      "skin": null,
+      "faith": null,
+      "note": "Only gender is shown in the sheet header; other fields not visible without builder access."
+    }
+  },
+  "progression": {
+    "character_level": 5,
+    "classes": [
+      {
+        "id": "rogue",
+        "level": 1,
+        "subclass": null,
+        "spellcasting_ability": null,
+        "caster_type": "none",
+        "source": {
+          "book": "PHB-2024",
+          "page": 129
+        }
+      },
+      {
+        "id": "bard",
+        "level": 4,
+        "subclass": {
+          "id": "college_of_creation",
+          "source": {
+            "book": "TCoE",
+            "page": null
+          }
+        },
+        "spellcasting_ability": "charisma",
+        "caster_type": "full",
+        "source": {
+          "book": "PHB-2024",
+          "page": 59
+        }
+      }
+    ],
+    "proficiency_bonus": {
+      "value": 3,
+      "formula": "2 + floor((character_level - 1) / 4)",
+      "components": [
+        {
+          "label": "character_level",
+          "value": 5
+        }
+      ]
+    }
+  },
+  "abilities": {
+    "strength": {
+      "total": 8,
+      "modifier": {
+        "value": -1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "dexterity": {
+      "total": 14,
+      "modifier": {
+        "value": 2,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "constitution": {
+      "total": 14,
+      "modifier": {
+        "value": 2,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "intelligence": {
+      "total": 12,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "wisdom": {
+      "total": 12,
+      "modifier": {
+        "value": 1,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": []
+    },
+    "charisma": {
+      "total": 17,
+      "modifier": {
+        "value": 3,
+        "formula": "floor((total - 10) / 2)"
+      },
+      "base": null,
+      "increases": [
+        {
+          "source": "feat_fey_touched",
+          "ability": "charisma",
+          "value": 1
+        }
+      ]
+    }
+  },
+  "defenses": {
+    "hit_points": {
+      "max": 38,
+      "current": 2,
+      "temporary": 0
+    },
+    "armor_class": {
+      "value": 13,
+      "formula": "leather_base + dexterity.modifier",
+      "components": [
+        {
+          "label": "leather_base",
+          "value": 11
+        },
+        {
+          "label": "dexterity.modifier",
+          "value": 2
+        }
+      ]
+    },
+    "initiative": {
+      "value": 2,
+      "formula": "dexterity.modifier",
+      "components": [
+        {
+          "label": "dexterity.modifier",
+          "value": 2
+        }
+      ]
+    },
+    "speed": {
+      "walking": 25,
+      "origin": "species_forest_gnome"
+    },
+    "resistances": [],
+    "immunities": [],
+    "vulnerabilities": [],
+    "conditions_active": []
+  },
+  "saving_throws": {
+    "proficient": [
+      "dexterity",
+      "intelligence"
+    ],
+    "proficiency_origin": "rogue_core",
+    "values": {
+      "strength": {
+        "value": -1,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "dexterity": {
+        "value": 5,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus"
+      },
+      "constitution": {
+        "value": 2,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "intelligence": {
+        "value": 4,
+        "proficient": true,
+        "formula": "ability_mod + proficiency_bonus"
+      },
+      "wisdom": {
+        "value": 1,
+        "proficient": false,
+        "formula": "ability_mod"
+      },
+      "charisma": {
+        "value": 3,
+        "proficient": false,
+        "formula": "ability_mod"
+      }
+    },
+    "note": "Gnome Cunning grants Advantage on Intelligence, Wisdom, and Charisma saving throws against magic; this does not change the flat bonus values above."
+  },
+  "skills": [
+    {
+      "id": "acrobatics",
+      "ability": "dexterity",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 3,
+      "origin": null,
+      "formula": "ability_mod + jack_of_all_trades (half proficiency_bonus, rounded down)"
+    },
+    {
+      "id": "animal_handling",
+      "ability": "wisdom",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod + jack_of_all_trades (half proficiency_bonus, rounded down)"
+    },
+    {
+      "id": "arcana",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod + jack_of_all_trades (half proficiency_bonus, rounded down)"
+    },
+    {
+      "id": "athletics",
+      "ability": "strength",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 2,
+      "origin": "feat_skilled (background_charlatan)",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "deception",
+      "ability": "charisma",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 6,
+      "origin": "background_charlatan",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "history",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod + jack_of_all_trades (half proficiency_bonus, rounded down)"
+    },
+    {
+      "id": "insight",
+      "ability": "wisdom",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 4,
+      "origin": "feat_skilled (background_charlatan)",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "intimidation",
+      "ability": "charisma",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 4,
+      "origin": null,
+      "formula": "ability_mod + jack_of_all_trades (half proficiency_bonus, rounded down)"
+    },
+    {
+      "id": "investigation",
+      "ability": "intelligence",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 4,
+      "origin": "rogue_core",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "medicine",
+      "ability": "wisdom",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod + jack_of_all_trades (half proficiency_bonus, rounded down)"
+    },
+    {
+      "id": "nature",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod + jack_of_all_trades (half proficiency_bonus, rounded down)"
+    },
+    {
+      "id": "perception",
+      "ability": "wisdom",
+      "proficient": true,
+      "expertise": true,
+      "bonus": 7,
+      "origin": "rogue_core; expertise via rogue_expertise",
+      "formula": "ability_mod + 2*proficiency_bonus (expertise)"
+    },
+    {
+      "id": "performance",
+      "ability": "charisma",
+      "proficient": true,
+      "expertise": true,
+      "bonus": 9,
+      "origin": "unresolved — proficiency source not shown on sheet (likely a Bard skill choice); expertise via bard_expertise",
+      "formula": "ability_mod + 2*proficiency_bonus (expertise)"
+    },
+    {
+      "id": "persuasion",
+      "ability": "charisma",
+      "proficient": true,
+      "expertise": true,
+      "bonus": 9,
+      "origin": "rogue_core; expertise via bard_expertise",
+      "formula": "ability_mod + 2*proficiency_bonus (expertise)"
+    },
+    {
+      "id": "religion",
+      "ability": "intelligence",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod + jack_of_all_trades (half proficiency_bonus, rounded down)"
+    },
+    {
+      "id": "sleight_of_hand",
+      "ability": "dexterity",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 5,
+      "origin": "background_charlatan",
+      "formula": "ability_mod + proficiency_bonus"
+    },
+    {
+      "id": "stealth",
+      "ability": "dexterity",
+      "proficient": true,
+      "expertise": true,
+      "bonus": 8,
+      "origin": "rogue_core; expertise via rogue_expertise",
+      "formula": "ability_mod + 2*proficiency_bonus (expertise)"
+    },
+    {
+      "id": "survival",
+      "ability": "wisdom",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 2,
+      "origin": null,
+      "formula": "ability_mod + jack_of_all_trades (half proficiency_bonus, rounded down)"
+    }
+  ],
+  "senses": {
+    "passive_perception": {
+      "value": 17,
+      "formula": "10 + skills.perception.bonus"
+    },
+    "passive_investigation": {
+      "value": 14,
+      "formula": "10 + skills.investigation.bonus"
+    },
+    "passive_insight": {
+      "value": 14,
+      "formula": "10 + skills.insight.bonus"
+    },
+    "special": [
+      {
+        "id": "darkvision",
+        "range": 60,
+        "source": "species_forest_gnome"
+      }
+    ]
+  },
+  "proficiencies": {
+    "armor": [
+      "Light Armor"
+    ],
+    "weapons": [
+      "Hand Crossbow",
+      "Rapier",
+      "Scimitar",
+      "Shortsword",
+      "Simple Weapons",
+      "Whip"
+    ],
+    "tools": [
+      "Birdpipes",
+      "Disguise Kit",
+      "Forgery Kit",
+      "Thieves' Tools"
+    ],
+    "languages": [
+      "Common",
+      "Gnomish",
+      "Sylvan",
+      "Thieves' Cant"
+    ],
+    "weapon_masteries": [
+      {
+        "weapon": "shortbow",
+        "mastery": "vex",
+        "source": "rogue"
+      },
+      {
+        "weapon": "rapier",
+        "mastery": "vex",
+        "source": "rogue"
+      }
+    ]
+  },
+  "features": [
+    {
+      "id": "core_bard_traits",
+      "class": "bard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 59
+      },
+      "detail": "Musical instrument proficiency (Birdpipes); Bardic Inspiration (d6, bonus action, 60 ft., 3/long rest); Spellcasting (Charisma, Spell DC 14, Spell Attack +6, musical instrument as focus)"
+    },
+    {
+      "id": "bard_expertise",
+      "class": "bard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 60
+      },
+      "effect": "Expertise in two skill proficiencies of choice",
+      "choice": [
+        "performance",
+        "persuasion"
+      ]
+    },
+    {
+      "id": "jack_of_all_trades",
+      "class": "bard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 60
+      },
+      "effect": "Add half Proficiency Bonus (rounded down) to ability checks using a skill you lack proficiency in"
+    },
+    {
+      "id": "bard_subclass_college_of_creation",
+      "class": "bard",
+      "subclass": "college_of_creation",
+      "source": {
+        "book": "PHB-2024",
+        "page": 60
+      }
+    },
+    {
+      "id": "mote_of_potential",
+      "class": "bard",
+      "subclass": "college_of_creation",
+      "source": {
+        "book": "TCoE",
+        "page": null
+      },
+      "effect": "Summons a Mote of Potential when granting Bardic Inspiration; can be spent to reroll an ability check, deal thunder damage (CON save DC 14) on an attack roll, or grant temp HP on a saving throw"
+    },
+    {
+      "id": "performance_of_creation",
+      "class": "bard",
+      "subclass": "college_of_creation",
+      "source": {
+        "book": "TCoE",
+        "page": null
+      },
+      "activation": "action",
+      "resource_ref": "performance_of_creation_uses",
+      "effect": "Create one nonmagical item worth up to 80 gp within 10 ft.; lasts 3 hours; max size Medium (Large at 6th, Huge at 14th)"
+    },
+    {
+      "id": "ability_score_improvement",
+      "class": "bard",
+      "source": {
+        "book": "PHB-2024",
+        "page": 61
+      },
+      "choice": "feat_fey_touched"
+    },
+    {
+      "id": "core_rogue_traits",
+      "class": "rogue",
+      "source": {
+        "book": "PHB-2024",
+        "page": 129
+      },
+      "detail": "Skill proficiencies: Stealth, Perception, Investigation, Persuasion; Thieves' Cant + one language (Sylvan); Weapon Mastery (Shortbow: Vex, Rapier: Vex)"
+    },
+    {
+      "id": "rogue_expertise",
+      "class": "rogue",
+      "source": {
+        "book": "PHB-2024",
+        "page": 129
+      },
+      "effect": "Expertise in two skill proficiencies of choice",
+      "choice": [
+        "perception",
+        "stealth"
+      ]
+    },
+    {
+      "id": "sneak_attack",
+      "class": "rogue",
+      "source": {
+        "book": "PHB-2024",
+        "page": 129
+      },
+      "resource_ref": null,
+      "effect": "Once per turn, extra 1d6 damage to one creature hit with Advantage using a Finesse or Ranged weapon (or an ally within 5 ft. of the target without Disadvantage on the attack)"
+    },
+    {
+      "id": "darkvision",
+      "species": "forest_gnome",
+      "source": {
+        "book": "BR",
+        "page": 37
+      },
+      "detail": "See in darkness (shades of gray) up to 60 ft."
+    },
+    {
+      "id": "gnome_cunning",
+      "species": "forest_gnome",
+      "source": {
+        "book": "BR",
+        "page": 37
+      },
+      "effect": "Advantage on all Intelligence, Wisdom, and Charisma saving throws against magic"
+    },
+    {
+      "id": "natural_illusionist",
+      "species": "forest_gnome",
+      "source": {
+        "book": "PHB",
+        "page": 37
+      },
+      "effect": "Know the Minor Illusion cantrip; Intelligence is the spellcasting ability for it"
+    },
+    {
+      "id": "speak_with_small_beasts",
+      "species": "forest_gnome",
+      "source": {
+        "book": "PHB",
+        "page": 37
+      },
+      "effect": "Communicate simple ideas with Small or smaller beasts"
+    }
+  ],
+  "feats": [
+    {
+      "id": "fey_touched",
+      "name": "Fey Touched",
+      "source": {
+        "book": "TCoE",
+        "page": 79
+      },
+      "origin": "bard_4_asi",
+      "grants": [
+        "charisma +1 (to a maximum of 20)",
+        "learn Misty Step and one 1st-level Divination/Enchantment spell of choice (Charm Person); both castable once per long rest without a spell slot using Charisma"
+      ]
+    },
+    {
+      "id": "skilled",
+      "name": "Skilled",
+      "source": {
+        "book": "PHB-2024",
+        "page": 201
+      },
+      "origin": "background_charlatan",
+      "effect": "Proficiency in any combination of three skills or tools of choice",
+      "choice": [
+        "disguise_kit",
+        "insight",
+        "athletics"
+      ],
+      "repeatable": true
+    }
+  ],
+  "resources": [
+    {
+      "id": "bardic_inspiration_uses",
+      "max": 3,
+      "current": null,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "note": "current uses not legible in DOM text (widget value not captured by innerText)"
+    },
+    {
+      "id": "performance_of_creation_uses",
+      "max": null,
+      "current": null,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "note": "use count not legible in DOM text; feature description does not itself state a number"
+    },
+    {
+      "id": "fey_touched_charm_person_free_cast",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "origin": "feat_fey_touched"
+    },
+    {
+      "id": "fey_touched_misty_step_free_cast",
+      "max": 1,
+      "current": 1,
+      "unit": "uses",
+      "recharge": "long_rest",
+      "origin": "feat_fey_touched"
+    }
+  ],
+  "spellcasting": {
+    "ability": "charisma",
+    "spell_attack_bonus": {
+      "value": 6,
+      "formula": "charisma.modifier + proficiency_bonus",
+      "components": [
+        {
+          "label": "charisma.modifier",
+          "value": 3
+        },
+        {
+          "label": "proficiency_bonus",
+          "value": 3
+        }
+      ]
+    },
+    "spell_save_dc": {
+      "value": 14,
+      "formula": "8 + charisma.modifier + proficiency_bonus"
+    },
+    "note": "Slot counts not legible on the sheet's Spells tab; not independently derived. Several 1st-level Bard spells also have a 2nd-level upcast row on the sheet (higher-slot version) — not duplicated here as separate known spells.",
+    "cantrips": [
+      {
+        "id": "friends",
+        "class": "bard",
+        "save": "wisdom",
+        "save_dc": 14
+      },
+      {
+        "id": "minor_illusion",
+        "class": "natural_illusionist",
+        "spellcasting_ability": "intelligence"
+      },
+      {
+        "id": "vicious_mockery",
+        "class": "bard",
+        "save": "wisdom",
+        "save_dc": 14,
+        "damage": "2d6"
+      }
+    ],
+    "known_spells": [
+      {
+        "id": "bane",
+        "level": 1,
+        "class": "bard",
+        "save": "charisma",
+        "save_dc": 14
+      },
+      {
+        "id": "charm_person",
+        "level": 1,
+        "class": "feat_fey_touched",
+        "origin": "always_prepared_free_cast_1_per_long_rest",
+        "save": "wisdom",
+        "save_dc": 14
+      },
+      {
+        "id": "command",
+        "level": 1,
+        "class": "bard",
+        "save": "wisdom",
+        "save_dc": 14
+      },
+      {
+        "id": "dissonant_whispers",
+        "level": 1,
+        "class": "bard",
+        "save": "wisdom",
+        "save_dc": 14,
+        "damage": "3d6",
+        "half_on_save": true,
+        "upcast_extra_dice": 1,
+        "note": "half_on_save and upcast rate not on the sheet; filled from PHB-2024 Dissonant Whispers text (half damage on a successful save, +1d6 per slot level above 1st)."
+      },
+      {
+        "id": "healing_word",
+        "level": 1,
+        "class": "bard",
+        "casting_time": "bonus_action",
+        "healing": "2d4+3"
+      },
+      {
+        "id": "silvery_barbs",
+        "level": 1,
+        "class": "bard",
+        "casting_time": "reaction"
+      },
+      {
+        "id": "tashas_hideous_laughter",
+        "level": 1,
+        "class": "bard",
+        "save": "wisdom",
+        "save_dc": 14
+      },
+      {
+        "id": "misty_step",
+        "level": 2,
+        "class": "feat_fey_touched",
+        "origin": "always_prepared_free_cast_1_per_long_rest",
+        "casting_time": "bonus_action"
+      }
+    ],
+    "slots": {
+      "1": {
+        "max": 4,
+        "current": null,
+        "derived": true
+      },
+      "2": {
+        "max": 3,
+        "current": null,
+        "derived": true
+      },
+      "note": "Computed from the standard PHB-2024 full-caster slot table at Bard level 4, not read directly off the sheet's Spells tab."
+    }
+  },
+  "actions": {
+    "attacks_per_action": 1,
+    "extra_attack": false,
+    "attacks": [
+      {
+        "id": "dagger",
+        "type": "melee_weapon",
+        "reach": 5,
+        "range": "20/60 (thrown)",
+        "attack_bonus": 5,
+        "damage": "1d4+2",
+        "properties": [
+          "Simple",
+          "Finesse",
+          "Light",
+          "Thrown",
+          "Nick",
+          "Range (20/60)"
+        ],
+        "qty": 2
+      },
+      {
+        "id": "rapier",
+        "type": "melee_weapon",
+        "reach": 5,
+        "attack_bonus": 5,
+        "damage": "1d8+2",
+        "properties": [
+          "Martial",
+          "Finesse"
+        ],
+        "mastery": "vex"
+      },
+      {
+        "id": "whisper",
+        "type": "ranged_weapon",
+        "range": "80/320",
+        "attack_bonus": 7,
+        "damage": "1d6+2",
+        "properties": [
+          "Simple",
+          "Ammunition",
+          "Range",
+          "Two-Handed"
+        ],
+        "mastery": "vex",
+        "note": "Custom magic shortbow (+2 to attack/damage baked into stated bonus). Materializes its own magic arrow on draw, dealing an extra 1d8 damage of a random type (roll d10) instead of using carried ammunition."
+      },
+      {
+        "id": "unarmed_strike",
+        "type": "melee_attack",
+        "reach": 5,
+        "attack_bonus": 2,
+        "damage": "1 + str_mod bludgeoning"
+      },
+      {
+        "id": "sneak_attack",
+        "type": "other",
+        "damage": "1d6",
+        "note": "Once per turn, added to a hit with Advantage using a Finesse or Ranged weapon (see features)"
+      }
+    ],
+    "bonus_action_contention": [
+      "Bardic Inspiration"
+    ],
+    "reactions": [
+      "Opportunity Attack",
+      "Silvery Barbs (spell)"
+    ]
+  },
+  "inventory": {
+    "weight_carried": 82.4,
+    "carrying_capacity": null,
+    "encumbrance_status": "unencumbered",
+    "attunement": {
+      "slots_total": null,
+      "slots_used": 0,
+      "attuned_items": [],
+      "note": "Boots of Striding and Springing is owned but not currently attuned."
+    },
+    "containers": [
+      {
+        "id": "equipment",
+        "weight": 52.4,
+        "items": [
+          {
+            "id": "boots_of_striding_and_springing",
+            "category": "Wondrous item",
+            "note": "Buff, Movement, Utility, Footwear; requires attunement — not attuned"
+          },
+          {
+            "id": "alchemists_fire",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 50
+          },
+          {
+            "id": "arrows",
+            "category": "Ammunition",
+            "weight": 0.9,
+            "qty": 18,
+            "cost_gp": 0.9
+          },
+          {
+            "id": "bagpipes",
+            "category": "Gear (Instrument)",
+            "weight": 6,
+            "qty": 1,
+            "cost_gp": 30
+          },
+          {
+            "id": "ball_bearings",
+            "category": "Adventuring Gear",
+            "weight": 2,
+            "qty": 1000,
+            "cost_gp": 1
+          },
+          {
+            "id": "costume",
+            "category": "Adventuring Gear",
+            "weight": 4,
+            "qty": 1,
+            "cost_gp": 5
+          },
+          {
+            "id": "dagger",
+            "category": "Weapon",
+            "weight": 1,
+            "qty": 2,
+            "cost_gp": 2
+          },
+          {
+            "id": "fine_clothes",
+            "category": "Adventuring Gear",
+            "weight": 6,
+            "qty": 1,
+            "cost_gp": 15
+          },
+          {
+            "id": "forgery_kit",
+            "category": "Gear (Tool)",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 15
+          },
+          {
+            "id": "grease",
+            "category": "Custom",
+            "weight": 0,
+            "qty": 1,
+            "cost_gp": null
+          },
+          {
+            "id": "leather",
+            "category": "Light Armor",
+            "weight": 10,
+            "cost_gp": 10,
+            "note": "AC 11"
+          },
+          {
+            "id": "mirror",
+            "category": "Adventuring Gear",
+            "weight": 0.5,
+            "qty": 1,
+            "cost_gp": 5
+          },
+          {
+            "id": "oil",
+            "category": "Adventuring Gear",
+            "weight": 0,
+            "qty": 0,
+            "cost_gp": null
+          },
+          {
+            "id": "perfume",
+            "category": "Adventuring Gear",
+            "weight": 0,
+            "qty": 1,
+            "cost_gp": 5
+          },
+          {
+            "id": "potion_of_healing",
+            "category": "Potion",
+            "weight": 0.5,
+            "qty": 2,
+            "note": "1 charge used, 1 charge remaining"
+          },
+          {
+            "id": "rapier",
+            "category": "Weapon",
+            "weight": 2,
+            "cost_gp": 25,
+            "note": "mastery: vex"
+          },
+          {
+            "id": "rope",
+            "category": "Adventuring Gear",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 1
+          },
+          {
+            "id": "thieves_tools",
+            "category": "Tool",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 25
+          },
+          {
+            "id": "travelers_clothes",
+            "category": "Adventuring Gear",
+            "weight": 4,
+            "qty": 1,
+            "cost_gp": 2
+          },
+          {
+            "id": "whisper",
+            "category": "Weapon (Shortbow, custom/magic)",
+            "weight": 2,
+            "cost_gp": 25,
+            "note": "mastery: vex; homebrew magic item, see actions.attacks.whisper for full effect"
+          }
+        ]
+      },
+      {
+        "id": "backpack",
+        "weight": 29,
+        "items": [
+          {
+            "id": "alchemists_fire",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 50
+          },
+          {
+            "id": "bell",
+            "category": "Adventuring Gear",
+            "weight": 0,
+            "qty": 1,
+            "cost_gp": 1
+          },
+          {
+            "id": "candle",
+            "category": "Adventuring Gear",
+            "weight": 0,
+            "qty": 10,
+            "cost_gp": 0.1
+          },
+          {
+            "id": "crowbar",
+            "category": "Adventuring Gear",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 2
+          },
+          {
+            "id": "foraged_food",
+            "category": "Custom",
+            "weight": 4,
+            "qty": 4,
+            "cost_gp": null
+          },
+          {
+            "id": "rations",
+            "category": "Adventuring Gear",
+            "weight": 8,
+            "qty": 4,
+            "cost_gp": 2
+          },
+          {
+            "id": "tinderbox",
+            "category": "Adventuring Gear",
+            "weight": 1,
+            "qty": 1,
+            "cost_gp": 0.5
+          },
+          {
+            "id": "waterskin",
+            "category": "Container",
+            "weight": 5,
+            "qty": 1,
+            "cost_gp": 0.2
+          }
+        ]
+      },
+      {
+        "id": "quiver",
+        "weight": 1,
+        "items": [],
+        "note": "empty — no equipment added to this container"
+      }
+    ]
+  },
+  "extras": [],
+  "narrative": {
+    "backstory_summary": null,
+    "note": "No Background/Notes/backstory page is exposed on a view-only (non-owned) character sheet. All narrative fields unresolved."
+  },
+  "validation": {
+    "unresolved": [
+      {
+        "field": "skills.performance",
+        "issue": "Proficiency (pre-expertise) not attributable to any feature/feat text visible on the sheet; likely one of Bard's 3 skill-proficiency choices, but that list is not shown on a view-only sheet."
+      },
+      {
+        "field": "resources.bardic_inspiration_uses.current",
+        "issue": "Current-use count not legible in DOM text (D&D Beyond renders this as a numeric widget, not plain text)."
+      },
+      {
+        "field": "resources.performance_of_creation_uses.max/current",
+        "issue": "Use count not legible in DOM text; the feature's own description text does not state a number of uses."
+      },
+      {
+        "field": "proficiencies.weapons",
+        "issue": "Scimitar and Whip proficiencies appear on the sheet but their source (class/feat) is not identified; core Rogue only grants Simple Weapons + Hand Crossbow/Rapier/Shortsword."
+      },
+      {
+        "field": "identity.background",
+        "issue": "Inferred as Charlatan from the Skilled feat's 'From: Charlatan' tag; the Background page itself is not viewable without builder access."
+      },
+      {
+        "field": "abilities.*.base",
+        "issue": "Only the Fey Touched Charisma +1 increase is confirmed; full base-score breakdown (point buy/standard array/species bonus) not visible without builder access."
+      },
+      {
+        "field": "narrative.*",
+        "issue": "Entire section unresolved — no Background/Notes page accessible for a non-owned character."
+      }
+    ],
+    "flags": [
+      {
+        "id": "view_only_capture",
+        "severity": "info",
+        "detail": "Captured from campaign-roster VIEW access, not owned by gruevyhat. Builder/Notes/Background pages were not reachable; capture is sheet-visible-only."
+      }
+    ]
+  }
+}
