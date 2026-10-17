@@ -829,6 +829,57 @@ table.codex td.name { font-family: 'Cinzel', serif; font-weight: 600; color: var
   font-size: 0.85em;
 }
 
+/* ---- Bastion ---- */
+.bastion-map {
+  margin: 26px 0 0;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px;
+}
+.bastion-map img { width: 100%; height: auto; display: block; border-radius: 2px; }
+.bastion-map figcaption {
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--ink-muted);
+  margin: 8px 4px 2px;
+}
+.bastion-rules {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.bastion-rules li + li { margin-top: 6px; }
+.bastion-rules strong { color: var(--ink); }
+table.codex.wrap { min-width: 680px; }
+table.codex.wrap td, table.codex.wrap th { white-space: normal; vertical-align: top; }
+table.codex.wrap td.name, table.codex.wrap td:nth-child(2) { white-space: nowrap; }
+.owner-dot {
+  display: inline-block;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--sc);
+  margin-right: 7px;
+  vertical-align: 1px;
+}
+.boon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+.boon-grid .card p { margin: 8px 0 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); }
+.boon-grid .card .boon-facilities {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-top: 4px;
+}
+
 footer.colophon {
   margin-top: 60px;
   padding-top: 20px;
@@ -1031,6 +1082,104 @@ footer.colophon {
           <p>Those same papers are the proof Serethe Skarsdotr has been hunting since High Keld fell &mdash; a cloud-rune matching the one seen the night her home was sacked. That discovery, made in Stonehaven, is her join point.</p>
         </li>
       </ol>
+    </section>
+
+    <section class="section" id="bastion">
+      <div class="section-head">
+        <span class="drop-cap">R</span>
+        <div class="section-titles">
+          <h2>The Rekindled Temple</h2>
+          <p>A proposed Bastion for the Company, under the 2024 Dungeon Master's Guide rules: the fire-gutted temple of Laduguer in Stonehaven's dwarven quarter, where the captives were freed, now restored as the party's own hold.</p>
+        </div>
+      </div>
+
+      <figure class="bastion-map">
+        <a href="bastion_map.jpg"><img src="bastion_map.jpg" alt="Floor plan of the Rekindled Temple: the burned nave, reconsecrated sanctuary, bell-tower arcane study, library, smithy, workshop, storehouse, refectory and rectory on the ground floor, with gardens and a reindeer stall in the walled churchyard; below, an undercroft of barracks, armory, old crypts, and a shrine of remembrance in the former slave pens."></a>
+        <figcaption>A concept drawing, not a battle map &mdash; the scale bar is decorative. Click for full size.</figcaption>
+      </figure>
+
+      <div class="chart-gallery" style="margin-top:18px;">
+        <div class="chart-panel">
+          <h3>How a Bastion Works</h3>
+          <p class="ph-note">The rules in brief.</p>
+          <ul class="bastion-rules">
+            <li><strong>Bastion turns</strong> come about every 7 days of in-game time. Each turn, every owner gives each of their special facilities one order: <em>Craft, Empower, Harvest, Recruit, Research,</em> or <em>Trade</em>.</li>
+            <li><strong>Maintain</strong> is the default whenever the party is away. When the whole Bastion maintains, the DM rolls on the <strong>Bastion Events</strong> table &mdash; anything from <em>All Is Well</em> to <em>Treasure</em>, <em>Criminal Hireling</em>, or <em>Attack</em>.</li>
+            <li><strong>No upkeep.</strong> Each special facility comes with its own hirelings, who cost nothing to keep.</li>
+            <li><strong>Growth.</strong> Each character holds 2 special facilities at level 5, 4 at level 9, 5 at 13, and 6 at 17, and may swap one facility for another on gaining a level.</li>
+          </ul>
+        </div>
+        <div class="chart-panel">
+          <h3>Holding the Walls</h3>
+          <p class="ph-note">What matters when the Attack event comes.</p>
+          <ul class="bastion-rules">
+            <li><strong>Bastion Defenders</strong> are recruited in the Barracks &mdash; each Barrack houses up to 12.</li>
+            <li>In an <strong>Attack</strong>, the DM rolls dice to see how many defenders fall. With no defenders left, a special facility shuts down for the next turn.</li>
+            <li>A <strong>stocked Armory</strong> makes defenders harder to kill: roll a d8 in place of each d6. Stocking costs 100&nbsp;GP plus 100&nbsp;GP per defender &mdash; <strong>half that, because the temple has a Smithy</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:30px 0 4px;">Special Facilities</h3>
+      <p class="ph-note" style="margin:0 0 4px;">Seven owners, two facilities each &mdash; every level-5 facility is present, five of them twice. Whether a facility may be duplicated across owners is the DM's call. Ulfaerr is not part of this Bastion.</p>
+      <div class="table-wrap">
+        <table class="codex wrap">
+          <thead>
+            <tr><th>Facility</th><th>Owner</th><th>Prerequisite</th><th>What its orders yield</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="name">Sanctuary</td><td><span class="s4"><span class="owner-dot"></span></span>Halden</td><td>Holy Symbol or Druidic Focus</td><td><em>Craft</em> a sacred focus. Grants a charm to cast <em>Healing Word</em> without a slot.</td></tr>
+            <tr><td class="name">Arcane Study</td><td><span class="s3"><span class="owner-dot"></span></span>Finn</td><td>Arcane Focus</td><td><em>Craft</em> an Arcane Focus or a blank book; magic items from level 9. Grants a charm to cast <em>Identify</em> without a slot.</td></tr>
+            <tr><td class="name">Library</td><td><span class="s3"><span class="owner-dot"></span></span>Finn &middot; <span class="s5"><span class="owner-dot"></span></span>Serethe</td><td>&mdash;</td><td><em>Research</em>: a hireling spends the turn digging into one topic and returns with what can be learned of it.</td></tr>
+            <tr><td class="name">Garden</td><td><span class="s4"><span class="owner-dot"></span></span>Halden &middot; <span class="s2"><span class="owner-dot"></span></span>Eddwarn</td><td>&mdash;</td><td><em>Harvest</em> from an herb garden: ten Healer's Kits or one Potion of Healing per turn. A poison garden yields antitoxin or basic poison instead.</td></tr>
+            <tr><td class="name">Smithy</td><td><span class="s1"><span class="owner-dot"></span></span>Burtha</td><td>Fighting Style or Unarmored Defense</td><td><em>Craft</em> anything Smith's Tools can make; magic armaments from level 9. Halves the Armory's stocking cost.</td></tr>
+            <tr><td class="name">Workshop</td><td><span class="s2"><span class="owner-dot"></span></span>Eddwarn &middot; <span class="s8"><span class="owner-dot"></span></span>Wimble</td><td>Expertise in a skill</td><td><em>Craft</em> adventuring gear with artisan's tools; magic implements from level 9. A Short Rest here grants <strong>Heroic Inspiration</strong>.</td></tr>
+            <tr><td class="name">Storehouse</td><td><span class="s1"><span class="owner-dot"></span></span>Burtha &middot; <span class="s8"><span class="owner-dot"></span></span>Wimble</td><td>&mdash;</td><td><em>Trade</em>: buy and store nonmagical goods, or sell them on at a profit.</td></tr>
+            <tr><td class="name">Barrack</td><td><span class="s6"><span class="owner-dot"></span></span>Talon &middot; <span class="s5"><span class="owner-dot"></span></span>Serethe</td><td>&mdash;</td><td><em>Recruit</em> Bastion Defenders, free of charge.</td></tr>
+            <tr><td class="name">Armory</td><td><span class="s6"><span class="owner-dot"></span></span>Talon</td><td>&mdash;</td><td><em>Trade</em> to stock arms and armor; while stocked, defenders roll d8s instead of d6s.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:30px 0 4px;">What Each Owner Gains</h3>
+      <p class="ph-note" style="margin:0 0 4px;">The personal side of the hold, owner by owner.</p>
+      <div class="boon-grid">
+        <div class="card" style="--series-color:var(--series-4)">
+          <h4 class="card-name">Halden</h4>
+          <div class="boon-facilities">Sanctuary &middot; Garden</div>
+          <p>Keeper of the reconsecrated altar. After a Long Rest in the temple, Halden carries a charm for one free <em>Healing Word</em>, and the cloister garden keeps the party stocked in Healer's Kits and healing potions.</p>
+        </div>
+        <div class="card" style="--series-color:var(--series-3)">
+          <h4 class="card-name">Finn</h4>
+          <div class="boon-facilities">Arcane Study &middot; Library</div>
+          <p>The bell-tower study gives a charm for one free <em>Identify</em> after a Long Rest &mdash; useful for loot sorting. From level 9 it can craft magic items outright.</p>
+        </div>
+        <div class="card" style="--series-color:var(--series-5)">
+          <h4 class="card-name">Serethe</h4>
+          <div class="boon-facilities">Library &middot; Barrack</div>
+          <p>Library research lets Serethe keep hunting the network behind High Keld's fall between adventures. Her Barrack keeps a second garrison, so the temple can't be taken the way her family's hold was. Her giant reindeer, a Huge creature, needs the Vast Courtyard.</p>
+        </div>
+        <div class="card" style="--series-color:var(--series-6)">
+          <h4 class="card-name">Talon</h4>
+          <div class="boon-facilities">Barrack &middot; Armory</div>
+          <p>Commands the undercroft militia. Recruiting defenders and keeping the Armory stocked makes Talon the one who decides how the temple fares when it is attacked.</p>
+        </div>
+        <div class="card" style="--series-color:var(--series-1)">
+          <h4 class="card-name">Burtha</h4>
+          <div class="boon-facilities">Smithy &middot; Storehouse</div>
+          <p>The forge halves the cost of stocking Talon's Armory, and the Storehouse sells what the smiths make. Burtha has no Expertise yet, so a Workshop isn't available to her until she gains some.</p>
+        </div>
+        <div class="card" style="--series-color:var(--series-2)">
+          <h4 class="card-name">Eddwarn</h4>
+          <div class="boon-facilities">Garden &middot; Workshop</div>
+          <p>A second garden &mdash; herbs, or poison for a rogue's purposes &mdash; and a Workshop that grants Heroic Inspiration after a Short Rest there.</p>
+        </div>
+        <div class="card" style="--series-color:var(--series-8)">
+          <h4 class="card-name">Wimble</h4>
+          <div class="boon-facilities">Storehouse &middot; Workshop</div>
+          <p>Trades with the dwarven merchants and draws Heroic Inspiration from the Workshop. The Theater and Gaming Hall become available at level 9.</p>
+        </div>
+      </div>
     </section>
 
     <footer class="colophon">
