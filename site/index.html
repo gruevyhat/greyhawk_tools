@@ -862,6 +862,63 @@ table.codex td.name { font-family: 'Cinzel', serif; font-weight: 600; color: var
 .tab-bar button:focus-visible { outline: 2px solid var(--gold-strong); outline-offset: 2px; }
 .tab-panel[hidden] { display: none; }
 
+/* ---- Portraits ---- */
+.portrait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 22px;
+  margin-top: 26px;
+}
+.portrait {
+  margin: 0;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--series-color);
+  border-radius: 4px;
+  padding: 12px 12px 14px;
+}
+.portrait-frame {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--surface);
+}
+.portrait-frame img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; display: block; }
+.portrait-frame .portrait-missing {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Unifraktur', serif;
+  font-size: 120px;
+  color: var(--series-color);
+  opacity: 0.5;
+}
+.portrait-x {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.portrait-x line {
+  stroke: #d0201a;
+  stroke-width: 9;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+.portrait figcaption { margin: 12px 4px 0; }
+.portrait .card-name a { color: inherit; }
+.portrait .portrait-sub {
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
 /* ---- Bastion ---- */
 .bastion-map {
   margin: 26px 0 0;
@@ -952,6 +1009,7 @@ footer.colophon {
     <nav class="tab-bar" role="tablist" aria-label="Codex sections">
       <button type="button" role="tab" id="tab-btn-company" aria-controls="tab-company" aria-selected="true">The Company</button>
       <button type="button" role="tab" id="tab-btn-bastion" aria-controls="tab-bastion" aria-selected="false" tabindex="-1">The Bastion</button>
+      <button type="button" role="tab" id="tab-btn-portraits" aria-controls="tab-portraits" aria-selected="false" tabindex="-1">The Portraits</button>
     </nav>
 
     <div class="tab-panel" id="tab-company" role="tabpanel" aria-labelledby="tab-btn-company">
@@ -1220,6 +1278,101 @@ footer.colophon {
           <div class="boon-facilities">Storehouse &middot; Workshop</div>
           <p>Trades with the dwarven merchants and draws Heroic Inspiration from the Workshop. The Theater and Gaming Hall become available at level 9.</p>
         </div>
+      </div>
+    </section>
+    </div>
+
+    <div class="tab-panel" id="tab-portraits" role="tabpanel" aria-labelledby="tab-btn-portraits" hidden>
+    <section class="section" id="portraits-gallery">
+      <div class="section-head">
+        <span class="drop-cap">P</span>
+        <div class="section-titles">
+          <h2>The Portraits</h2>
+          <p>Likenesses of the Company, as their players imagine them.</p>
+        </div>
+      </div>
+      <figure class="bastion-map">
+        <a href="portraits/group_battle.jpg"><img src="portraits/group_battle.jpg" alt="The Company fighting an orc horde: Eddwarn raising a scimitar with a giant spider behind him, Finn hurling frost, Halden lifting a blazing holy symbol, Burtha lunging with a sword, Talon in plate with a radiant blade, Wimble front and center conjuring glowing runes, and Ulfaerr swinging his lightning-wreathed polearm with an owl overhead."></a>
+        <figcaption>The Company holds the line against the orc horde. Click for full size.</figcaption>
+      </figure>
+      <div class="portrait-grid">
+        <figure class="portrait" style="--series-color:var(--series-1)">
+          <div class="portrait-frame">
+            <img src="portraits/burtha.jpg" alt="Burtha: a grey-skinned orc woman with tight cornrow braids and a stern look.">
+          </div>
+          <figcaption>
+            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/139642480">Burtha Smith</a></h3>
+            <div class="portrait-sub">Orc Fighter 4 / Ranger 1</div>
+          </figcaption>
+        </figure>
+        <figure class="portrait" style="--series-color:var(--series-2)">
+          <div class="portrait-frame">
+            <img src="portraits/eddwarn.jpg" alt="Eddwarn: an auburn-haired elf in a green hooded cloak and chain shirt, with scrolls and a quill at his satchel and a scimitar at his hip, a giant spider in the moonlit forest behind him.">
+          </div>
+          <figcaption>
+            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/138479018">Eddwarn Celas</a></h3>
+            <div class="portrait-sub">Elf Druid 4 / Rogue 1</div>
+          </figcaption>
+        </figure>
+        <figure class="portrait" style="--series-color:var(--series-3)">
+          <div class="portrait-frame">
+            <img src="portraits/finn.jpg" alt="Finn: a fair-haired man with shoulder-length hair against a grey background.">
+          </div>
+          <figcaption>
+            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/138631960">Finn Barrellor</a></h3>
+            <div class="portrait-sub">Human Wizard 5</div>
+          </figcaption>
+        </figure>
+        <figure class="portrait" style="--series-color:var(--series-4)">
+          <div class="portrait-frame">
+            <img src="portraits/halden.jpg" alt="Halden: a dark-haired young man in cream vestments embroidered with gold stars, in a candlelit library.">
+          </div>
+          <figcaption>
+            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/139584701">Halden Lorithan</a></h3>
+            <div class="portrait-sub">Human Cleric 5</div>
+          </figcaption>
+        </figure>
+        <figure class="portrait" style="--series-color:var(--series-5)">
+          <div class="portrait-frame">
+            <img src="portraits/serethe.jpg" alt="Serethe Skarsdotr: a blue-grey goliath woman with white braided hair and rune markings on her face, in dark plate armor with a warhammer at her shoulder, a ruined keep in snowy mountains behind her.">
+          </div>
+          <figcaption>
+            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/153611341">Serethe &ldquo;Se&rdquo; Skarsdotr</a></h3>
+            <div class="portrait-sub">Goliath Paladin 4 / Sorcerer 1 &middot; Shield-Heir of High Keld</div>
+          </figcaption>
+        </figure>
+        <figure class="portrait" style="--series-color:var(--series-6)">
+          <div class="portrait-frame">
+            <img src="portraits/talon.jpg" alt="Talon: a dark-haired man with a hard, steady stare.">
+          </div>
+          <figcaption>
+            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/144044496">Talon Aldric</a></h3>
+            <div class="portrait-sub">Human Paladin 5</div>
+          </figcaption>
+        </figure>
+        <figure class="portrait" style="--series-color:var(--series-7)">
+          <div class="portrait-frame">
+            <span class="portrait-missing" aria-hidden="true">U</span>
+            <img src="portraits/ulfaerr.jpg" alt="Ulfaerr, struck through with a red X: a dark-bearded man in a wolf-pelt hood and fur cloak, gripping a dragon-headed polearm crackling with purple lightning, on a storm-swept mountainside." onerror="this.remove()">
+            <svg class="portrait-x" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="8" y1="8" x2="92" y2="92"></line>
+              <line x1="92" y1="8" x2="8" y2="92"></line>
+            </svg>
+          </div>
+          <figcaption>
+            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/121672153">Ulfaerr</a></h3>
+            <div class="portrait-sub">Human Barbarian 1 / Warlock 4 &middot; of the Lortmil Mountains</div>
+          </figcaption>
+        </figure>
+        <figure class="portrait" style="--series-color:var(--series-8)">
+          <div class="portrait-frame">
+            <img src="portraits/wimble.jpg" alt="Wimble: a grinning gnome with big blue eyes and pointed ears, conjuring glowing runes in each hand.">
+          </div>
+          <figcaption>
+            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/139566268">Wimble Tinkerbright</a></h3>
+            <div class="portrait-sub">Forest Gnome Rogue 1 / Bard 4</div>
+          </figcaption>
+        </figure>
       </div>
     </section>
     </div>
@@ -3374,8 +3527,10 @@ footer.colophon {
 (function () {
   var tabs = {
     company: document.getElementById("tab-btn-company"),
-    bastion: document.getElementById("tab-btn-bastion")
+    bastion: document.getElementById("tab-btn-bastion"),
+    portraits: document.getElementById("tab-btn-portraits")
   };
+  var order = Object.keys(tabs);
   function show(name, updateUrl) {
     Object.keys(tabs).forEach(function (k) {
       var on = k === name;
@@ -3389,12 +3544,16 @@ footer.colophon {
     tabs[k].addEventListener("click", function () { show(k, true); });
     tabs[k].addEventListener("keydown", function (e) {
       if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-      var next = k === "company" ? "bastion" : "company";
+      var i = order.indexOf(k) + (e.key === "ArrowRight" ? 1 : -1);
+      var next = order[(i + order.length) % order.length];
       show(next, true);
       tabs[next].focus();
     });
   });
-  function fromHash() { show(location.hash === "#bastion" ? "bastion" : "company", false); }
+  function fromHash() {
+    var name = location.hash.slice(1);
+    show(tabs[name] ? name : "company", false);
+  }
   window.addEventListener("hashchange", fromHash);
   fromHash();
 })();
