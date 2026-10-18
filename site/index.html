@@ -1071,6 +1071,7 @@ footer.colophon {
 
     <nav class="tab-bar" role="tablist" aria-label="Codex sections">
       <button type="button" role="tab" id="tab-btn-company" aria-controls="tab-company" aria-selected="true">The Company</button>
+      <button type="button" role="tab" id="tab-btn-statistics" aria-controls="tab-statistics" aria-selected="false" tabindex="-1">The Statistics</button>
       <button type="button" role="tab" id="tab-btn-chronicle" aria-controls="tab-chronicle" aria-selected="false" tabindex="-1">The Chronicle</button>
       <button type="button" role="tab" id="tab-btn-bastion" aria-controls="tab-bastion" aria-selected="false" tabindex="-1">The Bastion</button>
       <button type="button" role="tab" id="tab-btn-portraits" aria-controls="tab-portraits" aria-selected="false" tabindex="-1">The Portraits</button>
@@ -1087,6 +1088,9 @@ footer.colophon {
       </div>
       <div class="roster-grid" id="roster-host"></div>
     </section>
+    </div>
+
+    <div class="tab-panel" id="tab-statistics" role="tabpanel" aria-labelledby="tab-btn-statistics" hidden>
 
     <section class="section" id="measures">
       <div class="section-head">
@@ -1212,7 +1216,7 @@ footer.colophon {
         <span class="drop-cap">C</span>
         <div class="section-titles">
           <h2>Chronicle of the Company</h2>
-          <p>A simplified timeline in the Flanaess calendar &mdash; only the 15th of Coldeven is attested in the source material, the rest is the scribe's own reconstruction, paced against the real session dates. The fuller account lives in the campaign lore archive.</p>
+          <p>A simplified timeline in the Flanaess calendar &mdash; only the 15th of Coldeven is attested in the source material, the rest is the scribe's own reconstruction, paced against the real session dates. The fuller account lives in the campaign lore archive. The session notes tucked under some entries are the work of Duke Mockingbird&rsquo;s Golem, not the Duke himself.</p>
         </div>
       </div>
       <ol class="chronicle-list">
@@ -1236,9 +1240,9 @@ footer.colophon {
           <span class="chronicle-date">Sunday, 9th of Wealsun <em>(reconstructed)</em> <span class="chronicle-real">&middot; May 30, 2026</span></span>
           <p>Stoutburrow is devastated by a second dragon attack. Commander Gilther Boffdan is assassinated and framed on the elves; a Scarlet Brotherhood cloak scrap redirects suspicion to the town's own mayor. The party retrieves a Stone of Dragon Control and wakes a slaad in the process.</p>
 <details class="duke">
-<summary>Duke Mockingbird&rsquo;s recaps (May 30, three parts)</summary>
+<summary>Notes from Duke Mockingbird&rsquo;s Golem (May 30, three parts)</summary>
 <div class="duke-text">
-<p class="duke-note">Written live by the Duke Mockingbird notetaker from a rough, speaker-less audio transcript, so names and facts drift. Reproduced in full as recorded, including where each recap was cut off.</p>
+<p class="duke-note">Written live at the table by Duke Mockingbird&rsquo;s Golem, an automaton scribe that listens to the session and drafts these notes in the Duke&rsquo;s voice. It works from a rough, speaker-less audio transcript, so names and facts drift. Reproduced in full as recorded, including where each recap was cut off.</p>
 <div class="duke-part"><h5>Part 1 of 3</h5>
 <p><strong>Session Overview</strong> The party uncovered the mayor’s thin‑line between heroism and corruption and decided to keep a watchful eye on him through the frontier ranger.  After a chaotic “high‑tea” at the mayor’s manor – complete with a hastily‑written song and a stealthy scroll‑recovery – the mayor rewarded the group with fresh mounts and supplies.  The session wrapped with the party planning their next expedition south to locate the ancient war‑bunker that houses the mysterious Dragon‑Control Crystal, while learning that the Scarlet Brotherhood and the mayor have their own hidden agendas.</p>
 <h5>Key Events</h5>
@@ -1311,9 +1315,9 @@ footer.colophon {
 <figure><a href="chronicle/oct17-08-the-buzzing-in-the-dark.jpg"><img src="chronicle/oct17-08-the-buzzing-in-the-dark.jpg" alt="Ink drawing: seven weary heroes face a dark corridor as skeletons approach." loading="lazy"></a><figcaption>The buzzing in the dark.</figcaption></figure>
 </div>
 <details class="duke">
-<summary>Duke Mockingbird&rsquo;s session notes (Oct 17)</summary>
+<summary>Notes from Duke Mockingbird&rsquo;s Golem (Oct 17)</summary>
 <div class="duke-text">
-<p class="duke-note">Posted live during the session by the Duke Mockingbird notetaker, from a rough audio transcript. Reproduced in full.</p>
+<p class="duke-note">Posted live during the session by Duke Mockingbird&rsquo;s Golem, an automaton scribe that listens to the session and drafts these notes in the Duke&rsquo;s voice, from a rough audio transcript. Reproduced in full.</p>
 <div class="duke-part"><h5>Notes captured through 13:13 (rough transcript; uncertain names/details may need correcting):</h5>
 <ul><li>About four days remain before the recruited men and dwarves leave for the northern war, after the festival.</li><li>The immediate job is to clear the cursed graveyard crypt so the temple can eventually be resanctified, with a cleric’s help. Undead are expected.</li><li>During the celebration, Ulfie appears to make off with the ruby unnoticed; the discussion around this is partly garbled.</li><li>A magic item’s daily charges were determined by rolling a d6, dividing by two and rounding up: one charge today.</li><li>The party discussed founding a legitimate research-and-acquisitions business, with a bastion headquarters and a network of traders and entertainers gathering rumors about orc armies and the Scarlet Brotherhood. Reports would return to Stonehaven; onward delivery to the traveling party is still undecided.</li><li>A possible introduction for the vengeance paladin involves old cloud-giant histories or scrolls rumored to be in the crypt. These are leads, not confirmed discoveries.</li><li>A patron offered a couple of goblins as possible hires. Their role would be listening for rumors, rather than dangerous infiltration. Logan Hunter, the mining owner, was also mentioned as a possible client.</li></ul>
 <p>Right. Planning concluded, the party headed into the quarter toward the temple and graveyard. Shouting and clashing weapons came from ahead—and initiative was called.</p></div><div class="duke-part"><h5>Update — 13:14–13:46</h5>
@@ -3625,6 +3629,7 @@ footer.colophon {
 (function () {
   var tabs = {
     company: document.getElementById("tab-btn-company"),
+    statistics: document.getElementById("tab-btn-statistics"),
     chronicle: document.getElementById("tab-btn-chronicle"),
     bastion: document.getElementById("tab-btn-bastion"),
     portraits: document.getElementById("tab-btn-portraits")
