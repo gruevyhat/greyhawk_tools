@@ -1008,6 +1008,7 @@ footer.colophon {
 
     <nav class="tab-bar" role="tablist" aria-label="Codex sections">
       <button type="button" role="tab" id="tab-btn-company" aria-controls="tab-company" aria-selected="true">The Company</button>
+      <button type="button" role="tab" id="tab-btn-chronicle" aria-controls="tab-chronicle" aria-selected="false" tabindex="-1">The Chronicle</button>
       <button type="button" role="tab" id="tab-btn-bastion" aria-controls="tab-bastion" aria-selected="false" tabindex="-1">The Bastion</button>
       <button type="button" role="tab" id="tab-btn-portraits" aria-controls="tab-portraits" aria-selected="false" tabindex="-1">The Portraits</button>
     </nav>
@@ -1140,8 +1141,10 @@ footer.colophon {
       </div>
       <div id="table-host"></div>
     </section>
+    </div>
 
-    <section class="section" id="chronicle">
+    <div class="tab-panel" id="tab-chronicle" role="tabpanel" aria-labelledby="tab-btn-chronicle" hidden>
+    <section class="section" id="company-chronicle">
       <div class="section-head">
         <span class="drop-cap">C</span>
         <div class="section-titles">
@@ -3535,6 +3538,7 @@ footer.colophon {
 (function () {
   var tabs = {
     company: document.getElementById("tab-btn-company"),
+    chronicle: document.getElementById("tab-btn-chronicle"),
     bastion: document.getElementById("tab-btn-bastion"),
     portraits: document.getElementById("tab-btn-portraits")
   };
