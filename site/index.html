@@ -829,6 +829,60 @@ table.codex td.name { font-family: 'Cinzel', serif; font-weight: 600; color: var
   font-size: 0.85em;
 }
 
+.chronicle-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+  gap: 12px;
+  margin: 14px 0 0;
+  max-width: 900px;
+}
+.chronicle-gallery figure { margin: 0; }
+.chronicle-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+.chronicle-gallery figcaption {
+  margin-top: 5px;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--ink-muted);
+}
+details.duke {
+  margin: 14px 0 0;
+  max-width: 74ch;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+details.duke summary {
+  cursor: pointer;
+  padding: 9px 14px;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--gold-strong);
+}
+.duke-text { padding: 0 16px 14px; }
+.chronicle-item .duke-text p { margin: 0 0 10px; font-size: 14.5px; }
+.chronicle-item .duke-text p.duke-note,
+.chronicle-item .duke-text p.duke-cut { font-style: italic; color: var(--ink-muted); }
+.duke-part { border-top: 1px solid var(--border); padding-top: 10px; margin-top: 10px; }
+.duke-text h5 {
+  margin: 4px 0 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.duke-text ul { margin: 0 0 10px; padding-left: 20px; font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); }
+.duke-text li { margin-bottom: 4px; }
+.duke-text table { border-collapse: collapse; font-size: 13.5px; margin: 0 0 10px; color: var(--ink-soft); }
+.duke-text th, .duke-text td { border: 1px solid var(--border); padding: 4px 8px; text-align: left; vertical-align: top; }
+
 /* ---- Tabs ---- */
 .tab-bar {
   display: flex;
@@ -861,6 +915,10 @@ table.codex td.name { font-family: 'Cinzel', serif; font-weight: 600; color: var
 }
 .tab-bar button:focus-visible { outline: 2px solid var(--gold-strong); outline-offset: 2px; }
 .tab-panel[hidden] { display: none; }
+@media (max-width: 640px) {
+  .tab-bar { gap: 2px; }
+  .tab-bar button { padding: 9px 8px 8px; font-size: 11px; letter-spacing: 0.08em; }
+}
 
 /* ---- Portraits ---- */
 .portrait-grid {
@@ -876,6 +934,11 @@ table.codex td.name { font-family: 'Cinzel', serif; font-weight: 600; color: var
   border-top: 3px solid var(--series-color);
   border-radius: 4px;
   padding: 12px 12px 14px;
+}
+.card-portrait {
+  flex: none;
+  width: 104px;
+  border: 1px solid var(--border);
 }
 .portrait-frame {
   position: relative;
@@ -1164,18 +1227,71 @@ footer.colophon {
         <li class="chronicle-item">
           <span class="chronicle-date">Moonday, 3rd of Planting <em>(reconstructed)</em> <span class="chronicle-real">&middot; Feb 28, 2026</span></span>
           <p>Aetheryoes attacks Stoutburrow directly, then inexplicably breaks off. Trixie is cornered and subdued; her "shield guardian" turns out to be a dressed-up construct.</p>
+<div class="chronicle-gallery">
+<figure><a href="chronicle/feb28-warehouse-drill.jpg"><img src="chronicle/feb28-warehouse-drill.jpg" alt="A hooded figure beside a huge vehicle-mounted drill, two fallen gnomes on the ground." loading="lazy"></a><figcaption>Warehouse 13 and its drill.</figcaption></figure>
+<figure><a href="chronicle/feb28-finn-cyberdog.jpg"><img src="chronicle/feb28-finn-cyberdog.jpg" alt="A wizard blasts a clockwork dog with a ray of frost in a rune-lit cavern." loading="lazy"></a><figcaption>Finn and a cyberdog, moments before it got him.</figcaption></figure>
+</div>
         </li>
         <li class="chronicle-item">
           <span class="chronicle-date">Sunday, 9th of Wealsun <em>(reconstructed)</em> <span class="chronicle-real">&middot; May 30, 2026</span></span>
           <p>Stoutburrow is devastated by a second dragon attack. Commander Gilther Boffdan is assassinated and framed on the elves; a Scarlet Brotherhood cloak scrap redirects suspicion to the town's own mayor. The party retrieves a Stone of Dragon Control and wakes a slaad in the process.</p>
+<details class="duke">
+<summary>Duke Mockingbird&rsquo;s recaps (May 30, three parts)</summary>
+<div class="duke-text">
+<p class="duke-note">Written live by the Duke Mockingbird notetaker from a rough, speaker-less audio transcript, so names and facts drift. Reproduced in full as recorded, including where each recap was cut off.</p>
+<div class="duke-part"><h5>Part 1 of 3</h5>
+<p><strong>Session Overview</strong> The party uncovered the mayor’s thin‑line between heroism and corruption and decided to keep a watchful eye on him through the frontier ranger.  After a chaotic “high‑tea” at the mayor’s manor – complete with a hastily‑written song and a stealthy scroll‑recovery – the mayor rewarded the group with fresh mounts and supplies.  The session wrapped with the party planning their next expedition south to locate the ancient war‑bunker that houses the mysterious Dragon‑Control Crystal, while learning that the Scarlet Brotherhood and the mayor have their own hidden agendas.</p>
+<h5>Key Events</h5>
+<ul><li><strong>Mayor’s Reputation Questioned</strong> – Players debated the mayor’s growing power and agreed to consult the frontier ranger for advice and surveillance.</li><li><strong>Ranger Consultation</strong> – The ranger (named <em>Jessica</em> by the group) offered to keep a “very small eye” on the mayor and to watch his bases.</li><li><strong>Misty‑Step Infiltration</strong> – The party used two successive Misty Step jumps to slip into the mayor’s house, surveil, and retrieve stolen scrolls.</li><li><strong>Scroll Return &amp; High‑Tea</strong> – Scrolls were returned to the mayor’s desk; the party was invited to a formal high‑tea where they performed a (mostly comical) song.</li><li><strong>Reward Distribution</strong> – The mayor, impressed (or at least appeased), gave each character a brand‑new horse, food provisions, and a modest amount of “charges” (2 charges total after a d6 roll).</li><li><strong>Planning the Southern Expedition</strong> – Discussion revealed a hidden war‑bunker containing a <strong>Dragon‑Control Crystal</strong>.  The mayor likely sent agents ahead; the Scarlet Brotherhood is backing the mayor with cash and protection.</li><li><strong>Ancient Door Mechanics</strong> – The party learned the bunker door is a relic from the “Four Wars” (≈60 years old) requiring a special key or knowledge to open.</li><li><strong>Meta‑Chat</strong> – A brief interlude about AI transcription tools (Claude, Gemini, ChatGPT) that the group is using to capture the session.</li></ul>
+<h5>NPCs Encountered</h5>
+<table><thead><tr><th>NPC</th><th>Role / Description</th></tr></thead><tbody><tr><td><strong>Mayor</strong></td><td>Celebrated hero of the concave; now suspected of abusing power and conspiring for the Dragon‑Control Crystal.</td></tr><tr><td><strong>Frontier Ranger (Jessica)</strong></td><td>Trusted ranger, willing to keep a discreet watch on the mayor and advise the party.</td></tr><tr><td><strong>Mayor’s Secretary</strong></td><td>Facilitated the high‑tea invitation and formal dress‑code.</td></tr><tr><td>Scarlet Brotherhood (</td></tr></tbody></table>
+<p class="duke-cut">(The recap breaks off here.)</p></div><div class="duke-part"><h5>Part 2 of 3</h5>
+<p><strong>The Concave, Year 743 – The Day the Mayor Went to High Tea (and Forgot His Own Scrolls)</strong></p>
+<p>It was a mug‑full of cold rain when the party slipped into the town of Concave, the blasted little settlement that still thinks the mayor is a saint because he never once tripped over a sack of wheat (or so the townsfolk swear). We’d just survived the “Great Burning”—the whole district was a char‑red toast‑crust, and the mayor waltzed out of the ashes like a phoenix with a really bad PR team. The crew—our rag‑tag, over‑caffeinated band of “heroes”—had a single, burning question: <strong>Do we expose the mayor’s dubious heroics, or do we let him keep his shiny cape and sneak off to a secret bunker with a dragon‑controlling crystal?</strong></p>
+<p>Right.</p>
+<p>Our first real move was a showdown in the mayor’s manor, where the bard (bless his lyrical soul) tried to wrangle a <em>Persuasion</em> roll that could’ve knocked a griffin out of the sky. After a brief council of “maybe we should ask the Ranger for intel”, we learned that <strong>Ranger Carcer</strong>—a front‑line scout who apparently moonlights as a “boat‑person” (my memory blurs there)—was already on to the mayor’s shenanigans. He’d whispered that the mayor had dispatched a handful of covert agents to a subterranean war‑forged bunker, the kind that houses a single, pulsing <strong>Dragon Crystal</strong>.</p>
+<p>Right.</p>
+<p>We set out south, the road dust swirling like a bad ale over a tavern floor, when <strong>Misty‑Step</strong> entered the scene. One of the wizards (or perhaps a rogue with a fancy footwork perk—my notes are fuzzy) “teleported” a foot or thirty feet forward, shouting something about “don’t be stealthy, we’re already in the house!” The group, in a moment of brilliant collective confidence, decided that the best way to infiltrate a secret lair was <em>not</em> to be sneaky, but to <strong>dress up for high tea</strong>.</p>
+<p>Right.</p>
+<p>Enter the “high‑tea caper”: the party arrived at the mayor’s manor in their finest silks (you could practically hear the rustle of silk on the creaking floorboards). The bard hastily composed a jaunty song about heroic deeds—though the mayor, who was apparently <strong>bored out of his mind</strong>, fell asleep mid‑chorus and snored louder than a dragon on a hot day. The scrolls? Yep, the party slipped the stolen scrolls back into the mayor’s desk <strong>without anyone noticing</strong> (thanks to a daring <em>Disappearance Dust</em> that had zero charges left—another honest mistake on my part). The mayor woke up, glanced at the scrolls, and muttered something about “being a hero” before promptly yawning into a chaise.</p>
+<p>Right.</p>
+<p>Our reward for the successful (if not entirely dignified) espionage was a <strong>brand‑new set of horses</strong>—plumes, oats, the whole shebang. The party, still buzzing from their tea‑time triumph, decided</p>
+<p class="duke-cut">(The recap breaks off here.)</p></div><div class="duke-part"><h5>Part 3 of 3</h5>
+<p><strong>The 17th of Emberfall, Year of the Smoldering Scrolls – “The Great Griffon Gallop &amp; the Froggy Crystal Caper”</strong></p>
+<p>Ladies, gentlemen, and anyone who’s ever tried to ride a griffon with a sack of scrolls on their back, welcome back to my not‑so‑official chronicle of the <em>Rag‑Tag Rangers of the Concave</em>. Grab a tankard, settle in, and let’s chew over the latest escapade (preferably something a‑lot‑chewier than that stale ale you’re nursing).</p>
+<p>Right.</p>
+<p>Our motley crew—Evan the <em>“I‑Think‑I‑Can‑Persuade‑the‑Mayor”</em> bard, Jessica the Ranger who “just a boat‑person” (I’m still not 100 % sure whether that’s a boat, a raft, or a particularly sturdy walking stick), a half‑forgotten mayor who’s apparently a hero <em>and</em> a schemer, plus the rest of you daring misfits—were perched on the edge of a town that’s basically a pile of charred wheat and a billboard advertising “Mayor: Hero of the Concave!” (the phrasing is still odd, but you get the gist).</p>
+<p>The mayor, who seems to moonlight as a “hero” while also possibly selling his soul for a <em>crystal</em> that could control an earth‑dragon (the marketing brochure was a bit vague), tossed a <em>very</em> suspicious errand to our party: go south, find the hidden war‑bunker, snag the dragon‑crystal, and bring it back. The mayor’s logic, as explained by the party’s unofficial therapist (a.k.a. the Dungeon Master), is that if they fail, the town will burn. If they succeed, the town will burn <em>even more</em> because a dragon is always a good way to get fireworks. (My little gray cells fail me here on the exact phrasing.)</p>
+<p>Right.</p>
+<p>Our heroes had already done a little “retrieve the scrolls” side‑quest, which involved sneaking into the mayor’s study, swapping out some ancient parchments (the mayor apparently hired a scribe to write poetry for his lunch menu), and then—hold onto your hats—a <strong>high‑tea</strong> with the mayor himself. The whole affair was basically a compulsory “pick‑your‑poison” for anyone with a sense of dignity. One of the bards tried to serenade the mayor with a <em>song of heroic deeds</em> but the mayor seemed more interested in <em>how many horses</em> he could feed that night. (I swear I heard a trumpeting goat somewhere in the background.)</p>
+<p>Right.</p>
+<p>After the tea (which, according to the party’s unofficial accountant, cost more than the entire treasury of the town), they were gifted brand‑new horses, a few loaves of “grease‑soaked bun‑sleighs” (</p>
+<p class="duke-cut">(The recap breaks off here.)</p></div>
+</div>
+</details>
         </li>
         <li class="chronicle-item">
           <span class="chronicle-date">Earthday, 13th of Wealsun <em>(reconstructed)</em> <span class="chronicle-real">&middot; June 20, 2026</span></span>
           <p>Escape from the slaad; an ambush kills a dragonborn (Burtha) and loses a cloaked figure into the dark. The party reaches Stonehaven, opens the Teighfield-family investigation, and wins the town council's vote for equal treatment of its goblin miners.</p>
+<div class="chronicle-gallery">
+<figure><a href="chronicle/jun20-river-slaad.jpg"><img src="chronicle/jun20-river-slaad.jpg" alt="Manga-style panel: a monstrous water spirit rises from a river below cliffs as a small boat flees." loading="lazy"></a><figcaption>Fleeing downriver from the slaad.</figcaption></figure>
+<figure><a href="chronicle/jun20-burtha-dragonborn.jpg"><img src="chronicle/jun20-burtha-dragonborn.jpg" alt="Manga-style panel: a braided orc warrior clashes with a dragonborn breathing at her by a campfire." loading="lazy"></a><figcaption>Burtha and the dragonborn on night watch.</figcaption></figure>
+<figure><a href="chronicle/jun20-eva-gold.jpg"><img src="chronicle/jun20-eva-gold.jpg" alt="Manga-style panels: a barmaid overwhelmed at being handed a gold coin." loading="lazy"></a><figcaption>Eva the barmaid meets a whole gold piece.</figcaption></figure>
+<figure><a href="chronicle/jun20-nicholas-zilchus.jpg"><img src="chronicle/jun20-nicholas-zilchus.jpg" alt="Manga-style panel: a bald, tattooed priest seated in a shrine with a book." loading="lazy"></a><figcaption>Nicholas at the Shrine of Zilchus.</figcaption></figure>
+<figure><a href="chronicle/jun20-goblin-rally.jpg"><img src="chronicle/jun20-goblin-rally.jpg" alt="Manga-style panel: a goblin with a megaphone rallies miners under an Equal Rights banner." loading="lazy"></a><figcaption>Hatchet Grease&rsquo;s rally in Unity Square.</figcaption></figure>
+<figure><a href="chronicle/jun20-wimble-council.jpg"><img src="chronicle/jun20-wimble-council.jpg" alt="Manga-style panel: a gnome bard orates passionately from a lectern." loading="lazy"></a><figcaption>Wimble carries the council vote.</figcaption></figure>
+</div>
         </li>
         <li class="chronicle-item">
           <span class="chronicle-date">Sunday, 23rd of Wealsun <em>(reconstructed)</em> <span class="chronicle-real">&middot; Aug 1, 2026</span></span>
           <p>Hatchet Grease reveals that vanished councilmember Kadar al'Habib ran Stonehaven's slave trade. The trail leads to a temple of Laduguer in the dwarven quarter: a golem fight, papers lifted from Nalral Ruby-Eye's desk, and a crypt battle that ends with Nalral killed by the vengeful ghost of a slave's mother.</p>
+<div class="chronicle-gallery">
+<figure><a href="chronicle/aug01-hookah.jpg"><img src="chronicle/aug01-hookah.jpg" alt="Manga-style panel: a goblin boss and a barbarian lounge on cushions sharing a hookah in a lavish yurt." loading="lazy"></a><figcaption>Ulfie partakes with Hatchet Grease.</figcaption></figure>
+<figure><a href="chronicle/aug01-imp-fire.jpg"><img src="chronicle/aug01-imp-fire.jpg" alt="Manga-style panel: an imp cackles as a townhouse burns." loading="lazy"></a><figcaption>The imp&rsquo;s diversion.</figcaption></figure>
+<figure><a href="chronicle/aug01-golem.jpg"><img src="chronicle/aug01-golem.jpg" alt="Manga-style panel: an armored construct bursts through a wooden door." loading="lazy"></a><figcaption>The golem comes through the door.</figcaption></figure>
+<figure><a href="chronicle/aug01-burtha-golem.jpg"><img src="chronicle/aug01-burtha-golem.jpg" alt="Manga-style panel: an orc warrior cuts the construct in two." loading="lazy"></a><figcaption>Burtha ends the golem.</figcaption></figure>
+<figure><a href="chronicle/aug01-nalral.jpg"><img src="chronicle/aug01-nalral.jpg" alt="Manga-style panel: a red-eyed dwarf in robes conjures a skull-marked orb in a cavern." loading="lazy"></a><figcaption>Nalral Ruby-Eye in the crypts.</figcaption></figure>
+</div>
         </li>
         <li class="chronicle-item">
           <span class="chronicle-date">Earthday, 27th of Wealsun <em>(reconstructed)</em></span>
@@ -1184,6 +1300,36 @@ footer.colophon {
         <li class="chronicle-item">
           <span class="chronicle-date">The Festival of Growth <em>(date uncertain)</em> <span class="chronicle-real">&middot; Oct 17, 2026</span></span>
           <p>While Stonehaven celebrates and its war levies prepare to march north, the party plans a research-and-acquisitions company as cover for an intelligence network watching the orcs and the Scarlet Brotherhood. In the confusion of the festival, Ulfaerr slips away with a ruby the party had been keeping and is gone. In the dwarven graveyard the party finds Serethe holding off armored dwarven dead, hunting relics of her cloud-giant ancestors, and she joins them in the cursed crypt below: Bob the Mud-Man and his treacherous mud-mephit kin, two mummies, and a column of skeletons. Burtha destroys the last mummy, but more skeletons march in, and something buzzes in the dark down the hall.</p>
+<div class="chronicle-gallery">
+<figure><a href="chronicle/oct17-01-business-and-a-missing-ruby.jpg"><img src="chronicle/oct17-01-business-and-a-missing-ruby.jpg" alt="Ink drawing: a hooded barbarian slips out of a tavern with a gem while the others plan at a table." loading="lazy"></a><figcaption>Business plans, and a missing ruby.</figcaption></figure>
+<figure><a href="chronicle/oct17-02-the-graveyard-rescue.jpg"><img src="chronicle/oct17-02-the-graveyard-rescue.jpg" alt="Ink drawing: a towering goliath with a greatsword holds off armored undead dwarves in a graveyard as allies vault the fence." loading="lazy"></a><figcaption>The graveyard rescue.</figcaption></figure>
+<figure><a href="chronicle/oct17-03-incense-at-the-crypt.jpg"><img src="chronicle/oct17-03-incense-at-the-crypt.jpg" alt="Ink drawing: the goliath conjures scented smoke at a crypt entrance while companions cover their noses." loading="lazy"></a><figcaption>Incense at the crypt door.</figcaption></figure>
+<figure><a href="chronicle/oct17-04-bob-and-his-treasure.jpg"><img src="chronicle/oct17-04-bob-and-his-treasure.jpg" alt="Ink drawing: a gnome hands a hammer to a small creature made of mud." loading="lazy"></a><figcaption>Bob and his treasure.</figcaption></figure>
+<figure><a href="chronicle/oct17-05-the-undead-awaken.jpg"><img src="chronicle/oct17-05-the-undead-awaken.jpg" alt="Ink drawing: mummies rise from sarcophagi as the cleric&rsquo;s spirit guardians swirl." loading="lazy"></a><figcaption>The undead awaken.</figcaption></figure>
+<figure><a href="chronicle/oct17-06-mud-terror-and-the-rotting-fist.jpg"><img src="chronicle/oct17-06-mud-terror-and-the-rotting-fist.jpg" alt="Ink drawing: a mummy grips the goliath&rsquo;s arm while a paralyzed paladin stares and mud creatures swarm." loading="lazy"></a><figcaption>Mud, terror, and the rotting fist.</figcaption></figure>
+<figure><a href="chronicle/oct17-07-the-lawnmower-returns.jpg"><img src="chronicle/oct17-07-the-lawnmower-returns.jpg" alt="Ink drawing: radiant spirit guardians sweep the crypt as the orc warrior cuts down the last mummy." loading="lazy"></a><figcaption>The lawnmower returns.</figcaption></figure>
+<figure><a href="chronicle/oct17-08-the-buzzing-in-the-dark.jpg"><img src="chronicle/oct17-08-the-buzzing-in-the-dark.jpg" alt="Ink drawing: seven weary heroes face a dark corridor as skeletons approach." loading="lazy"></a><figcaption>The buzzing in the dark.</figcaption></figure>
+</div>
+<details class="duke">
+<summary>Duke Mockingbird&rsquo;s session notes (Oct 17)</summary>
+<div class="duke-text">
+<p class="duke-note">Posted live during the session by the Duke Mockingbird notetaker, from a rough audio transcript. Reproduced in full.</p>
+<div class="duke-part"><h5>Notes captured through 13:13 (rough transcript; uncertain names/details may need correcting):</h5>
+<ul><li>About four days remain before the recruited men and dwarves leave for the northern war, after the festival.</li><li>The immediate job is to clear the cursed graveyard crypt so the temple can eventually be resanctified, with a cleric’s help. Undead are expected.</li><li>During the celebration, Ulfie appears to make off with the ruby unnoticed; the discussion around this is partly garbled.</li><li>A magic item’s daily charges were determined by rolling a d6, dividing by two and rounding up: one charge today.</li><li>The party discussed founding a legitimate research-and-acquisitions business, with a bastion headquarters and a network of traders and entertainers gathering rumors about orc armies and the Scarlet Brotherhood. Reports would return to Stonehaven; onward delivery to the traveling party is still undecided.</li><li>A possible introduction for the vengeance paladin involves old cloud-giant histories or scrolls rumored to be in the crypt. These are leads, not confirmed discoveries.</li><li>A patron offered a couple of goblins as possible hires. Their role would be listening for rumors, rather than dangerous infiltration. Logan Hunter, the mining owner, was also mentioned as a possible client.</li></ul>
+<p>Right. Planning concluded, the party headed into the quarter toward the temple and graveyard. Shouting and clashing weapons came from ahead—and initiative was called.</p></div><div class="duke-part"><h5>Update — 13:14–13:46</h5>
+<ul><li>Around the temple, the party found a towering, heavily armored greatsword wielder being surrounded by dwarven undead. Their archaic armor, dirt and sluggish movement gave them away.</li><li>Birds reported that the newcomer had slipped into the graveyard, made noise, and caused the dwarves to rise from the ground. Stealth and full plate: an ambitious pairing.</li><li>The party moved to help. One spectacular vault over the spiked iron fence scored 23 on Acrobatics; a marked target then lost its shield arm in a sword attack. Another ally vaulted the fence and attacked the same foe while others moved toward the gate.</li><li>Radiant damage proved useful. Shining Smite was discussed for the paladin; fire and turning undead also came up as possible tactics. The transcript does not yet establish that the fight is over.</li><li>Play then paused for a paladin character-sheet review, including ability scores, advancement and equipment. One clear correction: a greatsword needs two hands, so it cannot be used with a shield; a longsword-and-shield setup keeps the shield’s armor bonus.</li></ul>
+<p>Right. The rescue is underway, but the graveyard’s dead are still very much on their feet.</p></div><div class="duke-part"><h5>Update — 13:47–15:09</h5>
+<ul><li>After a break, the graveyard fight resumed. Wimble’s flaming arrow finished off the already-damaged dwarf, leaving a burning suit of armor with dust inside. Seven zombies remained at that point.</li><li>The paladin missed an opening swing, connected with the second, and added Divine Smite for 22 total damage, leaving the target bloodied.</li><li>The dwarves struck back. The towering newcomer took two hammer blows totaling 19 damage. Another dwarf fumbled so spectacularly that its hammer flew away with its hand still attached.</li><li>Bertha’s next two attacks missed. Finn brought out Melf’s Minute Meteors; a blast caught two dwarves, both failed their Dexterity saves, and each took 5 fire damage.</li><li>The newcomer tried Booming Blade with the greatsword, missed, but dealt 4 damage through Graze. Another Shillelagh/Booming Blade attempt clanged off an undead shield.</li><li>Wimble collected the severed hand and hammer (priorities), then scored a natural 20 with the rapier against the dwarf beside Bertha, adding Sneak Attack. The final damage arithmetic is unclear in the transcript.</li></ul>
+<p>Right. The dead are losing limbs, the living are collecting souvenirs, and the fight is still underway.</p></div><div class="duke-part"><h5>Update — 15:10–17:24</h5>
+<ul><li>The graveyard fight finally ended around 15:45. Meteors, smites, Faerie Fire and persistence wore the dwarves down; the newcomer delivered the final blow. The party healed up and set aside two reasonably intact suits of ancient armor and unusual hammers.</li><li>The newcomer introduced herself as Se, seeking relics of her cloud-giant ancestors. With the party clearing the restless dead and Se seeking artifacts, they agreed to enter the crypt together.</li><li>The crypt’s stench caused repeated bouts of vomiting. Elementalism supplied scented smoke and some relief before everyone made it downstairs. The low ceiling ruled out great weapons. Beyond lay a burial chamber with damaged mosaics, sarcophagi and heaps of corpses.</li><li>Bob the Mudman announced himself as an aspiring adventurer and demanded treasure. Given the recovered hammer, he happily adopted it as his new friend. Divine Sense detected undead in the two sarcophagi flanking the far passage.</li><li>Two mummies rose, while a seemingly endless column of skeletons marched down the narrow hall. The cleric held the choke point with Spirit Guardians, supported by Moonbeam and Finn’s Cloud of Daggers. Skeletons crumbled, and more marched over them.</li><li>About twelve more mud creatures emerged, clamoring for coins. Some party members paid; Se instead cast Protection from Evil and Good on the cleric. The creatures became hostile. That protection immediately proved valuable, preventing the mummy’s fear effect and hindering its attacks. Bob stayed out of the fighting with his hammer.</li><li>Talon was paralyzed by a mummy’s dreadful glare; the effect has now expired. Se suffered a rotting strike, felt sickness spreading through her arm, and later landed a heavy smite that left a mummy bloodied. No lasting condition has yet been confirmed in the transcript.</li><li>The mud creatures were identified as mud mephits. Their breath restrained Finn, and the swarm crowded the route out. Wimble’s Command failed, Bertha cut into a mephit, and the cleric repositioned Spirit Guardians—the party’s “magical lawnmower”—damaging much of the swarm and killing two. Moonbeam was then moved onto the mummy.</li></ul>
+<p>Right. The skeleton queue keeps advancing, the mud is fighting back, and the party is relying on that whirling holy lawnmower to make an exit possible.</p></div><div class="duke-part"><h5>Final update — Oct 17 session, 17:25–17:58</h5>
+<p>Right. The magical lawnmower stalled, and for a moment things looked decidedly unpleasant.</p>
+<ul><li>The mephits battered the party, with Finn taking heavy damage while restrained. A hit broke the cleric’s concentration on Spirit Guardians. Bertha and Talon fought back, cutting down more of the swarm.</li><li>A mummy struck Talon with its rotting fist. Heroic Inspiration rescued his Constitution save, avoiding the creeping rot described by the DM. Se’s earlier failed save remains an unresolved concern; the transcript records no removal of a possible mummy-rot curse.</li><li>The cleric recast Spirit Guardians. A 17-point radiant sweep cleared nearly all the remaining mephits, destroyed a skeleton and brought down one mummy. The lawnmower was very much back in business.</li><li>Finn finally escaped restraint and moved Cloud of Daggers onto the surviving mummy. Wimble blasted the last hostile mephit with lightning. Bertha then finished the remaining mummy with a flurry of sword strikes.</li><li>Se and Talon took their final turns, using Lay on Hands to recover. Talon destroyed the lead skeleton with a 22 to hit and 14 damage.</li></ul>
+<p>Where we resume: both mummies are down, the hostile mephits are cleared, and two skeletons are still marching toward the party. Resources have been spent, the crypt is not yet cleared, and Se’s ancestral relics remain unfound in the recorded notes.</p>
+<p>The party caught its breath—and heard a horrific buzzing from down the hallway. Whatever is making that noise has been waiting its turn.</p>
+<p>Session recording is now stopped; the transcript and summary are saved locally.</p></div>
+</div>
+</details>
         </li>
       </ol>
     </section>
@@ -1295,7 +1441,7 @@ footer.colophon {
         <span class="drop-cap">P</span>
         <div class="section-titles">
           <h2>The Portraits</h2>
-          <p>Likenesses of the Company, as their players imagine them.</p>
+          <p>The Company in battle, as their players imagine it. Individual portraits sit with each character on The Company tab.</p>
         </div>
       </div>
       <figure class="bastion-map">
@@ -1306,85 +1452,6 @@ footer.colophon {
         <a href="portraits/zombie_battle.jpg"><img src="portraits/zombie_battle.jpg" alt="The Company in a ruined dwarven hall, ringed by armored dwarven zombies with glowing green eyes: Serethe raising a lightning-wreathed greatsword, Eddwarn with a scimitar and a giant spider behind him, Burtha lunging with a sword, Talon in plate with a radiant blade, Finn hurling frost, Halden lifting a blazing holy symbol, and Wimble conjuring glowing runes."></a>
         <figcaption>Serethe joins the line as the dead of the dwarven halls rise. Click for full size.</figcaption>
       </figure>
-      <div class="portrait-grid">
-        <figure class="portrait" style="--series-color:var(--series-1)">
-          <div class="portrait-frame">
-            <img src="portraits/burtha.jpg" alt="Burtha: a grey-skinned orc woman with tight cornrow braids and a stern look.">
-          </div>
-          <figcaption>
-            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/139642480">Burtha Smith</a></h3>
-            <div class="portrait-sub">Orc Fighter 4 / Ranger 1</div>
-          </figcaption>
-        </figure>
-        <figure class="portrait" style="--series-color:var(--series-2)">
-          <div class="portrait-frame">
-            <img src="portraits/eddwarn.jpg" alt="Eddwarn: an auburn-haired elf in a green hooded cloak and chain shirt, with scrolls and a quill at his satchel and a scimitar at his hip, a giant spider in the moonlit forest behind him.">
-          </div>
-          <figcaption>
-            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/138479018">Eddwarn Celas</a></h3>
-            <div class="portrait-sub">Elf Druid 4 / Rogue 1</div>
-          </figcaption>
-        </figure>
-        <figure class="portrait" style="--series-color:var(--series-3)">
-          <div class="portrait-frame">
-            <img src="portraits/finn.jpg" alt="Finn: a fair-haired man with shoulder-length hair against a grey background.">
-          </div>
-          <figcaption>
-            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/138631960">Finn Barrellor</a></h3>
-            <div class="portrait-sub">Human Wizard 5</div>
-          </figcaption>
-        </figure>
-        <figure class="portrait" style="--series-color:var(--series-4)">
-          <div class="portrait-frame">
-            <img src="portraits/halden.jpg" alt="Halden: a dark-haired young man in cream vestments embroidered with gold stars, in a candlelit library.">
-          </div>
-          <figcaption>
-            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/139584701">Halden Lorithan</a></h3>
-            <div class="portrait-sub">Human Cleric 5</div>
-          </figcaption>
-        </figure>
-        <figure class="portrait" style="--series-color:var(--series-5)">
-          <div class="portrait-frame">
-            <img src="portraits/serethe.jpg" alt="Serethe Skarsdotr: a blue-grey goliath woman with white braided hair and rune markings on her face, in dark plate armor with a warhammer at her shoulder, a ruined keep in snowy mountains behind her.">
-          </div>
-          <figcaption>
-            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/153611341">Serethe &ldquo;Se&rdquo; Skarsdotr</a></h3>
-            <div class="portrait-sub">Goliath Paladin 4 / Sorcerer 1 &middot; Shield-Heir of High Keld</div>
-          </figcaption>
-        </figure>
-        <figure class="portrait" style="--series-color:var(--series-6)">
-          <div class="portrait-frame">
-            <img src="portraits/talon.jpg" alt="Talon: a dark-haired man with a hard, steady stare.">
-          </div>
-          <figcaption>
-            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/144044496">Talon Aldric</a></h3>
-            <div class="portrait-sub">Human Paladin 5</div>
-          </figcaption>
-        </figure>
-        <figure class="portrait" style="--series-color:var(--series-7)">
-          <div class="portrait-frame">
-            <span class="portrait-missing" aria-hidden="true">U</span>
-            <img src="portraits/ulfaerr.jpg" alt="Ulfaerr, struck through with a red X: a dark-bearded man in a wolf-pelt hood and fur cloak, gripping a dragon-headed polearm crackling with purple lightning, on a storm-swept mountainside." onerror="this.remove()">
-            <svg class="portrait-x" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              <line x1="8" y1="8" x2="92" y2="92"></line>
-              <line x1="92" y1="8" x2="8" y2="92"></line>
-            </svg>
-          </div>
-          <figcaption>
-            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/121672153">Ulfaerr</a></h3>
-            <div class="portrait-sub">Human Barbarian 1 / Warlock 4 &middot; of the Lortmil Mountains</div>
-          </figcaption>
-        </figure>
-        <figure class="portrait" style="--series-color:var(--series-8)">
-          <div class="portrait-frame">
-            <img src="portraits/wimble.jpg" alt="Wimble: a grinning gnome with big blue eyes and pointed ears, conjuring glowing runes in each hand.">
-          </div>
-          <figcaption>
-            <h3 class="card-name"><a href="https://www.dndbeyond.com/characters/139566268">Wimble Tinkerbright</a></h3>
-            <div class="portrait-sub">Forest Gnome Rogue 1 / Bard 4</div>
-          </figcaption>
-        </figure>
-      </div>
     </section>
     </div>
 
@@ -2833,8 +2900,7 @@ footer.colophon {
         ", " + esc(c.top_attack.damage) + (c.top_attack.mastery ? " (" + esc(c.top_attack.mastery) + ")" : "")) : "&mdash;";
 
       card.innerHTML =
-        '<div class="card-head">' +
-        '<div class="card-initial">' + esc(c.name[0]) + '</div>' +
+        '<div class="card-head">' + portrait(c) +
         '<div><h3 class="card-name">' + characterLink(c) + '</h3>' +
         '<p class="card-sub">' + esc(c.class_label) + " &middot; " + esc(cap(c.species)) +
         (c.alignment ? " &middot; " + esc(c.alignment) : "") + '</p></div>' +
@@ -2849,6 +2915,27 @@ footer.colophon {
 
       host.appendChild(card);
     });
+  }
+  var PORTRAIT_ALT = {
+      "burtha": "Burtha: a grey-skinned orc woman with tight cornrow braids and a stern look.",
+      "eddwarn": "Eddwarn: an auburn-haired elf in a green hooded cloak and chain shirt, with scrolls and a quill at his satchel and a scimitar at his hip, a giant spider in the moonlit forest behind him.",
+      "finn": "Finn: a fair-haired man with shoulder-length hair against a grey background.",
+      "halden": "Halden: a dark-haired young man in cream vestments embroidered with gold stars, in a candlelit library.",
+      "serethe": "Serethe Skarsdotr: a blue-grey goliath woman with white braided hair and rune markings on her face, in dark plate armor with a warhammer at her shoulder, a ruined keep in snowy mountains behind her.",
+      "talon": "Talon: a dark-haired man with a hard, steady stare.",
+      "ulfaerr": "Ulfaerr, struck through with a red X: a dark-bearded man in a wolf-pelt hood and fur cloak, gripping a dragon-headed polearm crackling with purple lightning, on a storm-swept mountainside.",
+      "wimble": "Wimble: a grinning gnome with big blue eyes and pointed ears, conjuring glowing runes in each hand."
+  };
+  function portrait(c) {
+    var key = c.id.split("_")[0];
+    if (!PORTRAIT_ALT[key]) return '<div class="card-initial">' + esc(c.name[0]) + '</div>';
+    var src = "portraits/" + key + ".jpg";
+    return '<a class="card-portrait portrait-frame" href="' + src + '">' +
+      '<span class="portrait-missing" aria-hidden="true">' + esc(c.name[0]) + '</span>' +
+      '<img src="' + src + '" alt="' + esc(PORTRAIT_ALT[key]) + '" onerror="this.remove()">' +
+      (key === "ulfaerr" ? '<svg class="portrait-x" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">' +
+        '<line x1="8" y1="8" x2="92" y2="92"></line><line x1="92" y1="8" x2="8" y2="92"></line></svg>' : '') +
+      '</a>';
   }
   function stat(v, k) { return "<div><span class='v'>" + v + "</span><span class='k'>" + k + "</span></div>"; }
   function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ""; }
